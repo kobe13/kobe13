@@ -42,7 +42,7 @@ var gridSystemArticle = function (viewPort) {
         });
         offsetLeft += articleWidth;
 
-        if (offsetLeft >= containerWidth) {
+        if (offsetLeft >= (containerWidth + container.offset().left - 10)) {
             offsetTop += 250;
             offsetLeft = container.offset().left;
         }
