@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+// Variables;
+@import "components/variables/settings";
+// Mixins
+@import "components/mixins/media-queries";
+@import "components/mixins/border-box";
+@import "components/mixins/clearfix";
+@import "components/mixins/transform";
+// Helpers
+@import "components/helpers/visibility";
+// components
+@import "components/basics/grid";
+@import "components/nav";
+
+// Generic Styling
+$article-height: 80px;
+
+header,
+main {
+    padding: 10px 0;
+
+}
+
+header {
+    transition: transform $transform-duration;
+
+    h1 {
+        text-align: center;
+        margin: 30px 0;
+        font-size: 50px;
+    }
+
+    p {
+        @include media (medium-up) {
+            -webkit-column-count: 2;
+            -moz-column-count: 2;
+            column-count: 2;
+        }
+    }
+
+}
+
+main {
+
+    article {
+        background-color: black;
+        margin-top: 20px;
+        position: absolute;
+        width: 40%;
+        height: 230px;
+
+        @include media(medium-up) {
+            width: 23%;
+        }
+
+    }
+
+}
+
+

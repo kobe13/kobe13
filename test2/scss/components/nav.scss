@@ -1,0 +1,142 @@
+.navigation {
+
+    position: absolute;
+    top: 20px;
+    z-index: 20;
+    margin-top: 20px;
+    margin-left: -5%;
+    padding: 10px 20px;
+    width: 100%;
+    background-color: beige;
+    @include transform(translateX(-100%));
+
+    @include media(medium-up) {
+        @include transform(translateX(0));
+        transition: transform $transform-duration;
+        position: relative;
+        margin: 0;
+        top: 0;
+        display: flex;
+        //fallback flexbox
+        display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+        display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+        display: -ms-flexbox; /* TWEENER - IE 10 */
+        display: -webkit-flex; /* NEW - Chrome */
+
+        li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+    }
+
+    &__list {
+        @include media(medium-up) {
+            display: inline-block;
+        }
+    }
+
+    &--active {
+        @include transform(translateX(0));
+        transition: transform $transform-duration;
+    }
+
+    li {
+        list-style: none;
+        margin: 10px;
+    }
+
+    .dropdown {
+
+        @include media(medium-up) {
+            ul li {
+                display: block;
+
+            }
+
+            &--active {
+                position: absolute;
+            }
+        }
+
+        &--active {
+
+            background: #f8f8f8;
+            -webkit-animation: fadeinout $transform-duration linear forwards;
+            animation: fadeinout $transform-duration linear forwards;
+
+            @-webkit-keyframes fadeinout {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes fadeinout {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
+        }
+
+    }
+
+    [type="search"] {
+
+        padding: 10px;
+
+        @include media (medium-up) {
+            display: inline-block;
+            flex: 1;
+            //fallback flexbox
+            -webkit-box-flex: 1; /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 1; /* OLD - Firefox 19- */
+            width: 20%; /* For old syntax, otherwise collapses. */
+            -webkit-flex: 1; /* Chrome */
+            -ms-flex: 1; /* IE 10 */
+        }
+
+    }
+
+}
+
+.content {
+
+    @include media (medium-up) {
+        @include transform(translateX(0));
+        transition: transform $transform-duration;
+
+    }
+
+    &--menu-active {
+        @include transform(translateX(105%));
+        transition: transform $transform-duration;
+
+        @include media (medium-up) {
+            @include transform(translateX(0));
+        }
+
+    }
+}
+
+#show-menu {
+    position: absolute;
+    top: 0;
+    margin: 10px 0;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.overlay {
+    overflow: auto;
+    @include media (small-only) {
+        background-color: lightslategrey;
+        overflow: hidden;
+    }
+}
