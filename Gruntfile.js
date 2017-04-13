@@ -15,10 +15,21 @@ module.exports = function (grunt) {
                 }
             }
         },
+        cssmin: {
+            options: {
+                mergeIntoShorthands: false,
+                roundingPrecision: -1
+            },
+            target: {
+                files: {
+                    'gallery/css/main.min.css': ['gallery/css/main.css']
+                }
+            }
+        },
         watch: {
             css: {
                 files: '**/*.scss',
-                tasks: ['sass']
+                tasks: ['sass', 'cssmin']
             },
             scripts: {
                 files: ['gallery/js/components/*.js'],
@@ -28,6 +39,7 @@ module.exports = function (grunt) {
     });
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.registerTask('default', ['watch']);
 };

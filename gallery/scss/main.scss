@@ -2,13 +2,17 @@
 
 // Variables;
 @import "components/variables/settings";
+
 // Mixins
 @import "components/mixins/media-queries";
 @import "components/mixins/border-box";
 @import "components/mixins/clearfix";
 @import "components/mixins/transform";
-// Helpers
-@import "components/helpers/visibility";
+
 // components
 @import "components/basics/grid";
+@import "components/gallery";
+
+// Helpers
+@import "components/helpers/visibility";
 
