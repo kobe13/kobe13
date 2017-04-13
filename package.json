@@ -1,0 +1,32 @@
+{
+  "name": "grunt",
+  "version": "1.0.0",
+  "description": "grunt testing",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-modernizr": "^1.0.2",
+    "grunt-npm-install": "^0.3.1",
+    "lru-cache": "^4.0.1"
+  },
+  "devDependencies": {
+    "grunt-contrib-uglify": "^2.3.0",
+    "grunt-npm-install": "^0.3.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kobe13/grunt.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kobe13/grunt/issues"
+  },
+  "homepage": "https://github.com/kobe13/grunt#readme"
+}
