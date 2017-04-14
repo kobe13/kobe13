@@ -7,7 +7,7 @@
 @import "components/mixins/media-queries";
 @import "components/mixins/border-box";
 @import "components/mixins/clearfix";
-@import "components/mixins/transform";
+@import "components/mixins/animations";
 
 // components
 @import "components/basics/grid";
@@ -15,4 +15,25 @@
 
 // Helpers
 @import "components/helpers/visibility";
+
+// Generic Styling
+header,
+main {
+    padding: 5px 0;
+
+}
+
+header {
+
+    h1 {
+        text-align: center;
+        margin: 20px 0;
+        font-size: 30px;
+
+        @include media(medium-up){
+            font-size: 50px;
+        }
+    }
+
+}
 

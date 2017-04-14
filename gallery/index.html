@@ -4,29 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Gallery Vanilla</title>
+    <title>Vanilla Gallery 24</title>
     <link rel="stylesheet" type="text/css" href="css/main.min.css">
 </head>
 <body>
-<header class="grid grid grid-container">
+
+<header class="grid grid-container">
 
     <div class="grid-row">
         <div class="grid-col grid-col-s12">
 
-            <h1>Gallery Vanilla</h1>
+            <h1>Vanilla Gallery 24</h1>
 
         </div>
     </div>
 
 </header>
 <main class="grid grid-container">
-    <div class="grid-row">
-        <div class="grid-col grid-col-s12">
+    <div class="grid-row wrapper">
 
-            Gallery here
+        <div class="grid-col grid-col-s12 grid-col-m8 grid-col-l6">
+
+            <div class="gallery">
+                <ul class="gallery__wrapper">
+                    <!-- gallery images will be appended here -->
+                </ul>
+                <span class="gallery__button gallery__button--prev">«</span>
+                <span class="gallery__button gallery__button--next">»</span>
+
+            </div>
+
+        </div>
+        <div class="grid-col grid-col-s12 grid-col-m4 grid-col-l6">
+
+            <div class="info">
+                <h2>Images:</h2>
+                <div class="info__counter">
+                    <span class="info__counter--current">1</span> /
+                    <span class="info__counter--total"></span>
+                </div>
+            </div>
 
         </div>
     </div>
+
 </main>
 
 <script src='js/main.js' defer></script>
