@@ -31,7 +31,7 @@ var gallery = function () {
             }
 
             //set class, attributes to the image
-            image.className = "gallery__image";
+            image.className = "gallery__article__image";
             image.setAttribute("src", imagesUrl + n);
             image.setAttribute("alt", "Image-" + n);
 
