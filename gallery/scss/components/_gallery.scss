@@ -4,7 +4,11 @@
         background-color: #0d3349;
         color: #ffffff;
         padding: 10px;
-        font-size: 20px;
+        font-size: 25px;
+        text-align: center;
+        @include media(medium-up){
+            text-align: left;
+        }
     }
 
     .gallery {
@@ -20,29 +24,29 @@
         &__article {
             position: absolute;
             opacity: 0;
-            @include transition (opacity, $animation-duration, ease-in-out);
+            @include transition (opacity, $animation-duration, ease-out);
 
             &--show {
                 opacity: 1;
                 position: static;
-                @include transition (opacity, $animation-duration, ease-in-out);
+                @include transition (opacity, $animation-duration, ease-out);
             }
 
-            &__image{
+            &__image {
                 width: 100%;
             }
         }
 
         &__button {
             color: #fff;
-            position: absolute;
-            background: rgba(0, 0, 0, .6);
-            top: 50%;
-            z-index: 1;
             font-size: 30px;
             margin-top: -25px;
             opacity: .3;
             user-select: none;
+            background: rgba(0, 0, 0, .6);
+            position: absolute;
+            top: 50%;
+            z-index: 1;
 
             &:hover {
                 cursor: pointer;
