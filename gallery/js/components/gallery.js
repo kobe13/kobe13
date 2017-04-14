@@ -8,7 +8,7 @@ var gallery = function () {
         buttonPrev = document.querySelector('.gallery__button--prev'),
         counterCurrent = document.querySelector('.info__counter--current'),
         counterTotal = document.querySelector('.info__counter--total'),
-        counter = 0;
+        counter = 1000;
 
 // ***** GALLERY START ***** //
     //adding the images to the gallery
@@ -66,7 +66,8 @@ var gallery = function () {
             //update the counter with the current image number
             counterCurrent.innerHTML = (imageToShow + 1);
         },
-        events = function (e) { //create the image next and prev events
+        events = function (e) {
+            //create the image next and prev events
             if (e === 'next') {
                 counter++;
                 showCurrentImage();
