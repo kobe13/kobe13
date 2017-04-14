@@ -38,7 +38,7 @@ var gallery = function () {
             //append the image to the li element
             item.appendChild(image);
 
-            //append the element to the gallery wrapper
+            //append the li element to the gallery wrapper
             galleryWrapper.appendChild(item);
 
         }
@@ -85,6 +85,50 @@ var gallery = function () {
     });
 
 // ***** GALLERY END ***** //
+
+// ***** TOUCH EVENTS START ***** //
+    var touchEvents = function () {
+
+        document.addEventListener('touchstart', handleTouchStart, false);
+        document.addEventListener('touchmove', handleTouchMove, false);
+
+        var xDown = null,
+            yDown = null;
+
+        function handleTouchStart(evt) {
+            xDown = evt.touches[0].clientX;
+            yDown = evt.touches[0].clientY;
+        }
+
+        function handleTouchMove(evt) {
+            if (!xDown || !yDown) {
+                return;
+            }
+
+            var xUp = evt.touches[0].clientX;
+            var yUp = evt.touches[0].clientY;
+
+            var xDiff = xDown - xUp;
+            var yDiff = yDown - yUp;
+
+            if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                if (xDiff > 0) {
+                    // left swipe
+                    events('next');
+                } else {
+                    // right swipe
+                    events('prev');
+                }
+            }
+
+            // reset values
+            xDown = null;
+            yDown = null;
+        }
+    };
+
+    touchEvents();
+// ***** TOUCH EVENTS END ***** //
 
 };
 

@@ -6,7 +6,7 @@
         padding: 10px;
         font-size: 25px;
         text-align: center;
-        @include media(medium-up){
+        @include media(medium-up) {
             text-align: left;
         }
     }

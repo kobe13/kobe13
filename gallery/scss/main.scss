@@ -2,17 +2,14 @@
 
 // Variables;
 @import "components/variables/settings";
-
 // Mixins
 @import "components/mixins/media-queries";
 @import "components/mixins/border-box";
 @import "components/mixins/clearfix";
 @import "components/mixins/animations";
-
 // components
 @import "components/basics/grid";
 @import "components/gallery";
-
 // Helpers
 @import "components/helpers/visibility";
 
@@ -31,7 +28,7 @@ header {
         font-size: 30px;
         color: #ffffff;
 
-        @include media(medium-up){
+        @include media(medium-up) {
             font-size: 50px;
         }
     }
