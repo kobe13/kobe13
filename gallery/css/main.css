@@ -11,7 +11,6 @@
   width: 100%; }
   .grid-container {
     max-width: 1280px;
-    background-color: #8699a4;
     width: 90%;
     margin: 0 auto;
     display: block; }
@@ -283,6 +282,9 @@
   @media screen and (min-width: 1000px) {
     .is-hidden-large {
       display: none !important; } }
+
+body {
+  background-color: #8699a4; }
 
 header,
 main {
