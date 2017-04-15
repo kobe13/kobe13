@@ -17,29 +17,25 @@ var gallery = function () {
 
         while (n < imagesDisplayed) {
             //instantiate the elements
-            var item = document.createElement("li"),
+            var element = document.createElement("li"),
                 image = document.createElement("img");
 
             //increment the elements
             n++;
 
             //set the active class to the first element
-            if (n == 1) {
-                item.className = "gallery__article gallery__article--show";
-            } else {
-                item.className = "gallery__article";
-            }
+            n == 1 ? element.className = "gallery__element gallery__element--show" : element.className = "gallery__element";
 
             //set class, attributes to the image
-            image.className = "gallery__article__image";
+            image.className = "gallery__element__image";
             image.setAttribute("src", imagesUrl + n);
             image.setAttribute("alt", "Image-" + n);
 
             //append the image to the li element
-            item.appendChild(image);
+            element.appendChild(image);
 
             //append the li element to the gallery wrapper
-            galleryWrapper.appendChild(item);
+            galleryWrapper.appendChild(element);
 
         }
 
@@ -49,7 +45,7 @@ var gallery = function () {
     buildGallery(5);
 
     //calculate the number of images in the gallery
-    var images = document.querySelectorAll('.gallery__article'),
+    var images = document.querySelectorAll('.gallery__element'),
         imagesLength = images.length;
 
     //update the counter with the total number of images
@@ -58,10 +54,10 @@ var gallery = function () {
     //show current image
     var showCurrentImage = function () {
             var imageToShow = Math.abs(counter % imagesLength),
-                imageActive = document.querySelector('.gallery__article--show');
+                imageActive = document.querySelector('.gallery__element--show');
 
-            dom.removeClass(imageActive, 'gallery__article--show');
-            dom.addClass(images[imageToShow], 'gallery__article--show');
+            dom.removeClass(imageActive, 'gallery__element--show');
+            dom.addClass(images[imageToShow], 'gallery__element--show');
 
             //update the counter with the current image number
             counterCurrent.innerHTML = (imageToShow + 1);
@@ -84,7 +80,6 @@ var gallery = function () {
     buttonPrev.addEventListener('click', function () {
         events('prev');
     });
-
 // ***** GALLERY END ***** //
 
 // ***** TOUCH EVENTS START ***** //
@@ -109,8 +104,8 @@ var gallery = function () {
             var xUp = evt.touches[0].clientX;
             var yUp = evt.touches[0].clientY;
 
-            var xDiff = xDown - xUp;
-            var yDiff = yDown - yUp;
+            var xDiff = xDown - xUp,
+                yDiff = yDown - yUp;
 
             if (Math.abs(xDiff) > Math.abs(yDiff)) {
                 if (xDiff > 0) {

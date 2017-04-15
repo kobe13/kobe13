@@ -6,6 +6,7 @@
         padding: 10px;
         font-size: 25px;
         text-align: center;
+
         @include media(medium-up) {
             text-align: left;
         }
@@ -21,7 +22,7 @@
             list-style-type: none;
         }
 
-        &__article {
+        &__element {
             position: absolute;
             opacity: 0;
             @include transition (opacity, $animation-duration, ease-out);
@@ -43,6 +44,8 @@
             margin-top: -25px;
             opacity: .3;
             user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
             background: rgba(0, 0, 0, .6);
             position: absolute;
             top: 50%;
@@ -56,14 +59,10 @@
             &--next {
                 right: 0;
                 padding: 10px 5px 15px 10px;
-                border-top-left-radius: 3px;
-                border-bottom-left-radius: 3px;
             }
             &--prev {
                 left: 0;
                 padding: 10px 10px 15px 5px;
-                border-top-right-radius: 3px;
-                border-bottom-right-radius: 3px;
             }
         }
     }
