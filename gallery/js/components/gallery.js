@@ -3,7 +3,7 @@
 var gallery = function () {
     //init variables
     var galleryWrapper = document.querySelector('.gallery__wrapper'),
-        imagesUrl = 'http://lorempixel.com/600/350/?',
+        imagesUrl = 'https://unsplash.it/600/350?image=',
         buttonNext = document.querySelector('.gallery__button--next'),
         buttonPrev = document.querySelector('.gallery__button--prev'),
         counterCurrent = document.querySelector('.info__counter--current'),
@@ -38,7 +38,6 @@ var gallery = function () {
 
             //append the li element to the gallery wrapper
             galleryWrapper.appendChild(element);
-
         }
 
     };
