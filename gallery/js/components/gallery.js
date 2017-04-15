@@ -28,7 +28,9 @@ var gallery = function () {
 
             //set class, attributes to the image
             image.className = "gallery__element__image";
-            image.setAttribute("src", imagesUrl + n);
+            image.setAttribute("data-src", imagesUrl + n);
+            image.setAttribute("src", "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==");
+            image.setAttribute("onload", "lzld(this)");
             image.setAttribute("alt", "Image-" + n);
 
             //append the image to the li element
@@ -42,7 +44,7 @@ var gallery = function () {
     };
 
     //build the gallery with n images
-    buildGallery(5);
+    buildGallery(10);
 
     //calculate the number of images in the gallery
     var images = document.querySelectorAll('.gallery__element'),
