@@ -15,14 +15,14 @@ var gallery = function () {
     var buildGallery = function (imagesDisplayed) {
         var n;
 
-        for (n = 0; n < imagesDisplayed; n++) {
+        for (n = 1; n <= imagesDisplayed; n++) {
             //instantiate the elements
             var element = document.createElement("li"),
                 lzldImage = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==",
                 image = document.createElement("img");
 
             //set the active class to the first element
-            n == 0 ? element.className = "gallery__element gallery__element--show" : element.className = "gallery__element";
+            n == 1 ? element.className = "gallery__element gallery__element--show" : element.className = "gallery__element";
 
             //set class, attributes to the image
             image.className = "gallery__element__image";
