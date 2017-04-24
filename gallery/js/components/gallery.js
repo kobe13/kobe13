@@ -13,23 +13,21 @@ var gallery = function () {
 // ***** GALLERY START ***** //
     //adding the images to the gallery
     var buildGallery = function (imagesDisplayed) {
-        var n = 0;
+        var n;
 
-        while (n < imagesDisplayed) {
+        for (n = 0; n < imagesDisplayed; n++) {
             //instantiate the elements
             var element = document.createElement("li"),
+                lzldImage = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==",
                 image = document.createElement("img");
 
-            //increment the elements
-            n++;
-
             //set the active class to the first element
-            n == 1 ? element.className = "gallery__element gallery__element--show" : element.className = "gallery__element";
+            n == 0 ? element.className = "gallery__element gallery__element--show" : element.className = "gallery__element";
 
             //set class, attributes to the image
             image.className = "gallery__element__image";
             image.setAttribute("data-src", imagesUrl + n);
-            image.setAttribute("src", "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==");
+            image.setAttribute("src", lzldImage);
             image.setAttribute("onload", "lzld(this)");
             image.setAttribute("alt", "Image-" + n);
 
