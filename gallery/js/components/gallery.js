@@ -22,7 +22,7 @@ var gallery = function () {
                 image = document.createElement("img");
 
             //set the active class to the first element
-            i == 1 ? element.className = "gallery__element gallery__element--show" : element.className = "gallery__element";
+            i === 1 ? element.className = "gallery__element gallery__element--show" : element.className = "gallery__element";
 
             //set class, attributes to the image
             image.className = "gallery__element__image";
