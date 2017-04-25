@@ -221,11 +221,13 @@ function initializeEvents() {
 
 }
 
+var galleryWrapper = document.querySelector('.gallery__wrapper'),
+    myImagesUrl = 'https://unsplash.it/600/350?image=';
 
 var myGallery = new Gallery({
-    wrapper: document.querySelector('.gallery__wrapper'),
+    wrapper: galleryWrapper,
     imagesNumber: 20,
-    imagesUrl: 'https://unsplash.it/600/350?image=',
+    imagesUrl: myImagesUrl,
     touchEvents: true
     // clickable: false,
     // autoBuild: false
