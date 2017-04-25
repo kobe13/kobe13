@@ -1,17 +1,18 @@
 module.exports = function (grunt) {
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         sass: {
             dist: {
                 files: {
-                    'gallery/css/main.css': 'gallery/scss/main.scss'
+                    'gallery-plugin/css/main.css': 'gallery-plugin/scss/main.scss'
                 }
             }
         },
         uglify: {
             my_target: {
                 files: {
-                    'gallery/js/main.js': ['gallery/js/components/*.js']
+                    'gallery-plugin/js/main.js': ['gallery-plugin/js/components/*.js']
                 }
             }
         },
@@ -22,7 +23,7 @@ module.exports = function (grunt) {
             },
             target: {
                 files: {
-                    'gallery/css/main.min.css': ['gallery/css/main.css']
+                    'gallery-plugin/css/main.min.css': ['gallery-plugin/css/main.css']
                 }
             }
         },
@@ -32,7 +33,7 @@ module.exports = function (grunt) {
                 tasks: ['sass', 'cssmin']
             },
             scripts: {
-                files: ['gallery/js/components/*.js'],
+                files: ['gallery-plugin/js/components/*.js'],
                 tasks: ['uglify']
             }
         }
