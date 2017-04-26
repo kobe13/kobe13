@@ -9,11 +9,21 @@ module.exports = function (grunt) {
                 }
             }
         },
+        concat: {
+            options: {
+                separator: '\n \n'
+            },
+            dist: {
+                src: ['gallery-plugin/js/components/helpers/*.js', 'gallery-plugin/js/components/*.js'],
+                dest: 'gallery-plugin/js/main.built.js'
+            }
+        },
         uglify: {
             my_target: {
                 files: {
-                    'gallery-plugin/js/main.js': ['gallery-plugin/js/components/*.js']
+                    'gallery-plugin/js/main.min.js': ['gallery-plugin/js/main.built.js']
                 }
+
             }
         },
         cssmin: {
@@ -33,12 +43,13 @@ module.exports = function (grunt) {
                 tasks: ['sass', 'cssmin']
             },
             scripts: {
-                files: ['gallery-plugin/js/components/*.js'],
-                tasks: ['uglify']
+                files: ['gallery-plugin/js/components/*.js', 'gallery-plugin/js/components/helpers/*.js'],
+                tasks: ['concat', 'uglify']
             }
         }
     });
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');

@@ -1,13 +1,12 @@
-'use strict';
-
-//gallery plugin
-
+//// ***** GALLERY PLUGIN START ***** //
 // Define our constructor
 var Gallery = function () {
 
     // Create global element references
     this.nextButton = null;
     this.prevButton = null;
+    this.swipeLeft = null;
+    this.swipeRight = null;
 
     // Define option defaults
     var defaults = {
@@ -26,6 +25,7 @@ var Gallery = function () {
 
     }
 
+    // If auto build option is true
     if (this.options.autoBuild) {
         this.build();
         this.counter();
@@ -38,13 +38,17 @@ var Gallery = function () {
         this.prevButton = document.querySelector('.gallery__button--prev');
         dom.removeClass(this.nextButton, 'is-hidden');
         dom.removeClass(this.prevButton, 'is-hidden');
+
         initializeEvents.call(this);
     }
 
     // If touchEvents option is true
     if (this.options.touchEvents) {
-        // touchEvents.call(this);
-        this.touchEvents();
+        this.swipeLeft = true;
+        this.swipeRight = true;
+
+        touchEvents.call(this);
+
     }
 
 };
@@ -98,105 +102,15 @@ Gallery.prototype.showCurrentImage = function () {
 
 };
 
-Gallery.prototype.swipeRight = function () {
+Gallery.prototype.swipeNext = function () {
     this.options.counter++;
     this.showCurrentImage();
 };
 
-Gallery.prototype.swipeLeft = function () {
+Gallery.prototype.swipePrev = function () {
     this.options.counter--;
     this.showCurrentImage();
 };
-
-// Gallery.prototype.handleTouchStart = function (evt) {
-//
-//     var xDown = null,
-//         yDown = null;
-//
-//     xDown = evt.touches[0].clientX;
-//     yDown = evt.touches[0].clientY;
-// };
-//
-// Gallery.prototype.handleTouchMove = function (evt) {
-//     // console.log(this.options.counter);
-//
-//     if (!xDown || !yDown) {
-//         return;
-//     }
-//
-//     var xUp = evt.touches[0].clientX;
-//     var yUp = evt.touches[0].clientY;
-//
-//     var xDiff = xDown - xUp,
-//         yDiff = yDown - yUp;
-//
-//     if (Math.abs(xDiff) > Math.abs(yDiff)) {
-//         if (xDiff > 0) {
-//             // left swipe
-//             console.log(this.options.counter);
-//
-//         } else {
-//             // right swipe
-//             console.log(this.options.counter);
-//         }
-//     }
-//
-//     // reset values
-//     xDown = null;
-//     yDown = null;
-// };
-
-
-// ***** TOUCH EVENTS START ***** //
-Gallery.prototype.touchEvents = function () {
-
-    // document.addEventListener('touchstart', this.handleTouchStart.bind(this));
-    // document.addEventListener('touchmove', this.handleTouchMove.bind(this))
-
-    document.addEventListener('touchstart', handleTouchStart, false);
-    document.addEventListener('touchmove', handleTouchMove, false);
-
-    var xDown = null,
-        yDown = null,
-        counter = this.options.counter;
-
-    function handleTouchStart(evt) {
-        xDown = evt.touches[0].clientX;
-        yDown = evt.touches[0].clientY;
-    }
-
-    function handleTouchMove(evt) {
-
-        if (!xDown || !yDown) {
-            return;
-        }
-
-        var xUp = evt.touches[0].clientX;
-        var yUp = evt.touches[0].clientY;
-
-        var xDiff = xDown - xUp,
-            yDiff = yDown - yUp;
-
-        if (Math.abs(xDiff) > Math.abs(yDiff)) {
-            if (xDiff > 0) {
-                // left swipe
-                console.log('left');
-                counter--;
-
-            } else {
-                // right swipe
-                counter++;
-                console.log('right');
-            }
-        }
-
-        // reset values
-        xDown = null;
-        yDown = null;
-    }
-};
-// ***** TOUCH EVENTS END ***** //
-
 
 // Utility method to extend defaults with user options
 function extendDefaults(source, properties) {
@@ -212,15 +126,29 @@ function extendDefaults(source, properties) {
 function initializeEvents() {
 
     if (this.nextButton) {
-        this.nextButton.addEventListener('click', this.swipeRight.bind(this));
+        this.nextButton.addEventListener('click', this.swipeNext.bind(this));
     }
 
     if (this.prevButton) {
-        this.prevButton.addEventListener('click', this.swipeLeft.bind(this));
+        this.prevButton.addEventListener('click', this.swipePrev.bind(this));
     }
 
 }
 
+// ***** TOUCH EVENTS START ***** //
+function touchEvents() {
+    var hammertime = new Hammer(galleryWrapper);
+    if (this.swipeRight) {
+        hammertime.on('swiperight', this.swipePrev.bind(this));
+    }
+
+    if (this.swipeLeft) {
+        hammertime.on('swipeleft', this.swipeNext.bind(this));
+    }
+}
+
+
+// ***** CREATE MY GALLERY ***** //
 var galleryWrapper = document.querySelector('.gallery__wrapper'),
     myImagesUrl = 'https://unsplash.it/600/350?image=';
 
@@ -232,133 +160,3 @@ var myGallery = new Gallery({
     // clickable: false,
     // autoBuild: false
 });
-
-
-// var gallery = function () {
-//     //init variables
-//     var galleryWrapper = document.querySelector('.gallery__wrapper'),
-//         imagesUrl = 'https://unsplash.it/600/350?image=',
-//         buttonNext = document.querySelector('.gallery__button--next'),
-//         buttonPrev = document.querySelector('.gallery__button--prev'),
-//         counterCurrent = document.querySelector('.info__counter--current'),
-//         counterTotal = document.querySelector('.info__counter--total'),
-//         counter = 1000;
-//
-// // ***** GALLERY START ***** //
-//     //adding the images to the gallery
-// var buildGallery = function (imagesDisplayed) {
-//     var i;
-//
-//     for (i = 1; i <= imagesDisplayed; i++) {
-//         //instantiate the elements
-//         var element = document.createElement("li"),
-//             lzldImage = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==",
-//             image = document.createElement("img");
-//
-//         //set the active class to the first element
-//         i === 1 ? element.className = "gallery__element gallery__element--show" : element.className = "gallery__element";
-//
-//         //set class, attributes to the image
-//         image.className = "gallery__element__image";
-//         image.setAttribute("data-src", imagesUrl + i);
-//         image.setAttribute("src", lzldImage);
-//         image.setAttribute("onload", "lzld(this)");
-//         image.setAttribute("alt", "Image-" + i);
-//
-//         //append the image to the li element
-//         element.appendChild(image);
-//
-//         //append the li element to the gallery wrapper
-//         galleryWrapper.appendChild(element);
-//     }
-//
-// };
-//
-//     //build the gallery with n images
-//     buildGallery(10);
-//
-//     //calculate the number of images in the gallery
-//     var images = document.querySelectorAll('.gallery__element'),
-//         imagesLength = images.length;
-//
-//     //update the counter with the total number of images
-//     counterTotal.innerHTML = (imagesLength);
-//
-//     //show current image
-//     var showCurrentImage = function () {
-//             var imageToShow = Math.abs(counter % imagesLength),
-//                 imageActive = document.querySelector('.gallery__element--show');
-//
-//             dom.removeClass(imageActive, 'gallery__element--show');
-//             dom.addClass(images[imageToShow], 'gallery__element--show');
-//
-//             //update the counter with the current image number
-//             counterCurrent.innerHTML = (imageToShow + 1);
-//         },
-//         events = function (e) {
-//             //create the image next and prev events
-//             if (e === 'next') {
-//                 counter++;
-//                 showCurrentImage();
-//             } else {
-//                 counter--;
-//                 showCurrentImage();
-//             }
-//         };
-//
-//     buttonNext.addEventListener('click', function () {
-//         events('next');
-//     });
-//
-//     buttonPrev.addEventListener('click', function () {
-//         events('prev');
-//     });
-// // ***** GALLERY END ***** //
-//
-// // ***** TOUCH EVENTS START ***** //
-//     var touchEvents = function () {
-//
-//         document.addEventListener('touchstart', handleTouchStart, false);
-//         document.addEventListener('touchmove', handleTouchMove, false);
-//
-//         var xDown = null,
-//             yDown = null;
-//
-//         function handleTouchStart(evt) {
-//             xDown = evt.touches[0].clientX;
-//             yDown = evt.touches[0].clientY;
-//         }
-//
-//         function handleTouchMove(evt) {
-//             if (!xDown || !yDown) {
-//                 return;
-//             }
-//
-//             var xUp = evt.touches[0].clientX;
-//             var yUp = evt.touches[0].clientY;
-//
-//             var xDiff = xDown - xUp,
-//                 yDiff = yDown - yUp;
-//
-//             if (Math.abs(xDiff) > Math.abs(yDiff)) {
-//                 if (xDiff > 0) {
-//                     // left swipe
-//                     events('next');
-//                 } else {
-//                     // right swipe
-//                     events('prev');
-//                 }
-//             }
-//
-//             // reset values
-//             xDown = null;
-//             yDown = null;
-//         }
-//     };
-//
-//     touchEvents();
-// // ***** TOUCH EVENTS END ***** //
-//
-// };
-//
-// gallery();

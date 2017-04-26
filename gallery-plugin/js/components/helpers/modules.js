@@ -1,5 +1,3 @@
-'use strict';
-
 // *** dom helper module START *** //
 var dom = {
 
@@ -27,4 +25,3 @@ var dom = {
 
 };
 // *** dom helper module END *** //
-
