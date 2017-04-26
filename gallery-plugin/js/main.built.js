@@ -55,7 +55,7 @@ var Gallery = function () {
         autoBuild: true,
         clickable: true,
         touchEvents: false,
-        counter: 1000
+        counter: 0
     };
 
     // Create options by extending defaults with the passed in arguments
@@ -133,6 +133,13 @@ Gallery.prototype.showCurrentImage = function () {
         imageToShow = Math.abs(this.options.counter % imagesLength),
         imageActive = document.querySelector('.gallery__element--show');
 
+    //prevent going backward when counter < 0
+    if (this.options.counter === -1) {
+        imageToShow = imagesLength - 1;
+        this.options.counter = imagesLength - 1;
+    }
+
+    //set/remove the active class to the right image
     dom.removeClass(imageActive, 'gallery__element--show');
     dom.addClass(images[imageToShow], 'gallery__element--show');
 
