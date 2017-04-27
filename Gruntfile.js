@@ -2,10 +2,11 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        path: grunt.option('target'),
         sass: {
             dist: {
                 files: {
-                    'gallery-plugin/css/main.css': 'gallery-plugin/scss/main.scss'
+                    '<%= path %>/css/main.css': '<%= path %>/scss/main.scss'
                 }
             }
         },
@@ -14,14 +15,14 @@ module.exports = function (grunt) {
                 separator: '\n \n'
             },
             dist: {
-                src: ['gallery-plugin/js/components/helpers/*.js', 'gallery-plugin/js/components/*.js'],
-                dest: 'gallery-plugin/js/main.built.js'
+                src: ['<%= path %>/js/components/helpers/*.js', '<%= path %>/js/components/*.js'],
+                dest: '<%= path %>/js/main.built.js'
             }
         },
         uglify: {
             my_target: {
                 files: {
-                    'gallery-plugin/js/main.min.js': ['gallery-plugin/js/main.built.js']
+                    '<%= path %>/js/main.min.js': ['<%= path %>/js/main.built.js']
                 }
 
             }
@@ -33,7 +34,7 @@ module.exports = function (grunt) {
             },
             target: {
                 files: {
-                    'gallery-plugin/css/main.min.css': ['gallery-plugin/css/main.css']
+                    '<%= path %>/css/main.min.css': ['<%= path %>/css/main.css']
                 }
             }
         },
@@ -43,15 +44,34 @@ module.exports = function (grunt) {
                 tasks: ['sass', 'cssmin']
             },
             scripts: {
-                files: ['gallery-plugin/js/components/*.js', 'gallery-plugin/js/components/helpers/*.js'],
+                files: '**/js/components/**/*.js',
                 tasks: ['concat', 'uglify']
             }
         }
     });
+
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default', ['watch']);
+
+    grunt.registerTask('build', 'build the production css and js files', function (n) {
+        var target = grunt.option('target');
+
+        if (!target) {
+            grunt.fail.fatal('Your need to enter a target option => --target=folder-name')
+        } else if ([
+                'gallery'
+            ].indexOf(target) === -1) {
+            grunt.fail.fatal('Your target ' + target + ' is not valid')
+        }
+
+        grunt.task.run('watch');
+        grunt.log.writeln('Currently running the "build" task for the folder: ' + target);
+
+    });
+
+    grunt.registerTask('default', ['build']);
+
 };
