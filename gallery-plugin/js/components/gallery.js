@@ -1,3 +1,5 @@
+'use strict';
+
 //// ***** GALLERY PLUGIN START ***** //
 // Define our constructor
 var Gallery = function () {

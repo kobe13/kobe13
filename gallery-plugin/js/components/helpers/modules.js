@@ -1,3 +1,5 @@
+'use strict';
+
 // *** dom helper module START *** //
 var dom = {
 

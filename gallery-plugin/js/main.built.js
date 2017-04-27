@@ -1,5 +1,3 @@
-'use strict';
-
 /*! Hammer.JS - v2.0.8 - 2016-04-23
  * http://hammerjs.github.io/
  *
@@ -19,6 +17,8 @@
     a,c)};var f=[],p="function"===typeof e.MutationObserver,c=e.document.documentElement.compareDocumentPosition?function(b,a){return!!(b.compareDocumentPosition(a)&16)}:e.document.documentElement.contains?function(b,a){return b!==a&&(b.contains?b.contains(a):!1)}:function(b,a){for(;a=a.parentNode;)if(a===b)return!0;return!1}}).call(this,"undefined"!==typeof global?global:"undefined"!==typeof self?self:"undefined"!==typeof window?window:{})},{}]},{},[1])(1)});
 
  
+'use strict';
+
 // *** dom helper module START *** //
 var dom = {
 
@@ -48,6 +48,8 @@ var dom = {
 // *** dom helper module END *** //
 
  
+'use strict';
+
 //// ***** GALLERY PLUGIN START ***** //
 // Define our constructor
 var Gallery = function () {
