@@ -40,11 +40,11 @@ module.exports = function (grunt) {
         },
         watch: {
             css: {
-                files: '**/*.scss',
+                files: '<%= path %>/scss/**/*.scss',
                 tasks: ['sass', 'cssmin']
             },
             scripts: {
-                files: '**/js/components/**/*.js',
+                files: '<%= path %>/js/components/**/*.js',
                 tasks: ['concat', 'uglify']
             }
         }
