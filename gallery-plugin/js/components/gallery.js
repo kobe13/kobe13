@@ -121,7 +121,9 @@
 
         if (direction === 'next') {
             this.options.counter++;
-        } else if (direction === 'prev') {
+        }
+
+        if (direction === 'prev') {
             this.options.counter--;
         }
 
