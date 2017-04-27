@@ -6,7 +6,7 @@ module.exports = function (grunt) {
         sass: {
             dist: {
                 files: {
-                    '<%= path %>/css/main.css': '<%= path %>/scss/main.scss'
+                    '<%= path %>/build/css/main.css': '<%= path %>/src/scss/main.scss'
                 }
             }
         },
@@ -15,16 +15,15 @@ module.exports = function (grunt) {
                 separator: '\n \n'
             },
             dist: {
-                src: ['<%= path %>/js/components/helpers/*.js', '<%= path %>/js/components/*.js'],
-                dest: '<%= path %>/js/main.built.js'
+                src: ['<%= path %>/src/js/components/helpers/*.js', '<%= path %>/src/js/components/*.js'],
+                dest: '<%= path %>/build/js/main.built.js'
             }
         },
         uglify: {
             my_target: {
                 files: {
-                    '<%= path %>/js/main.min.js': ['<%= path %>/js/main.built.js']
+                    '<%= path %>/dist/js/main.min.js': ['<%= path %>/build/js/main.built.js']
                 }
-
             }
         },
         cssmin: {
@@ -34,17 +33,17 @@ module.exports = function (grunt) {
             },
             target: {
                 files: {
-                    '<%= path %>/css/main.min.css': ['<%= path %>/css/main.css']
+                    '<%= path %>/dist/css/main.min.css': ['<%= path %>/build/css/main.css']
                 }
             }
         },
         watch: {
             css: {
-                files: '<%= path %>/scss/**/*.scss',
+                files: '<%= path %>/src/scss/**/*.scss',
                 tasks: ['sass', 'cssmin']
             },
             scripts: {
-                files: '<%= path %>/js/components/**/*.js',
+                files: '<%= path %>/src/js/components/**/*.js',
                 tasks: ['concat', 'uglify']
             }
         }
