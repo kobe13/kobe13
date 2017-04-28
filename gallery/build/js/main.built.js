@@ -235,7 +235,7 @@ var galleryWrapper = document.querySelector('.gallery__wrapper'),
 
 var myGallery = new Gallery({
     wrapper: galleryWrapper,
-    imagesNumber: 10,
+    imagesNumber: 50,
     imagesUrl: myImagesUrl,
     touchEvents: true
     // clickable: false,

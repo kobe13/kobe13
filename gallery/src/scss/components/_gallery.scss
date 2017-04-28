@@ -1,4 +1,10 @@
 .wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+
+    @include media(medium-up){
+        display: block;
+    }
 
     .info {
         background-color: #0d3349;
