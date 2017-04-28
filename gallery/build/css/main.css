@@ -234,13 +234,15 @@
     opacity: 0;
     -webkit-transform: opacity 1s ease-out;
     -ms-transform: opacity 1s ease-out;
-    transition: opacity 1s ease-out; }
+    transition: opacity 1s ease-out;
+    width: 0; }
     .wrapper .gallery__element--show {
       opacity: 1;
       position: static;
       -webkit-transform: opacity 1s ease-out;
       -ms-transform: opacity 1s ease-out;
-      transition: opacity 1s ease-out; }
+      transition: opacity 1s ease-out;
+      width: 100%; }
     .wrapper .gallery__element__image {
       width: 100%; }
   .wrapper .gallery__button {

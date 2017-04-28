@@ -63,7 +63,7 @@
         for (i = 1; i <= this.options.imagesNumber; i++) {
             //instantiate the elements
             var element = document.createElement("li"),
-                lzldImage = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==",
+                lzldImage = "https://kobe13.github.io/gallery/src/img/spinningwheel.gif",
                 image = document.createElement("img"),
                 imageUrl = this.options.imagesUrl,
                 wrapper = this.options.wrapper;
@@ -150,7 +150,7 @@
     function initializeEvents(type) {
 
         // Click events
-        if(type === 'clickEvents'){
+        if (type === 'clickEvents') {
 
             if (this.nextButton) {
                 this.nextButton.addEventListener('click', this.swipe.bind(this, 'next'));
@@ -162,7 +162,7 @@
         }
 
         // Touch events
-        if(type === 'touchEvents'){
+        if (type === 'touchEvents') {
 
             var hammertime = new Hammer(galleryWrapper);
 

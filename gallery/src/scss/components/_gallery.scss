@@ -26,11 +26,13 @@
             position: absolute;
             opacity: 0;
             @include transition (opacity, $animation-duration, ease-out);
+            width: 0; //force lazy loading of the image
 
             &--show {
                 opacity: 1;
                 position: static;
                 @include transition (opacity, $animation-duration, ease-out);
+                width: 100%;
             }
 
             &__image {
