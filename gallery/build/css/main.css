@@ -11,7 +11,7 @@
   width: 100%; }
   .grid-container {
     max-width: 1280px;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     display: block; }
     @media screen and (min-width: 660px) {
@@ -231,8 +231,10 @@
   .wrapper .gallery {
     position: relative;
     display: block;
-    overflow: hidden;
-    max-width: 600px; }
+    overflow: hidden; }
+    @media screen and (min-width: 660px) {
+      .wrapper .gallery {
+        max-width: 600px; } }
     .wrapper .gallery__wrapper {
       list-style-type: none; }
     .wrapper .gallery__element {

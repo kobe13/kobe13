@@ -22,7 +22,10 @@
         position: relative;
         display: block;
         overflow: hidden;
-        max-width: 600px;
+        @include media(medium-up) {
+            max-width: 600px;
+        }
+
 
         &__wrapper {
             list-style-type: none;
