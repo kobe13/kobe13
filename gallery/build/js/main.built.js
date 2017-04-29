@@ -82,28 +82,22 @@ var dom = {
             this.options = extendDefaults(defaults, arguments[0]);
         }
 
-        // If auto build option is true
-        if (this.options.autoBuild) {
-            this.build();
-            this.counter();
-        }
-
         // If auto play option is true
         if (this.options.autoPlay) {
+            this.playButton = document.querySelector('.info__button');
+            dom.removeClass(this.playButton, 'is-hidden');
             this.play = true;
             this.autoPlay();
+
         }
 
         // If clickable option is true
         if (this.options.clickable) {
             this.nextButton = document.querySelector('.gallery__button--next');
             this.prevButton = document.querySelector('.gallery__button--prev');
-            this.playButton = document.querySelector('.info__button');
             dom.removeClass(this.nextButton, 'is-hidden');
             dom.removeClass(this.prevButton, 'is-hidden');
-            dom.removeClass(this.playButton, 'is-hidden');
 
-            initializeEvents.call(this, 'clickEvents');
         }
 
         // If touchEvents option is true
@@ -112,6 +106,13 @@ var dom = {
             this.swipeRight = true;
 
             initializeEvents.call(this, 'touchEvents');
+        }
+
+        // If auto build option is true
+        if (this.options.autoBuild) {
+            initializeEvents.call(this, 'clickEvents');
+            this.build();
+            this.counter();
         }
 
     };
@@ -302,6 +303,6 @@ var myGallery = new Gallery({
     imagesUrl: myImagesUrl,
     touchEvents: true,
     autoPlay: true
-    // clickable: false,
+    // clickable: false
     // autoBuild: false
 });
