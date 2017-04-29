@@ -11,6 +11,8 @@
         this.prevButton = null;
         this.swipeLeft = null;
         this.swipeRight = null;
+        this.play = null;
+        this.playButton = null;
 
         // Define option defaults
         var defaults = {
@@ -18,6 +20,8 @@
             imagesNumber: 5,
             imagesUrl: "",
             autoBuild: true,
+            autoPlay: false,
+            delay: 3000,
             clickable: true,
             touchEvents: false,
             counter: 0
@@ -34,12 +38,20 @@
             this.counter();
         }
 
+        // If auto play option is true
+        if (this.options.autoPlay) {
+            this.play = true;
+            this.autoPlay(true);
+        }
+
         // If clickable option is true
         if (this.options.clickable) {
             this.nextButton = document.querySelector('.gallery__button--next');
             this.prevButton = document.querySelector('.gallery__button--prev');
+            this.playButton = document.querySelector('.info__button');
             dom.removeClass(this.nextButton, 'is-hidden');
             dom.removeClass(this.prevButton, 'is-hidden');
+            dom.removeClass(this.playButton, 'is-hidden');
 
             initializeEvents.call(this, 'clickEvents');
         }
@@ -131,6 +143,37 @@
 
     };
 
+    Gallery.prototype.autoPlay = function () {
+        var _ = this,
+            interval = this.options.delay,
+            playOn = setInterval(function () {
+                if (_.play) {
+                    _.swipe.call(_, 'next');
+
+                } else {
+                    //if stopPlay() is called stop the autoplay
+                    clearInterval(playOn);
+
+                }
+            }, interval);
+
+    };
+
+    Gallery.prototype.stopPlay = function () {
+
+        if (this.play) {
+            this.play = null;
+            this.playButton.innerHTML = "Start";
+
+        } else {
+            this.play = true;
+            this.playButton.innerHTML = "Stop";
+            this.autoPlay();
+
+        }
+
+    };
+
 // *****  Private Methods ***** //
 
     // Utility method to extend defaults with user options
@@ -154,11 +197,29 @@
 
             if (this.nextButton) {
                 this.nextButton.addEventListener('click', this.swipe.bind(this, 'next'));
+
             }
 
             if (this.prevButton) {
                 this.prevButton.addEventListener('click', this.swipe.bind(this, 'prev'));
+
             }
+
+            if (this.playButton) {
+                if (this.play) {
+                    this.playButton.addEventListener('click', this.stopPlay.bind(this));
+                }
+
+                if (!this.play) {
+                    this.playButton.addEventListener('click', function () {
+                        var _ = this;
+                        _.play = true;
+                    });
+
+                }
+
+            }
+
         }
 
         // Touch events
@@ -168,10 +229,12 @@
 
             if (this.swipeRight) {
                 hammertime.on('swiperight', this.swipe.bind(this, 'prev'));
+
             }
 
             if (this.swipeLeft) {
                 hammertime.on('swipeleft', this.swipe.bind(this, 'next'));
+
             }
         }
 
@@ -187,7 +250,8 @@ var myGallery = new Gallery({
     wrapper: galleryWrapper,
     imagesNumber: 50,
     imagesUrl: myImagesUrl,
-    touchEvents: true
+    touchEvents: true,
+    autoPlay: true
     // clickable: false,
     // autoBuild: false
 });

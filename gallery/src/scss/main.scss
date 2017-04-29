@@ -28,8 +28,10 @@ header {
     h1 {
         text-align: center;
         margin: 20px 0;
+        padding: 10px;
         font-size: 30px;
         color: #ffffff;
+        background-color: $blue-default;
 
         @include media(medium-up) {
             font-size: 50px;

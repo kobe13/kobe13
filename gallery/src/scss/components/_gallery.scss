@@ -1,20 +1,39 @@
 .wrapper {
-    display: flex;
-    flex-direction: column-reverse;
-
-    @include media(medium-up){
-        display: block;
-    }
 
     .info {
-        background-color: #0d3349;
+        background-color: $blue-default;
         color: #ffffff;
         padding: 10px;
-        font-size: 25px;
+        font-size: 30px;
         text-align: center;
+        margin-top: 25px;
 
         @include media(medium-up) {
-            text-align: left;
+            margin-top: 0;
+        }
+
+        &__button {
+            background-color: #3498db;
+            background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+            background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+            background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+            background-image: -o-linear-gradient(top, #3498db, #2980b9);
+            background-image: linear-gradient(to bottom, #3498db, #2980b9);
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px 20px 10px 20px;
+            text-decoration: none;
+            margin: 10px 0;
+
+            &:hover {
+                background-color: #3cb0fd;
+                background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+                text-decoration: none;
+            }
         }
     }
 
@@ -25,7 +44,6 @@
         @include media(medium-up) {
             max-width: 600px;
         }
-
 
         &__wrapper {
             list-style-type: none;

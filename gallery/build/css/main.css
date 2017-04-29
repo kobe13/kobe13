@@ -213,67 +213,82 @@
         right: auto;
         width: 100%; } }
 
-.wrapper {
-  display: flex;
-  flex-direction: column-reverse; }
+.wrapper .info {
+  background-color: #0d3349;
+  color: #ffffff;
+  padding: 10px;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 25px; }
   @media screen and (min-width: 660px) {
-    .wrapper {
-      display: block; } }
-  .wrapper .info {
-    background-color: #0d3349;
+    .wrapper .info {
+      margin-top: 0; } }
+  .wrapper .info__button {
+    background-color: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
     color: #ffffff;
-    padding: 10px;
-    font-size: 25px;
-    text-align: center; }
-    @media screen and (min-width: 660px) {
-      .wrapper .info {
-        text-align: left; } }
-  .wrapper .gallery {
-    position: relative;
-    display: block;
-    overflow: hidden; }
-    @media screen and (min-width: 660px) {
-      .wrapper .gallery {
-        max-width: 600px; } }
-    .wrapper .gallery__wrapper {
-      list-style-type: none; }
-    .wrapper .gallery__element {
-      position: absolute;
-      opacity: 0;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    margin: 10px 0; }
+    .wrapper .info__button:hover {
+      background-color: #3cb0fd;
+      background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+      background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+      background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+      background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+      background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+      text-decoration: none; }
+.wrapper .gallery {
+  position: relative;
+  display: block;
+  overflow: hidden; }
+  @media screen and (min-width: 660px) {
+    .wrapper .gallery {
+      max-width: 600px; } }
+  .wrapper .gallery__wrapper {
+    list-style-type: none; }
+  .wrapper .gallery__element {
+    position: absolute;
+    opacity: 0;
+    -webkit-transform: opacity 1s ease-out;
+    -ms-transform: opacity 1s ease-out;
+    transition: opacity 1s ease-out;
+    width: 0; }
+    .wrapper .gallery__element--show {
+      opacity: 1;
+      position: static;
       -webkit-transform: opacity 1s ease-out;
       -ms-transform: opacity 1s ease-out;
       transition: opacity 1s ease-out;
-      width: 0; }
-      .wrapper .gallery__element--show {
-        opacity: 1;
-        position: static;
-        -webkit-transform: opacity 1s ease-out;
-        -ms-transform: opacity 1s ease-out;
-        transition: opacity 1s ease-out;
-        width: 100%; }
-      .wrapper .gallery__element__image {
-        width: 100%; }
-    .wrapper .gallery__button {
-      color: #fff;
-      font-size: 30px;
-      margin-top: -25px;
-      opacity: .3;
-      user-select: none;
-      -webkit-user-select: none;
-      -ms-user-select: none;
-      background: rgba(0, 0, 0, 0.6);
-      position: absolute;
-      top: 50%;
-      z-index: 1; }
-      .wrapper .gallery__button:hover {
-        cursor: pointer;
-        opacity: 1; }
-      .wrapper .gallery__button--next {
-        right: 0;
-        padding: 10px 5px 15px 10px; }
-      .wrapper .gallery__button--prev {
-        left: 0;
-        padding: 10px 10px 15px 5px; }
+      width: 100%; }
+    .wrapper .gallery__element__image {
+      width: 100%; }
+  .wrapper .gallery__button {
+    color: #fff;
+    font-size: 30px;
+    margin-top: -25px;
+    opacity: .3;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 50%;
+    z-index: 1; }
+    .wrapper .gallery__button:hover {
+      cursor: pointer;
+      opacity: 1; }
+    .wrapper .gallery__button--next {
+      right: 0;
+      padding: 10px 5px 15px 10px; }
+    .wrapper .gallery__button--prev {
+      left: 0;
+      padding: 10px 10px 15px 5px; }
 
 .is-hidden {
   display: none !important; }
@@ -303,8 +318,10 @@ main {
 header h1 {
   text-align: center;
   margin: 20px 0;
+  padding: 10px;
   font-size: 30px;
-  color: #ffffff; }
+  color: #ffffff;
+  background-color: #0d3349; }
   @media screen and (min-width: 660px) {
     header h1 {
       font-size: 50px; } }

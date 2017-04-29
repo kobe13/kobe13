@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Demo JS / SCSS Gallery</title>
+    <title>Demo JS/SCSS Gallery Demo</title>
     <link href="dist/css/main.min.css" rel="stylesheet" media="all">
 </head>
 <body>
@@ -14,7 +14,7 @@
     <div class="grid-row">
         <div class="grid-col grid-col-s12">
 
-            <h1>Demo JS / SCSS Gallery</h1>
+            <h1>Demo JS/SCSS Gallery</h1>
 
         </div>
     </div>
@@ -41,11 +41,13 @@
         <div class="wrapper__right grid-col grid-col-s12 grid-col-m4 grid-col-l6">
 
             <div class="info">
-                <h2 class="is-hidden-small">Images:</h2>
-                <div class="info__counter">
+                <span class="is-hidden-small">Images:</span>
+                <p class="info__counter">
                     <span class="info__counter--current">1</span> /
                     <span class="info__counter--total"></span>
-                </div>
+                </p>
+
+                <button class="info__button is-hidden" type="button">Stop</button>
             </div>
 
         </div>
@@ -54,7 +56,7 @@
 
 </main>
 
-<script src='dist/js/main.min.js' async></script>
+<script src='build/js/main.built.js' async></script>
 
 </body>
 </html>
