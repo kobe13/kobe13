@@ -15,7 +15,7 @@
         }
 
         &__button {
-            background-color: #785964;
+            background-color: #D5C7BC;
             color: #ffffff;
             font-size: 1.5rem;
             font-family: $font-family-default;
@@ -24,9 +24,10 @@
             margin: 10px 0;
             border: none;
 
-            &:hover {
-                background-color: #D5C7BC;
+            &:hover, &:visited, &:active {
+                background-color: #785964;
                 text-decoration: none;
+                border: none;
             }
         }
     }

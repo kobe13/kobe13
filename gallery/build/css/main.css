@@ -226,7 +226,7 @@
     .wrapper .info {
       margin-top: 0; } }
   .wrapper .info__button {
-    background-color: #785964;
+    background-color: #D5C7BC;
     color: #ffffff;
     font-size: 1.5rem;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -234,9 +234,10 @@
     text-decoration: none;
     margin: 10px 0;
     border: none; }
-    .wrapper .info__button:hover {
-      background-color: #D5C7BC;
-      text-decoration: none; }
+    .wrapper .info__button:hover, .wrapper .info__button:visited, .wrapper .info__button:active {
+      background-color: #785964;
+      text-decoration: none;
+      border: none; }
 .wrapper .gallery {
   position: relative;
   display: block;
