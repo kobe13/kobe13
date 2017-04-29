@@ -5,7 +5,14 @@ $medium-range-up: 999px !default;
 $large-range: 1000px !default;
 
 //animation duration
-$animation-duration: 1s;
+$animation-duration: 1s !default;
 
 //colors
-$blue-default: #0d3349;
+$blue-default: #93B7BE !default;
+
+//font
+$font-size-default: 12px !default;
+$font-family-default: "Palatino Linotype", "Book Antiqua", Palatino, serif !default;
+$font-color-default: #454545 !default;
+
+
