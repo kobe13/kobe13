@@ -91,7 +91,7 @@ var dom = {
         // If auto play option is true
         if (this.options.autoPlay) {
             this.play = true;
-            this.autoPlay(true);
+            this.autoPlay();
         }
 
         // If clickable option is true
@@ -213,11 +213,11 @@ var dom = {
 
         if (this.play) {
             this.play = null;
-            this.playButton.innerHTML = "Start";
+            this.playButton.innerHTML = "PLAY";
 
         } else {
             this.play = true;
-            this.playButton.innerHTML = "Stop";
+            this.playButton.innerHTML = "STOP";
             this.autoPlay();
 
         }
