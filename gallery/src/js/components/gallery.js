@@ -145,18 +145,17 @@
     };
 
     Gallery.prototype.autoPlay = function () {
-        var _ = this,
-            interval = this.options.delay,
+        var interval = this.options.delay,
             playOn = setInterval(function () {
-                if (_.play) {
-                    _.swipe.call(_, 'next');
+                if (this.play) {
+                    this.swipe.call(this, 'next');
 
                 } else {
                     //if stopPlay() is called stop the autoplay
                     clearInterval(playOn);
 
                 }
-            }, interval);
+            }.bind(this), interval);
 
     };
 
@@ -213,9 +212,8 @@
 
                 if (!this.play) {
                     this.playButton.addEventListener('click', function () {
-                        var _ = this;
-                        _.play = true;
-                    });
+                        this.play = true;
+                    }.bind(this));
 
                 }
 
