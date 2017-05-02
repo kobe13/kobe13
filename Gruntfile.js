@@ -86,13 +86,13 @@ module.exports = function (grunt) {
     if (!target) {
         grunt.fail.fatal('Your need to enter a target option => --target=project-name')
     } else if (!allProjects.includes(target)) {
-        grunt.fail.fatal('Your project "' + target + '" is not one of these existing projects: "' + allProjects.join('", "') + '"');
+        grunt.fail.fatal(`Your project "${target}" is not one of these existing projects: "${allProjects.join('", "')}"`);
     }
 
     grunt.registerTask('dev', 'build the dev css and js files', function (n) {
 
         grunt.task.run('watch');
-        grunt.log.writeln('Currently running the "dev" task for the folder: ' + target);
+        grunt.log.writeln(`Currently running the "dev" task for the folder: ${target}`);
 
     });
 
@@ -106,10 +106,10 @@ module.exports = function (grunt) {
             grunt.task.run('uglify', 'cssmin');
 
         } else {
-            grunt.fail.fatal('Your js version "' + js + '" and your project "' + target + '" don\'t match')
+            grunt.fail.fatal(`Your js version "${js}" and your project "${target}" don't match`)
         }
 
-        grunt.log.writeln('Currently running the "build" task for the ' + js + ' project: ' + target);
+        grunt.log.writeln(`Currently running the "build" task for the project: ${target}`);
 
     });
 
