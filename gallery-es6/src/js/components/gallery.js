@@ -177,7 +177,7 @@ class Gallery {
             imageActive = document.querySelector('.gallery__element--show');
 
         //prevent going backward when counter < 0
-        if (counter === -1) {
+        if (Math.sign(counter) === -1) {
             imageToShow = imagesLength - 1;
             this.options.counter = imagesLength - 1;
         }
