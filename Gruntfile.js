@@ -85,7 +85,7 @@ module.exports = function (grunt) {
 
     if (!target) {
         grunt.fail.fatal('Your need to enter a target option => --target=project-name')
-    } else if (allProjects.indexOf(target) === -1) {
+    } else if (!allProjects.includes(target)) {
         grunt.fail.fatal('Your project "' + target + '" is not one of these existing projects: "' + allProjects.join('", "') + '"');
     }
 
@@ -99,10 +99,10 @@ module.exports = function (grunt) {
     grunt.registerTask('build', 'build the production css and js files', function (n) {
         let js = grunt.option('js');
 
-        if ((js === 'transpile') && (ES6Projects.indexOf(target) >= 0)) {
+        if ((js === 'transpile') && (ES6Projects.includes(target))) {
             grunt.task.run('babel', 'uglify', 'cssmin');
 
-        } else if ((js === 'built') && (ES5Projects.indexOf(target) >= 0)) {
+        } else if ((js === 'built') && (ES5Projects.includes(target))) {
             grunt.task.run('uglify', 'cssmin');
 
         } else {
