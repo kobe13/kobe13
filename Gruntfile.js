@@ -79,7 +79,7 @@ module.exports = function (grunt) {
         ],
         ES5Projects = myProjects[0].es5,
         ES6Projects = myProjects[1].es6,
-        allProjects = ES5Projects.concat(ES6Projects),
+        allProjects = [...ES5Projects, ...ES6Projects],
         target = grunt.option('target');
 
 
