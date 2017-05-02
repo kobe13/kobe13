@@ -69,7 +69,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    var myProjects = [
+    let myProjects = [
             {
                 'es5': ['gallery']
             },
@@ -97,7 +97,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('build', 'build the production css and js files', function (n) {
-        var js = grunt.option('js');
+        let js = grunt.option('js');
 
         if ((js === 'transpile') && (ES6Projects.indexOf(target) >= 0)) {
             grunt.task.run('babel', 'uglify', 'cssmin');

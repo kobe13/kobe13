@@ -65,194 +65,189 @@ function initializeEvents(type) {
 }
 
 //// ***** GALLERY PLUGIN START ***** //
-// Block-Scoped Function
-{
-    class Gallery {
+class Gallery {
 
 // Define our constructor
-        constructor() {
+    constructor() {
 
-            // Create global element references
-            this.nextButton = null;
-            this.prevButton = null;
-            this.swipeLeft = null;
-            this.swipeRight = null;
+        // Create global element references
+        this.nextButton = null;
+        this.prevButton = null;
+        this.swipeLeft = null;
+        this.swipeRight = null;
+        this.play = null;
+        this.playButton = null;
+
+        // Define option defaults
+        let defaults = {
+            wrapper: "",
+            imagesNumber: 5,
+            imagesUrl: "",
+            autoBuild: true,
+            autoPlay: false,
+            delay: 3000,
+            clickable: true,
+            touchEvents: false,
+            counter: 0
+        };
+
+        // Create options by extending defaults with the passed in arguments
+        if (arguments[0] && typeof arguments[0] === "object") {
+            this.options = extendDefaults(defaults, arguments[0]);
+        }
+
+        // If auto play option is true
+        if (this.options.autoPlay) {
+            this.playButton = document.querySelector('.info__button');
+            dom.removeClass(this.playButton, 'is-hidden');
+            this.play = true;
+            this.autoPlay();
+
+        }
+
+        // If clickable option is true
+        if (this.options.clickable) {
+            this.nextButton = document.querySelector('.gallery__button--next');
+            this.prevButton = document.querySelector('.gallery__button--prev');
+            dom.removeClass(this.nextButton, 'is-hidden');
+            dom.removeClass(this.prevButton, 'is-hidden');
+
+        }
+
+        // If touchEvents option is true
+        if (this.options.touchEvents) {
+            this.swipeLeft = true;
+            this.swipeRight = true;
+
+            initializeEvents.call(this, 'touchEvents');
+        }
+
+        // If auto build option is true
+        if (this.options.autoBuild) {
+            initializeEvents.call(this, 'clickEvents');
+            this.build();
+            this.counter();
+        }
+
+    }
+
+    build() {
+        let i;
+
+        for (i = 1; i <= this.options.imagesNumber; i++) {
+            //instantiate the elements
+            let element = document.createElement("li"),
+                lzldImage = "https://kobe13.github.io/gallery/src/img/spinningwheel.gif",
+                image = document.createElement("img"),
+                imageUrl = this.options.imagesUrl,
+                wrapper = this.options.wrapper;
+
+            //set the active class to the first element
+            i === 1 ? element.className = "gallery__element gallery__element--show" : element.className = "gallery__element";
+
+            //set class, attributes to the image
+            image.className = "gallery__element__image";
+            image.setAttribute("data-src", imageUrl + i);
+            image.setAttribute("src", lzldImage);
+            image.setAttribute("onload", "lzld(this)");
+            image.setAttribute("alt", "Image-" + i);
+
+            //append the image to the li element
+            element.appendChild(image);
+
+            //append the li element to the gallery wrapper
+            wrapper.appendChild(element);
+        }
+    }
+
+    counter() {
+        let counterTotal = document.querySelector('.info__counter--total'),
+            imagesNumber = this.options.imagesNumber;
+
+        //update the counter with the total number of images
+        counterTotal.innerHTML = (imagesNumber);
+    }
+
+    showCurrentImage() {
+        let counterCurrent = document.querySelector('.info__counter--current'),
+            counter = this.options.counter,
+            images = document.querySelectorAll('.gallery__element'),
+            imagesLength = images.length,
+            imageToShow = Math.abs(counter % imagesLength),
+            imageActive = document.querySelector('.gallery__element--show');
+
+        //prevent going backward when counter < 0
+        if (counter === -1) {
+            imageToShow = imagesLength - 1;
+            this.options.counter = imagesLength - 1;
+        }
+
+        //add/remove the active class to the right image
+        dom.removeClass(imageActive, 'gallery__element--show');
+        dom.addClass(images[imageToShow], 'gallery__element--show');
+
+        //update the counter with the current image number
+        counterCurrent.innerHTML = (imageToShow + 1);
+
+    }
+
+    swipe(direction) {
+
+        if (direction === 'next') {
+            this.options.counter++;
+        }
+
+        if (direction === 'prev') {
+            this.options.counter--;
+        }
+
+        this.showCurrentImage();
+
+    }
+
+    autoPlay() {
+        let interval = this.options.delay,
+            playOn = setInterval(() => {
+                if (this.play) {
+                    this.swipe.call(this, 'next');
+
+                } else {
+                    //if stopPlay() is called stop the autoplay
+                    clearInterval(playOn);
+
+                }
+            }, interval);
+
+    }
+
+    stopPlay() {
+
+        if (this.play) {
             this.play = null;
-            this.playButton = null;
+            this.playButton.innerHTML = "PLAY";
 
-            // Define option defaults
-            let defaults = {
-                wrapper: "",
-                imagesNumber: 5,
-                imagesUrl: "",
-                autoBuild: true,
-                autoPlay: false,
-                delay: 3000,
-                clickable: true,
-                touchEvents: false,
-                counter: 0
-            };
-
-            // Create options by extending defaults with the passed in arguments
-            if (arguments[0] && typeof arguments[0] === "object") {
-                this.options = extendDefaults(defaults, arguments[0]);
-            }
-
-            // If auto play option is true
-            if (this.options.autoPlay) {
-                this.playButton = document.querySelector('.info__button');
-                dom.removeClass(this.playButton, 'is-hidden');
-                this.play = true;
-                this.autoPlay();
-
-            }
-
-            // If clickable option is true
-            if (this.options.clickable) {
-                this.nextButton = document.querySelector('.gallery__button--next');
-                this.prevButton = document.querySelector('.gallery__button--prev');
-                dom.removeClass(this.nextButton, 'is-hidden');
-                dom.removeClass(this.prevButton, 'is-hidden');
-
-            }
-
-            // If touchEvents option is true
-            if (this.options.touchEvents) {
-                this.swipeLeft = true;
-                this.swipeRight = true;
-
-                initializeEvents.call(this, 'touchEvents');
-            }
-
-            // If auto build option is true
-            if (this.options.autoBuild) {
-                initializeEvents.call(this, 'clickEvents');
-                this.build();
-                this.counter();
-            }
-
-        }
-
-        build() {
-            let i;
-
-            for (i = 1; i <= this.options.imagesNumber; i++) {
-                //instantiate the elements
-                let element = document.createElement("li"),
-                    lzldImage = "https://kobe13.github.io/gallery/src/img/spinningwheel.gif",
-                    image = document.createElement("img"),
-                    imageUrl = this.options.imagesUrl,
-                    wrapper = this.options.wrapper;
-
-                //set the active class to the first element
-                i === 1 ? element.className = "gallery__element gallery__element--show" : element.className = "gallery__element";
-
-                //set class, attributes to the image
-                image.className = "gallery__element__image";
-                image.setAttribute("data-src", imageUrl + i);
-                image.setAttribute("src", lzldImage);
-                image.setAttribute("onload", "lzld(this)");
-                image.setAttribute("alt", "Image-" + i);
-
-                //append the image to the li element
-                element.appendChild(image);
-
-                //append the li element to the gallery wrapper
-                wrapper.appendChild(element);
-            }
-        }
-
-        counter() {
-            let counterTotal = document.querySelector('.info__counter--total'),
-                imagesNumber = this.options.imagesNumber;
-
-            //update the counter with the total number of images
-            counterTotal.innerHTML = (imagesNumber);
-        }
-
-        showCurrentImage() {
-            let counterCurrent = document.querySelector('.info__counter--current'),
-                counter = this.options.counter,
-                images = document.querySelectorAll('.gallery__element'),
-                imagesLength = images.length,
-                imageToShow = Math.abs(counter % imagesLength),
-                imageActive = document.querySelector('.gallery__element--show');
-
-            //prevent going backward when counter < 0
-            if (counter === -1) {
-                imageToShow = imagesLength - 1;
-                this.options.counter = imagesLength - 1;
-            }
-
-            //add/remove the active class to the right image
-            dom.removeClass(imageActive, 'gallery__element--show');
-            dom.addClass(images[imageToShow], 'gallery__element--show');
-
-            //update the counter with the current image number
-            counterCurrent.innerHTML = (imageToShow + 1);
-
-        }
-
-        swipe(direction) {
-
-            if (direction === 'next') {
-                this.options.counter++;
-            }
-
-            if (direction === 'prev') {
-                this.options.counter--;
-            }
-
-            this.showCurrentImage();
-
-        }
-
-        autoPlay() {
-            let interval = this.options.delay,
-                playOn = setInterval(() => {
-                    if (this.play) {
-                        this.swipe.call(this, 'next');
-
-                    } else {
-                        //if stopPlay() is called stop the autoplay
-                        clearInterval(playOn);
-
-                    }
-                }, interval);
-
-        }
-
-        stopPlay() {
-
-            if (this.play) {
-                this.play = null;
-                this.playButton.innerHTML = "PLAY";
-
-            } else {
-                this.play = true;
-                this.playButton.innerHTML = "STOP";
-                this.autoPlay();
-
-            }
+        } else {
+            this.play = true;
+            this.playButton.innerHTML = "STOP";
+            this.autoPlay();
 
         }
 
     }
 
-
-// ***** CREATE MY GALLERY ***** //
-    var galleryWrapper = document.querySelector('.gallery__wrapper'),
-        myImagesUrl = 'https://unsplash.it/600/350?image=';
-
-    var myGallery = new Gallery({
-        wrapper: galleryWrapper,
-        imagesNumber: 50,
-        imagesUrl: myImagesUrl,
-        touchEvents: true,
-        autoPlay: true
-        // clickable: false
-        // autoBuild: false
-    });
-
 }
 
+
+// ***** CREATE MY GALLERY ***** //
+let galleryWrapper = document.querySelector('.gallery__wrapper'),
+    myImagesUrl = 'https://unsplash.it/600/350?image=';
+
+let myGallery = new Gallery({
+    wrapper: galleryWrapper,
+    imagesNumber: 50,
+    imagesUrl: myImagesUrl,
+    touchEvents: true,
+    autoPlay: true
+    // clickable: false
+    // autoBuild: false
+});
