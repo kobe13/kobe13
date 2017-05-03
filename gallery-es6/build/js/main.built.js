@@ -186,27 +186,22 @@ class Gallery {
 
         for (i = 1; i <= this.options.imagesNumber; i++) {
             //instantiate the elements
-            let element = document.createElement("li"),
-                lzldImage = "https://kobe13.github.io/gallery/src/img/spinningwheel.gif",
-                image = document.createElement("img"),
+            let lzldImage = "https://kobe13.github.io/gallery/src/img/spinningwheel.gif",
                 imageUrl = this.options.imagesUrl,
-                wrapper = this.options.wrapper;
-
-            //set the active class to the first element
-            i === 1 ? element.className = "gallery__element gallery__element--show" : element.className = "gallery__element";
-
-            //set class, attributes to the image
-            image.className = "gallery__element__image";
-            image.setAttribute("data-src", imageUrl + i);
-            image.setAttribute("src", lzldImage);
-            image.setAttribute("onload", "lzld(this)");
-            image.setAttribute("alt", "Image-" + i);
-
-            //append the image to the li element
-            element.appendChild(image);
+                wrapper = this.options.wrapper,
+                wrapperClass = wrapper.classList[0],
+                element = `<li class="gallery__element">
+                                <img class="gallery__element__image" data-src="${imageUrl + i}" src="${lzldImage}" alt="Image-${i}" onload="lzld(this)">
+                           </li>`;
 
             //append the li element to the gallery wrapper
-            wrapper.appendChild(element);
+            wrapper.insertAdjacentHTML('beforeend', element);
+
+            // set the active class to the first element
+            if (i === 1) {
+                dom.addClass(document.querySelector('.' + wrapperClass + ' .gallery__element'), 'gallery__element--show')
+            }
+
         }
     }
 
