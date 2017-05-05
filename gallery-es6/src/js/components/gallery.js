@@ -18,9 +18,9 @@
 
             // Define option defaults
             let defaults = {
-                wrapper: "",
+                wrapper: '',
                 imagesNumber: 5,
-                imagesUrl: "",
+                imagesUrl: '',
                 autoBuild: true,
                 autoPlay: false,
                 delay: 3000,
@@ -30,7 +30,7 @@
             };
 
             // Create options by extending defaults with the passed in arguments
-            if (arguments[0] && typeof arguments[0] === "object") {
+            if (arguments[0] && typeof arguments[0] === 'object') {
                 this.options = extendDefaults(defaults, arguments[0]);
             }
 
@@ -74,7 +74,7 @@
 
             for (i = 1; i <= this.options.imagesNumber; i++) {
                 //instantiate the elements
-                let lzldImage = "https://kobe13.github.io/gallery/src/img/spinningwheel.gif",
+                let lzldImage = 'https://kobe13.github.io/gallery/src/img/spinningwheel.gif',
                     imageUrl = this.options.imagesUrl,
                     wrapper = this.options.wrapper,
                     wrapperClass = wrapper.classList[0],
@@ -87,7 +87,7 @@
 
                 // set the active class to the first element
                 if (i === 1) {
-                    dom.addClass(document.querySelector('.' + wrapperClass + ' .gallery__element'), 'gallery__element--show')
+                    dom.addClass(document.querySelector('.' + wrapperClass + ' .gallery__element'), 'gallery__element--show');
                 }
 
             }
@@ -157,11 +157,11 @@
 
             if (this.play) {
                 this.play = null;
-                this.playButton.innerHTML = "PLAY";
+                this.playButton.innerHTML = 'PLAY';
 
             } else {
                 this.play = true;
-                this.playButton.innerHTML = "STOP";
+                this.playButton.innerHTML = 'STOP';
                 this.autoPlay();
 
             }
@@ -192,18 +192,18 @@
         if (type === 'clickEvents') {
 
             if (this.nextButton) {
-                this.nextButton.addEventListener('click', event => this.swipe('next'));
+                this.nextButton.addEventListener('click', () => this.swipe('next'));
 
             }
 
             if (this.prevButton) {
-                this.prevButton.addEventListener('click', event => this.swipe('prev'));
+                this.prevButton.addEventListener('click', () => this.swipe('prev'));
 
             }
 
             if (this.playButton) {
                 if (this.play) {
-                    this.playButton.addEventListener('click', event => this.stopPlay());
+                    this.playButton.addEventListener('click', () => this.stopPlay());
                 }
 
                 if (!this.play) {
@@ -223,12 +223,12 @@
             let hammertime = new Hammer(galleryWrapper);
 
             if (this.swipeRight) {
-                hammertime.on('swiperight', event => this.swipe('prev'));
+                hammertime.on('swiperight', () => this.swipe('prev'));
 
             }
 
             if (this.swipeLeft) {
-                hammertime.on('swipeleft', event => this.swipe('next'));
+                hammertime.on('swipeleft', () => this.swipe('next'));
 
             }
         }
@@ -239,7 +239,7 @@
     let galleryWrapper = document.querySelector('.gallery__wrapper'),
         myImagesUrl = 'https://unsplash.it/600/350?image=';
 
-    let myGallery = new Gallery({
+    new Gallery({
         wrapper: galleryWrapper,
         imagesNumber: 50,
         imagesUrl: myImagesUrl,
@@ -248,6 +248,5 @@
         // clickable: false
         // autoBuild: false
     });
-
 
 })();

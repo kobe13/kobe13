@@ -486,6 +486,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 }(window, document, "Hammer");
 //# sourceMappingURL=hammer.min.js.map})
 
+
 // ***** Lazy Load ***** //
 (function (u) {
     var l;"undefined" !== typeof window ? l = window : "undefined" !== typeof self && (l = self);l.lazyload = u();
@@ -658,9 +659,9 @@ var dom = {
 
             // Define option defaults
             var defaults = {
-                wrapper: "",
+                wrapper: '',
                 imagesNumber: 5,
-                imagesUrl: "",
+                imagesUrl: '',
                 autoBuild: true,
                 autoPlay: false,
                 delay: 3000,
@@ -670,7 +671,7 @@ var dom = {
             };
 
             // Create options by extending defaults with the passed in arguments
-            if (arguments[0] && _typeof(arguments[0]) === "object") {
+            if (arguments[0] && _typeof(arguments[0]) === 'object') {
                 this.options = extendDefaults(defaults, arguments[0]);
             }
 
@@ -713,7 +714,7 @@ var dom = {
 
                 for (i = 1; i <= this.options.imagesNumber; i++) {
                     //instantiate the elements
-                    var lzldImage = "https://kobe13.github.io/gallery/src/img/spinningwheel.gif",
+                    var lzldImage = 'https://kobe13.github.io/gallery/src/img/spinningwheel.gif',
                         imageUrl = this.options.imagesUrl,
                         wrapper = this.options.wrapper,
                         wrapperClass = wrapper.classList[0],
@@ -795,10 +796,10 @@ var dom = {
 
                 if (this.play) {
                     this.play = null;
-                    this.playButton.innerHTML = "PLAY";
+                    this.playButton.innerHTML = 'PLAY';
                 } else {
                     this.play = true;
-                    this.playButton.innerHTML = "STOP";
+                    this.playButton.innerHTML = 'STOP';
                     this.autoPlay();
                 }
             }
@@ -832,20 +833,20 @@ var dom = {
         if (type === 'clickEvents') {
 
             if (this.nextButton) {
-                this.nextButton.addEventListener('click', function (event) {
+                this.nextButton.addEventListener('click', function () {
                     return _this2.swipe('next');
                 });
             }
 
             if (this.prevButton) {
-                this.prevButton.addEventListener('click', function (event) {
+                this.prevButton.addEventListener('click', function () {
                     return _this2.swipe('prev');
                 });
             }
 
             if (this.playButton) {
                 if (this.play) {
-                    this.playButton.addEventListener('click', function (event) {
+                    this.playButton.addEventListener('click', function () {
                         return _this2.stopPlay();
                     });
                 }
@@ -864,13 +865,13 @@ var dom = {
             var hammertime = new Hammer(galleryWrapper);
 
             if (this.swipeRight) {
-                hammertime.on('swiperight', function (event) {
+                hammertime.on('swiperight', function () {
                     return _this2.swipe('prev');
                 });
             }
 
             if (this.swipeLeft) {
-                hammertime.on('swipeleft', function (event) {
+                hammertime.on('swipeleft', function () {
                     return _this2.swipe('next');
                 });
             }
@@ -881,7 +882,7 @@ var dom = {
     var galleryWrapper = document.querySelector('.gallery__wrapper'),
         myImagesUrl = 'https://unsplash.it/600/350?image=';
 
-    var myGallery = new Gallery({
+    new Gallery({
         wrapper: galleryWrapper,
         imagesNumber: 50,
         imagesUrl: myImagesUrl,

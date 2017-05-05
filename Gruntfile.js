@@ -6,6 +6,12 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         path: grunt.option('target'),
         js: grunt.option('js'),
+        eslint: {
+            options: {
+                configFile: 'node_modules/.bin/.eslintrc.js'
+            },
+            target: ['<%= path %>/src/js/components/*.js']
+        },
         sass: {
             dist: {
                 files: {

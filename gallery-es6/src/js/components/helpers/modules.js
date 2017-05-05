@@ -1,7 +1,7 @@
 'use strict';
 
 // *** dom helper module START *** //
-var dom = {
+const dom = {
 
     addClass: function (el, classString) {
         var classList = classString.split(' '),
