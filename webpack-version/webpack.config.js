@@ -1,0 +1,38 @@
+const path = require('path');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
+module.exports = {
+    watch: true,
+    watchOptions: {
+        ignored: '/node_modules/'
+    },
+    entry: './app/index.js',
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist')
+    },
+    module: {
+        rules: [{
+            test: /\.scss$/,
+            use: [{
+                loader: 'style-loader' // creates style nodes from JS strings
+            }, {
+                loader: 'css-loader', // translates CSS into CommonJS
+                options: { minimize: true }
+            }, {
+                loader: 'sass-loader' // compiles Sass to CSS
+            }]
+        }, {
+            test: /\.js$/,
+            use: [{
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015']
+                }
+            }]
+        }]
+    },
+    plugins: [
+        new UglifyJSPlugin()
+    ]
+};
