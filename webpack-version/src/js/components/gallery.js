@@ -74,7 +74,7 @@ class Gallery {
 
         for (i = 1; i <= this.options.imagesNumber; i++) {
             //instantiate the elements
-            let lzldImage = 'https://kobe13.github.io/gallery/src/img/spinningwheel.gif',
+            let lzldImage = '../src/img/spinningwheel.gif',
                 imageUrl = this.options.imagesUrl,
                 wrapper = this.options.wrapper,
                 wrapperClass = wrapper.classList[0],

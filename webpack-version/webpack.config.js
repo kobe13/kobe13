@@ -34,6 +34,12 @@ module.exports = {
                     presets: ['es2015']
                 }
             }]
+        },{
+            test: /\.(png|svg|jpg|gif)$/,
+            use: [
+                'file-loader',
+                'image-webpack-loader'
+            ]
         }]
     },
     plugins: [
