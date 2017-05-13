@@ -34,11 +34,22 @@ module.exports = {
                     presets: ['es2015']
                 }
             }]
-        },{
+        }, {
             test: /\.(png|svg|jpg|gif)$/,
             use: [
                 'file-loader',
-                'image-webpack-loader'
+                {
+                    loader: 'image-webpack-loader',
+                    query: {
+                        progressive: true,
+                        optimizationLevel: 7,
+                        interlaced: false,
+                        pngquant: {
+                            quality: '65-90',
+                            speed: 4
+                        }
+                    }
+                }
             ]
         }]
     },
