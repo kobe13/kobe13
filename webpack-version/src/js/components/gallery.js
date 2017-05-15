@@ -3,7 +3,7 @@
 import {dom} from './helpers/modules.js';
 
 //// ***** GALLERY PLUGIN START ***** //
-class Gallery {
+export default class Gallery {
 
 // Define our constructor
     constructor() {
@@ -168,7 +168,7 @@ class Gallery {
 
     }
 
-} 
+}
 
 // *****  Utility Methods ***** //
 
@@ -220,7 +220,7 @@ function initializeEvents(type) {
     // Touch events
     if (type === 'touchEvents') {
 
-        let hammertime = new Hammer(galleryWrapper);
+        let hammertime = new Hammer(this.options.wrapper);
 
         if (this.swipeRight) {
             hammertime.on('swiperight', () => this.swipe('prev'));
@@ -234,18 +234,3 @@ function initializeEvents(type) {
     }
 
 }
-
-// ***** CREATE MY GALLERY ***** //
-let galleryWrapper = document.querySelector('.gallery__wrapper'),
-    myImagesUrl = 'https://unsplash.it/600/350?image=';
-
-export let gallery = new Gallery({
-    wrapper: galleryWrapper,
-    imagesNumber: 50,
-    imagesUrl: myImagesUrl,
-    touchEvents: true,
-    autoPlay: true
-    // clickable: false
-    // autoBuild: false
-});
-

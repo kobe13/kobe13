@@ -2,3 +2,4 @@
 node_modules/
 .sass-cache/
 my-react-app/
+npm-debug.log
