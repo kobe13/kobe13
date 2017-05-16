@@ -18,4 +18,3 @@ const gallery = new Gallery({
     // clickable: false
     // autoBuild: false
 });
-

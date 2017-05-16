@@ -1,10 +1,10 @@
 'use strict';
 
 // *** dom helper module START *** //
-class Dom {
+export const dom = {
 
     addClass(el, classString) {
-        var classList = classString.split(' '),
+        const classList = classString.split(' '),
             element = el;
 
         if (element.classList) {
@@ -12,10 +12,9 @@ class Dom {
                 element.classList.add(currClass);
             });
         }
-    }
-
+    },
     removeClass(el, classString) {
-        var classList = classString.split(' '),
+        const classList = classString.split(' '),
             element = el;
 
         if (element.classList) {
@@ -25,6 +24,5 @@ class Dom {
         }
     }
 
-}
+};
 // *** dom helper module END *** //
-export let dom = new Dom();
