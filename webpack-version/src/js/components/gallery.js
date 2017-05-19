@@ -1,6 +1,6 @@
 'use strict';
 
-import {dom} from './helpers/modules.js';
+import * as dom from './helpers/dom.js';
 
 //// ***** GALLERY PLUGIN START ***** //
 export default class Gallery {
