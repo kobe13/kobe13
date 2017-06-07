@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from '../images/logo.svg';
+import '../css/App.css';
 import Clock from './Clock';
 import ColoredBlock from './ColoredBlock';
 
