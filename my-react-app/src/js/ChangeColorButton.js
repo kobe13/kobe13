@@ -13,7 +13,7 @@ export default class ChangeColorButton extends React.Component {
 
     render() {
         return (
-            <button onClick={this.handleClick}>Change the color</button>
+            <button onClick={this.handleClick}>I don't like {this.props.currentColor}</button>
         );
     }
 }
