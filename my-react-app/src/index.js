@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './js/App';
 import './css/index.css';
 
-let name = "Bryan";
+let name = "John";
 
 ReactDOM.render(
     <App name={name}
-         surname="N"/>,
+         surname="Doe"/>,
     document.getElementById('root')
 );
