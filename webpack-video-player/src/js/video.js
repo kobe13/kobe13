@@ -5,7 +5,7 @@ export default class Video {
   constructor(videoWrapper, options) {
     this.options = options;
 
-    let defaultOptions = {
+    const defaultOptions = {
       ratio: true,
       noPreload: true, //don't preload the video (if set to true then the autoplay won't work)
       autoPlay: false,
@@ -16,7 +16,7 @@ export default class Video {
       muted: true
     };
 
-    //merge default options and particular video options
+    //merge default and data attribute video options
     this.options = Object.assign({}, defaultOptions, this.options);
 
     // install flowplayer into selected container
