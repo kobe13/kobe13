@@ -1,5 +1,5 @@
 {
-  "name": "grunt",
+  "name": "playground",
   "version": "1.0.0",
   "description": "grunt testing",
   "main": "Gruntfile.js",
