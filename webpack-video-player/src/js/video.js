@@ -9,7 +9,7 @@ export default class Video {
       ratio: true,
       noPreload: true, //don't preload the video (if set to true then the autoplay won't work)
       autoPlay: false,
-      videoUrl: 'http://edge.flowplayer.org/drive',
+      videoUrl: 'https://www.w3schools.com/html/mov_bbb',
       videoTitle: 'Demo Video',
       posterUrl: 'https://image.flaticon.com/icons/svg/23/23957.svg',
       loop: false,
