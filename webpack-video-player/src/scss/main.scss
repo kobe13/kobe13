@@ -19,16 +19,16 @@ section {
 }
 
 .fp-playbtn {
-  background-image: url(../src/icons/ic_play_arrow.svg);
+  background-image: url(../icons/ic_play_arrow.svg);
 }
 
 .fp-share {
-  background-image: url(../src/icons/ic_share.svg);
+  background-image: url(../icons/ic_share.svg);
   display: none;
 }
 
 .fp-fullscreen {
-  background-image: url(../src/icons/ic_fullscreen.svg);
+  background-image: url(../icons/ic_fullscreen.svg);
 }
 
 .flowplayer.is-mouseover .fp-captions, .flowplayer.is-paused .fp-captions {
@@ -103,7 +103,7 @@ section {
 }
 
 .flowplayer.is-fullscreen .fp-fullscreen {
-  background-image: url(../src/icons/ic_fullscreen_exit.svg);
+  background-image: url(../icons/ic_fullscreen_exit.svg);
 }
 
 .flowplayer.is-loading .fp-waiting, .flowplayer.is-seeking .fp-waiting {
@@ -124,7 +124,7 @@ section {
 }
 
 .flowplayer.is-playing .fp-playbtn {
-  background-image: url(../src/icons/ic_pause.svg);
+  background-image: url(../icons/ic_pause.svg);
 }
 
 .flowplayer.is-inverted .fp-duration {
