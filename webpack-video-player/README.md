@@ -14,5 +14,5 @@ To be able to run the video player project locally you need to run these command
         "muted": false}'>
 </div>
 ```                  
-### demo page:
+### Demo page:
 https://kobe13.github.io/webpack-video-player/index.html
