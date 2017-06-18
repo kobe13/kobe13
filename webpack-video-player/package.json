@@ -1,7 +1,7 @@
 {
   "name": "video-player",
   "version": "1.0.0",
-  "description": "Video player using Flowplayer using JSON in data attritube",
+  "description": "Video player based on Flowplayer using JSON in html data attritube for the player options",
   "main": "index.js",
   "scripts": {
     "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\"",
