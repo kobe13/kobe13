@@ -7,7 +7,6 @@ To be able to run the video player project locally you need to run these command
  - npm run build (watch files and build the app)
  ```
 ### Exp: 
-
 ```
 <div class='video-player' data-player='{
         "videoUrl":"https://www.w3schools.com/html/mov_bbb",
@@ -15,3 +14,5 @@ To be able to run the video player project locally you need to run these command
         "muted": false}'>
 </div>
 ```                  
+### demo page:
+https://kobe13.github.io/webpack-video-player/index.html
