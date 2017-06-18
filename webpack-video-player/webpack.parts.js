@@ -176,12 +176,6 @@ exports.generateSourceMaps = ({type}) => ({
   devtool: type
 });
 
-exports.extractBundles = (bundles) => ({
-  plugins: bundles.map((bundle) => (
-      new webpack.optimize.CommonsChunkPlugin(bundle)
-  ))
-});
-
 exports.clean = (path) => ({
   plugins: [
     new CleanWebpackPlugin([path])

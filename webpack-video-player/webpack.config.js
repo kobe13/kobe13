@@ -65,16 +65,6 @@ const productionConfig = merge([
       'process.env.NODE_ENV',
       'production'
   ),
-  parts.extractBundles([
-    {
-      name: 'vendor',
-      minChunks: isVendor
-    },
-    {
-      name: 'manifest',
-      minChunks: Infinity
-    }
-  ]),
   parts.minifyJavaScript(),
   parts.minifyCSS({
     options: {
