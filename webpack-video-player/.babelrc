@@ -13,6 +13,6 @@
     ]
   ],
   "plugins": [
-    "transform-object-assign"
+    "transform-object-assign", "transform-runtime"
   ]
 }

@@ -33,7 +33,7 @@ const commonConfig = merge([
   },
   parts.lintCSS({include: PATHS.app}),
   parts.lintJavaScript({include: PATHS.app}),
-  parts.loadJavaScript({include: PATHS.app}),
+  parts.loadJavaScript({include: [PATHS.app, PATHS.src]}),
   parts.loadSVG({include: PATHS.src}),
   parts.generateSourceMaps({type: 'source-map'})
 

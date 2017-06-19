@@ -1,2 +1,2 @@
 //select the player wrapper class
-export const playersList = [].slice.call(document.querySelectorAll('.video-player'));
+export const playersList = [...document.querySelectorAll('.video-player')];
