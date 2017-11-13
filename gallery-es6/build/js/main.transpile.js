@@ -486,7 +486,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 }(window, document, "Hammer");
 //# sourceMappingURL=hammer.min.js.map})
 
-
 // ***** Lazy Load ***** //
 (function (u) {
     var l;"undefined" !== typeof window ? l = window : "undefined" !== typeof self && (l = self);l.lazyload = u();
@@ -646,10 +645,11 @@ var dom = {
     var Gallery = function () {
 
         // Define our constructor
-        function Gallery() {
+        function Gallery(options) {
             _classCallCheck(this, Gallery);
 
             // Create global element references
+            this.options = options;
             this.nextButton = null;
             this.prevButton = null;
             this.swipeLeft = null;
@@ -658,7 +658,7 @@ var dom = {
             this.playButton = null;
 
             // Define option defaults
-            var defaults = {
+            var defaultOptions = {
                 wrapper: '',
                 imagesNumber: 5,
                 imagesUrl: '',
@@ -670,10 +670,8 @@ var dom = {
                 counter: 0
             };
 
-            // Create options by extending defaults with the passed in arguments
-            if (arguments[0] && _typeof(arguments[0]) === 'object') {
-                this.options = extendDefaults(defaults, arguments[0]);
-            }
+            //merge default and passed video options
+            this.options = Object.assign({}, defaultOptions, this.options);
 
             // If auto play option is true
             if (this.options.autoPlay) {
@@ -810,22 +808,9 @@ var dom = {
 
     // *****  Utility Methods ***** //
 
-    //extend defaults with user options
-
-
-    function extendDefaults(source, properties) {
-        var property = void 0;
-
-        for (property in properties) {
-            if (properties.hasOwnProperty(property)) {
-                source[property] = properties[property];
-            }
-        }
-
-        return source;
-    }
-
     // Initialize the events type
+
+
     function initializeEvents(type) {
         var _this2 = this;
 
@@ -884,7 +869,7 @@ var dom = {
 
     new Gallery({
         wrapper: galleryWrapper,
-        imagesNumber: 50,
+        // imagesNumber: 50,
         imagesUrl: myImagesUrl,
         touchEvents: true,
         autoPlay: true

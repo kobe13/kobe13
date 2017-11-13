@@ -10,11 +10,11 @@ import Gallery from '../src/js/components/gallery.js';
 
 // ***** CREATE MY GALLERY ***** //
 const gallery = new Gallery({
-    wrapper: document.querySelector('.gallery__wrapper'),
-    imagesNumber: 50,
-    imagesUrl: 'https://unsplash.it/600/350?image=',
-    touchEvents: true,
-    autoPlay: true
-    // clickable: false
-    // autoBuild: false
+  wrapper: document.querySelector('.gallery__wrapper'),
+  // imagesNumber: 50,
+  imagesUrl: 'https://unsplash.it/600/350?image=',
+  touchEvents: true,
+  autoPlay: true
+  // clickable: false
+  // autoBuild: false
 });
