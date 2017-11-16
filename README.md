@@ -13,3 +13,8 @@
 ## Video Player plugin demo pages:
 
 - webpack/ES6 version : https://kobe13.github.io/webpack-video-player/index.html
+
+
+## React, Redux and Typescript samples:
+ 
+- https://github.com/kobe13/kobe13.github.io/tree/master/react-js-samples
