@@ -111,6 +111,7 @@ class View extends Component<> {
                                         <div className="sc-grid-row text-center-mobile">
                                             <TestInfo
                                                 id={result.id}
+                                                onChange={config.onTestSelection}
                                             />
                                         </div>
                                         <ManualTestItem
