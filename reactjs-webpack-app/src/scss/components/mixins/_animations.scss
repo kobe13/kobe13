@@ -1,0 +1,11 @@
+@mixin transform ($val) {
+    -webkit-transform: $val;
+    -ms-transform: $val;
+    transform: $val;
+}
+
+@mixin transition ($type, $val, $effect) {
+    -webkit-transform: $type $val $effect;
+    -ms-transform: $type $val $effect;
+    transition: $type $val $effect;
+}

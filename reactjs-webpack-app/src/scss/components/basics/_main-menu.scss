@@ -1,0 +1,22 @@
+.main-menu {
+    padding: 20px 0;
+    background-color: white;
+
+    &__item {
+        padding: 20px;
+        color: $font-color-default;
+        text-decoration: none;
+
+        @include media(small-only) {
+            display: block;
+            text-align: center;
+        }
+
+        &--active {
+            background-color: $blue-default;
+            color: white;
+        }
+    }
+
+}
+
