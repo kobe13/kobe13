@@ -21,7 +21,7 @@ module.exports = {
     path: paths.DIST,
     filename: 'app.bundle.js',
   },
-  // Tell webpack to use html plugin
+  // Plugins
   plugins: [
     new UglifyJSPlugin(),
     new HtmlWebpackPlugin({
@@ -30,7 +30,6 @@ module.exports = {
     new ExtractTextPlugin('style.bundle.css'), // CSS will be extracted to this bundle file -> ADDED IN THIS STEP
   ],
   // Loaders configuration
-  // We are telling webpack to use "babel-loader" for .js and .jsx files
   module: {
     rules: [
       {
@@ -41,8 +40,6 @@ module.exports = {
         ],
       },
       // CSS loader for CSS files
-      // Files will get handled by css loader and then passed to the extract text plugin
-      // which will write it to the file we defined above
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
@@ -56,8 +53,7 @@ module.exports = {
           }]
         }),
       },
-      // File loader for image assets -> ADDED IN THIS STEP
-      // We'll add only image extensions, but you can things like svgs, fonts and videos
+      // File loader for image assets
       {
         test: /\.(png|jpg|gif)$/,
         use: [
@@ -65,15 +61,5 @@ module.exports = {
         ],
       },
     ],
-  },
-  // Enable importing JS files without specifying their's extenstion
-  //
-  // So we can write:
-  // import MyComponent from './my-component';
-  //
-  // Instead of:
-  // import MyComponent from './my-component.jsx';
-  resolve: {
-    extensions: ['.js', '.jsx'],
   },
 };
