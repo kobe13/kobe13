@@ -5,4 +5,5 @@ export const PageTemplate = ({children}) =>
     <div>
       <MainMenu/>
       {children}
+      <p>Work In Progress...</p>
     </div>;
