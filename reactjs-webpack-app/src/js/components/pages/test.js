@@ -12,7 +12,6 @@ class View extends Component {
         <PageTemplate>
           <section>
             <h1>TEST ZONE</h1>
-            <p>Work In Progress...</p>
           </section>
         </PageTemplate>
     );
