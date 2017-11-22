@@ -36,7 +36,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [
-          'babel-loader',
+          'babel-loader', 'eslint-loader'
         ],
       },
       // CSS loader for CSS files

@@ -1,21 +1,11 @@
-import * as React from "react";
-import {Component} from "react";
-import {PageTemplate} from "../common/pageTemplate"
+import * as React from 'react';
+import PageTemplate from '../common/pageTemplate';
 
-class View extends Component {
-  constructor() {
-    super();
-  }
+const TestZone = () =>
+    <PageTemplate>
+      <section>
+        <h1>TEST ZONE</h1>
+      </section>
+    </PageTemplate>;
 
-  render() {
-    return (
-        <PageTemplate>
-          <section>
-            <h1>TEST ZONE</h1>
-          </section>
-        </PageTemplate>
-    );
-  }
-}
-
-export const TestZone = View;
+export default TestZone;
