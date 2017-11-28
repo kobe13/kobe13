@@ -14,7 +14,7 @@ const paths = {
 module.exports = {
   watch: true,
   watchOptions: {
-    ignored: '/node_modules/'
+    ignored: '/node_modules/',
   },
   entry: path.join(paths.JS, 'app.js'),
   output: {
@@ -36,7 +36,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [
-          'babel-loader', 'eslint-loader'
+          'babel-loader', 'eslint-loader',
         ],
       },
       // CSS loader for CSS files
@@ -44,13 +44,13 @@ module.exports = {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          //resolve-url-loader may be chained before sass-loader if necessary
+          // resolve-url-loader may be chained before sass-loader if necessary
           use: [{
             loader: 'css-loader', // translates CSS into CommonJS
-            options: {minimize: true}
+            options: { minimize: true },
           }, {
-            loader: 'sass-loader' // compiles Sass to CSS
-          }]
+            loader: 'sass-loader', // compiles Sass to CSS
+          }],
         }),
       },
       // File loader for image assets
