@@ -15,6 +15,10 @@
 - webpack/ES6 version : https://kobe13.github.io/webpack-video-player/index.html
 
 
-## React, Redux and Typescript samples:
+## React JS, Redux and Typescript samples:
  
 - https://github.com/kobe13/kobe13.github.io/tree/master/react-js-samples
+
+## React JS, Webpack App (Work in Progress)
+
+- https://kobe13.github.io/react-js-webpack-app/dist/index.html#/
