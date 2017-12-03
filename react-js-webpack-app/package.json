@@ -20,8 +20,8 @@
     "webpack-dev-server": "^2.9.1"
   },
   "scripts": {
-    "dev": "webpack-dev-server --watch",
-    "build": "webpack --env production"
+    "dev": "webpack-dev-server",
+    "build": "webpack --watch --env production"
   },
   "dependencies": {
     "prop-types": "^15.6.0",

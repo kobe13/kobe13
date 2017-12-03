@@ -9,6 +9,7 @@
 // components
 @import "components/basics/grid";
 @import "components/basics/main-menu";
+@import "components/basics/sub-menu";
 // Helpers
 @import "components/helpers/visibility";
 
@@ -33,6 +34,10 @@ main {
     h1 {
         padding: 20px 0;
     }
+}
+
+h2 {
+    padding: 20px 0;
 }
 
 header {

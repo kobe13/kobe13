@@ -1,7 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin'); //  -> ADDED IN THIS STEP
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const webpack = require('webpack');
 
 // Constant with our paths
 const paths = {
@@ -24,6 +25,9 @@ module.exports = {
   // Plugins
   plugins: [
     new UglifyJSPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
     new HtmlWebpackPlugin({
       template: path.join(paths.SRC, 'index.html'),
     }),
@@ -36,7 +40,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [
-          'babel-loader', 'eslint-loader',
+          'babel-loader', //'eslint-loader',
         ],
       },
       // CSS loader for CSS files

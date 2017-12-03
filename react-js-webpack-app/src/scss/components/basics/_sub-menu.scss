@@ -1,0 +1,22 @@
+.sub-menu {
+    background-color: $blue-default;
+
+    &__item {
+        padding: 20px;
+        color: $font-color-default;
+        text-decoration: none;
+        display: inline-block;
+
+        @include media(small-only) {
+            display: block;
+            text-align: center;
+        }
+
+        &--active {
+            background-color: red;
+            color: white;
+        }
+    }
+
+}
+

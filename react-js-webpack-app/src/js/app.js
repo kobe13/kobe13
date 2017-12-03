@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import {
   HashRouter,
   Route,
+  Redirect,
   Switch,
 } from 'react-router-dom';
 
@@ -23,6 +24,8 @@ ReactDOM.render(
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route path='/test' component={TestZone}/>
+          <Redirect from='/testing-zone' to='/test/testing-zone'/>
+          <Redirect from='/clock' to='/test/clock'/>
           <Route path='/about' component={About}/>
           <Route path='/contact' component={Contact}/>
           <Route component={Error404}/>

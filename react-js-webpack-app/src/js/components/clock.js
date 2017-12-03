@@ -35,7 +35,10 @@ class Clock extends React.Component {
 
     return (
       <div>
-        The time is {time}<br/><br/>
+        <section>
+          <h2>Ticking Clock</h2>
+          The time is {time}
+        </section>
       </div>
     );
   }
