@@ -3,7 +3,7 @@
 
     &__item {
         padding: 20px;
-        color: $font-color-default;
+        color: white;
         text-decoration: none;
         display: inline-block;
 
@@ -12,9 +12,8 @@
             text-align: center;
         }
 
-        &--active {
-            background-color: red;
-            color: white;
+        &:hover, &--active {
+            text-decoration: underline;
         }
     }
 

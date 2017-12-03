@@ -12,7 +12,7 @@
             text-align: center;
         }
 
-        &--active {
+        &:hover, &--active {
             background-color: $blue-default;
             color: white;
         }

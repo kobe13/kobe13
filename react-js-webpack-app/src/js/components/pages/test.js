@@ -10,7 +10,7 @@ const TestZone = () =>
         <section>
           <h1>TEST</h1>
           <Route component={TestMenu}/>
-          <Route path='/test/testing-zone' component={TestingZone}/>
+          <Route exact path='/test/testing-zone' component={TestingZone}/>
           <Route path='/test/clock' component={Clock}/>
         </section>
       </PageTemplate>;
