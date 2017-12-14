@@ -61,3 +61,13 @@ header {
 section {
     border-top: 1px solid $blue-default;
 }
+
+ul {
+    list-style-type: square;
+    margin: 20px;
+    padding: 0;
+
+    li {
+        margin-bottom: 5px;
+    }
+}

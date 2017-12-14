@@ -25,6 +25,7 @@ ReactDOM.render(
           <Route exact path='/' component={Home}/>
           <Route path='/test' component={TestZone}/>
           <Redirect from='/testing-zone' to='/test/testing-zone'/>
+          <Redirect from='/api' to='/test/api'/>
           <Redirect from='/clock' to='/test/clock'/>
           <Route path='/about' component={About}/>
           <Route path='/contact' component={Contact}/>
