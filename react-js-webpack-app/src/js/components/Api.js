@@ -13,7 +13,7 @@ class Api extends React.Component {
   }
 
   componentWillMount() {
-    window.fetch('http://api.open-notify.org/astros.json')
+    window.fetch('https://kobe13.github.io/react-js-webpack-app/api.json')
       .then(res => res.json())
       .then(json => this.setState({ ...json, loaded: true }))
       .catch((err) => {
@@ -24,7 +24,7 @@ class Api extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <h1>Astronaut Counter</h1>
         {(!this.state.loaded && !this.state.error) && <p>Loading...</p>}
         {this.state.error && <p>Error...</p>}
