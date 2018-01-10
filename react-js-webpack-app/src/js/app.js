@@ -10,7 +10,8 @@ import {
 // PAGES
 import Home from './components/pages/home';
 import Contact from './components/pages/contact';
-import About from './components/pages/about';
+import BlogPage from './components/pages/blog';
+import PostPage from './components/pages/post';
 import TestZone from './components/pages/test';
 import Error404 from './components/pages/error404';
 
@@ -27,7 +28,8 @@ ReactDOM.render(
           <Redirect from='/testing-zone' to='/test/testing-zone'/>
           <Redirect from='/api' to='/test/api'/>
           <Redirect from='/clock' to='/test/clock'/>
-          <Route path='/about' component={About}/>
+          <Route path='/blog' component={BlogPage}/>
+          <Route path='/post/:id' component={PostPage}/>
           <Route path='/contact' component={Contact}/>
           <Route component={Error404}/>
         </Switch>

@@ -13,7 +13,7 @@ class Api extends React.Component {
   }
 
   componentWillMount() {
-    window.fetch('https://kobe13.github.io/react-js-webpack-app/api.json')
+    window.fetch('https://kobe13.github.io/react-js-webpack-app/api/api.json')
       .then(res => res.json())
       .then(json => this.setState({ ...json, loaded: true }))
       .catch((err) => {

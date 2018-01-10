@@ -1,17 +1,8 @@
 @charset "UTF-8";
 // Variables;
 @import "components/variables/settings";
-// Mixins
-@import "components/mixins/media-queries";
-@import "components/mixins/border";
-@import "components/mixins/clearfix";
-@import "components/mixins/animations";
-// components
-@import "components/basics/grid";
-@import "components/basics/main-menu";
-@import "components/basics/sub-menu";
-// Helpers
-@import "components/helpers/visibility";
+// Vendor
+@import "~bootstrap/scss/bootstrap.scss"; // v4: https://github.com/twbs/bootstrap
 
 // Generic Styling
 html {
@@ -23,51 +14,43 @@ body {
     font-family: $font-family-default;
 }
 
-header,
-main {
-    padding: 5px;
-}
-
-main {
+.container {
     background-color: white;
 
     h1 {
-        padding: 20px 0;
+        padding: 5px 0;
     }
 }
 
 h2 {
-    padding: 20px 0;
-}
-
-header {
-
-    h2 {
-        text-align: center;
-        margin: 20px 0;
-        padding: 10px;
-        font-size: 2.3rem;
-        font-style: italic;
-        color: $font-color-default;
-        background-color: $blue-default;
-
-        @include media(medium-up) {
-            font-size: 4rem;
-        }
-    }
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px;
+    font-size: 2.3rem;
+    font-style: italic;
+    color: $font-color-default;
+    background-color: $blue-default;
 
 }
 
 section {
-    border-top: 1px solid $blue-default;
+    padding: 5px 0 20px 0;
 }
 
-ul {
-    list-style-type: square;
-    margin: 20px;
-    padding: 0;
+.list-group-item {
+    margin: 10px 0;
+}
 
-    li {
-        margin-bottom: 5px;
+.post {
+    form {
+        margin: 20px 0;
+        textarea {
+            min-height: 200px;
+            margin: 20px 0;
+        }
     }
+}
+
+.active {
+    text-decoration: underline;
 }

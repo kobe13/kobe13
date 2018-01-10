@@ -9,8 +9,6 @@ class PageTemplate extends React.Component {
         <div>
           <MainMenu/>
           {children}
-          <br/>
-          <p>Work In Progress...</p>
         </div>
     );
   }

@@ -3,5 +3,5 @@ node_modules/
 .sass-cache/
 npm-debug.log
 .vscode/
-my-react-app/
+my-react-next-app/
 crud-app/

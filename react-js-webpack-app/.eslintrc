@@ -9,7 +9,8 @@
   ],
   "rules": {
     "max-len": [1, 120, 2, {"ignoreComments": true}],
-    "react/prop-types": [2]
+    "react/prop-types": [2],
+    "linebreak-style": 0
   },
   "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb-base"]
 }

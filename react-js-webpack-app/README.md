@@ -5,8 +5,7 @@
 To be able to run the video player project locally you need to run these commands:
  ```
  - npm install
- - npm run dev (run the local environment)
- - npm run build (watch files and build the app)
+ - npm run start (run the local environment and watch files and build the app)
  ```
  
  ## Demo page:
