@@ -101,7 +101,7 @@ class PostElement extends React.Component {
     if (this.state.loaded === false) {
       setTimeout(() => {
         this.fetchComments(this.props.id);
-      }, 300);
+      }, 500);
     }
   }
 
