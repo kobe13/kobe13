@@ -1,5 +1,14 @@
 # kobe13.github.io
 
+## React JS, Webpack App (Work in Progress)
+
+- https://github.com/kobe13/kobe13.github.io/tree/master/react-js-webpack-app
+
+
+## React JS, Redux and Typescript samples:
+ 
+- https://github.com/kobe13/kobe13.github.io/tree/master/react-js-samples
+
 
 ## Gallery plugin demo pages:
 
@@ -15,10 +24,3 @@
 - webpack/ES6 version : https://kobe13.github.io/webpack-video-player/index.html
 
 
-## React JS, Redux and Typescript samples:
- 
-- https://github.com/kobe13/kobe13.github.io/tree/master/react-js-samples
-
-## React JS, Webpack App (Work in Progress)
-
-- https://github.com/kobe13/kobe13.github.io/tree/master/react-js-webpack-app
