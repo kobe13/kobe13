@@ -21,4 +21,4 @@
 
 ## React JS, Webpack App (Work in Progress)
 
-- https://kobe13.github.io/react-js-webpack-app/dist/index.html#/
+- https://github.com/kobe13/kobe13.github.io/tree/master/react-js-webpack-app
