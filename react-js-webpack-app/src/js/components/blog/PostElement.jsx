@@ -120,13 +120,12 @@ class PostElement extends React.Component {
   }
 
   componentDidUpdate() {
+    const reloadComments = async () => {
+      await sleep(300);
+      this.fetchComments(this.props.id);
+    };
     // reload the comments after adding one
     if (this.state.commentsLoaded === false) {
-      const reloadComments = async () => {
-        await sleep(300);
-        this.fetchComments(this.props.id);
-      };
-
       reloadComments();
     }
   }
