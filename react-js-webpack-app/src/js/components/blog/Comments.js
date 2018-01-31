@@ -2,12 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Comment = ({
-  content, date, user, id, action,
+  content, date, user, id, action, index,
 }) => (
   <li className="list-group-item">
     {content} by {user} -
     <i> {date}</i>
-    <button onClick={e => action(e, id)} type="submit" className="btn btn-primary float-right">
+    <button
+      title='Delete this comment'
+      onClick={e => action(e, id, index)}
+      type="submit"
+      className="btn btn-primary float-right m-2">
       X
     </button>
   </li>
@@ -23,6 +27,7 @@ const CommentsList = props => (
           key={index}
           {...comment}
           action={props.action}
+          index={index}
         />
       ))}
     </ul>
@@ -34,6 +39,7 @@ Comment.propTypes = {
   user: PropTypes.string,
   date: PropTypes.string,
   id: PropTypes.number,
+  index: PropTypes.number,
   action: PropTypes.func,
 };
 

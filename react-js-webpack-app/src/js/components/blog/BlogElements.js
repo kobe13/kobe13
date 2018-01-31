@@ -7,7 +7,7 @@ const Post = ({
   <li className="list-group-item text-center">
     <b>{title}</b> by {author}: {description} <i>{publishDate} </i>
     <br />
-    <a className="btn btn-info mt-3" href={`#/post/${id}`}>
+    <a className="btn btn-primary mt-3" href={`#/post/${id}`}>
       Read more
     </a>
   </li>

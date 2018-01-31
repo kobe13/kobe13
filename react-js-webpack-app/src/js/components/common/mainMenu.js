@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import HomeIcon from 'react-icons/lib/fa/home';
 
 const MainMenu = () =>
-  <nav className="navbar navbar-expand my-4">
+  <nav className="navbar-expand my-4">
     <div className="navbar-collapse">
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
