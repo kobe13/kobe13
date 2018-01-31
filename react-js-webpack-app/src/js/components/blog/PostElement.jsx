@@ -2,6 +2,7 @@ import React from 'react';
 import fetch from 'isomorphic-fetch';
 import PropTypes from 'prop-types';
 import CommentsList from './Comments';
+import sleep from '../helpers/sleep';
 
 const addComment = (id, userName, comment) => {
   const url = 'http://localhost:9001/comments';
@@ -121,9 +122,12 @@ class PostElement extends React.Component {
   componentDidUpdate() {
     // reload the comments after adding one
     if (this.state.commentsLoaded === false) {
-      setTimeout(() => {
+      const reloadComments = async () => {
+        await sleep(300);
         this.fetchComments(this.props.id);
-      }, 500);
+      };
+
+      reloadComments();
     }
   }
 
@@ -139,7 +143,7 @@ class PostElement extends React.Component {
           <div>
             <section className="post mb-2">
               <h1>{title}</h1>
-              <div dangerouslySetInnerHTML={{ __html: content }}/>
+              <div dangerouslySetInnerHTML={{ __html: content }} />
               <i>
                 {author} - {publishDate}
               </i>
