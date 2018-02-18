@@ -1,0 +1,15 @@
+# GitHub API Test using React JS
+
+To be able to run the app locally you need to run these commands:
+ ```
+ - npm install
+ - npm run start (run the local environment and watch files)
+  
+ ```
+
+ In order to create the distribution files run:
+  ```
+ - npm run build
+  
+ ```
+ 

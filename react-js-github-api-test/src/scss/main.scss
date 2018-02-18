@@ -1,0 +1,49 @@
+@charset "UTF-8";
+// Variables;
+@import "components/variables/settings";
+// Vendor
+@import "~bootstrap/scss/bootstrap.scss"; // v4: https://github.com/twbs/bootstrap
+// Generic Styling
+html {
+    font-size: $font-size-default; //base size for rem units
+}
+
+body {
+    background-color: #F1FFFA;
+    font-family: $font-family-default;
+}
+
+.container {
+    background-color: white;
+    padding-bottom: 20px;
+    h1 {
+        padding: 5px 0;
+    }
+    h4 {
+        text-transform: capitalize;
+        font-size: 1rem;
+        word-break: break-word;
+    }
+    .btn {
+        white-space: normal;
+    }
+    form {
+        margin: 10px 0;
+    }
+    a {
+        color: white;
+    }
+}
+
+h1,
+h2 {
+    text-align: center;
+    text-transform: capitalize;
+    margin: 20px 0;
+    padding: 10px;
+    font-size: 2.3rem;
+    font-style: italic;
+    color: white;
+    background-color: $blue-default;
+    word-break: break-word;
+}
