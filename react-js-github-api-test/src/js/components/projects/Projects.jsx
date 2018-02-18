@@ -132,9 +132,9 @@ class Projects extends React.Component {
             />
           )}
         </div>
-        <div className="col-md-8 col-7">
+        <div className='col-md-8 col-7'>
           {this.state.loadedProjects && !this.state.loadedProjectInfo && !this.state.error &&
-            <h3>Click on a project to see its details!</h3>}
+            <h3 className='alert alert-secondary'>Click on a project to see its details!</h3>}
           {this.state.loadedProjectInfo && (
             <div>
               <ProjectView
