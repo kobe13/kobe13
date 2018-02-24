@@ -36,7 +36,7 @@ class Clock extends React.Component {
     return (
       <div>
         <section>
-          <h2>Ticking Clock</h2>
+          <h3>Ticking Clock</h3>
           The time is {time}
         </section>
       </div>

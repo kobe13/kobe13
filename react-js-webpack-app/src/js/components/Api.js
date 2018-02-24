@@ -24,18 +24,17 @@ class Api extends React.Component {
 
   render() {
     return (
-      <div className='App'>
-        <h1>Astronaut Counter</h1>
+      <section>
+        <h3>Astronaut Counter</h3>
         {(!this.state.loaded && !this.state.error) && <p>Loading...</p>}
         {this.state.error && <p>Error...</p>}
         {this.state.loaded &&
-        <AstronautCrew
-          number={this.state.number}
-          people={this.state.people}
-        />
+          <AstronautCrew
+            number={this.state.number}
+            people={this.state.people}
+          />
         }
-
-      </div>
+      </section>
     );
   }
 }
