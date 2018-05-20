@@ -1,6 +1,6 @@
 # kobe13.github.io
 
-## React JS, GitHub API Test
+## React JS + Redux && Thunk GitHub API Test:
 
 - https://kobe13.github.io/react-js-github-api-test/dist/
 

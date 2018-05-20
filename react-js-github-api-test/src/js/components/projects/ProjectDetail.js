@@ -15,9 +15,9 @@ const ProjectDetail = ({
 
 const ProjectView = props => (
   <div>
-    {props.projects.map((project, index) => (
+    {props.projects.map(project => (
       <ProjectDetail
-        key={index}
+        key={project.id}
         {...project}
       />
     ))}

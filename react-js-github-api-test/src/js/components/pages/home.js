@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PageTemplate from '../common/pageTemplate';
-import Projects from '../projects/Projects.jsx';
+import Projects from '../projects/Projects';
 
 const Home = () =>
   <PageTemplate>

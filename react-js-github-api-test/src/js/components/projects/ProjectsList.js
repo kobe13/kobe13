@@ -16,11 +16,11 @@ const Project = ({
 
 const ProjectsList = props => (
   <div>
-    {props.org && <h4>{props.org}{'\'s'} Projects: {props.number && props.number}</h4>}
+    {props.projects && <h4>{props.org}{'\'s'} Projects: {props.number}</h4>}
     <ul className="list-group">
-      {props.projects.map((project, index) => (
+      {props.projects.map(project => (
         <Project
-          key={index}
+          key={project.id}
           {...project}
           action={props.action}
         />
