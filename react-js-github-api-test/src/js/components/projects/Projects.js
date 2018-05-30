@@ -27,7 +27,7 @@ class Projects extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.fetchData(this.props.orgName);
+    this.props.fetchData(this.props.orgData.orgName);
   }
 
   handleChange(e) {
@@ -41,7 +41,7 @@ class Projects extends Component {
 
   // get a project information
   getProjectDetails(e, id, urlContributors) {
-    const projectDetails = this.props.projects.filter(project => project.id === id);
+    const projectDetails = this.props.projectsData.projects.filter(project => project.id === id);
 
     e.preventDefault();
     this.props.getProjectDetails(projectDetails);
@@ -57,38 +57,46 @@ class Projects extends Component {
         <div className='col-md-4 col-5'>
           <OrgSearch
             submitAction={e => this.handleSubmit(e)}
-            orgName={this.props.orgName}
+            orgName={this.props.orgData.orgName}
             onChangeAction={this.handleChange}
           />
-          {this.props.projectsIsLoading &&
-            !this.props.projectsHasErrored && <p>Loading projects...</p>}
-          {this.props.projectsHasErrored && !this.props.projectsIsLoading &&
+          {this.props.projectsData.projectsIsLoading &&
+            !this.props.projectsData.projectsHasErrored && <p>Loading projects...</p>}
+          {this.props.projectsData.projectsHasErrored && !this.props.projectsData.projectsIsLoading &&
             <p>Error... Please check the organisation name!</p>}
-          {this.props.projects && (
+          {this.props.projectsData.projects && (
             <ProjectsList
-              projects={this.props.projects}
-              org={this.props.orgName}
-              number={this.props.projectsNumber}
+              projects={this.props.projectsData.projects}
+              org={this.props.orgData.orgName}
+              number={this.props.projectsData.projectsNumber}
               action={this.getProjectDetails}
             />
           )}
         </div>
         <div className='col-md-8 col-7'>
-          {this.props.projects && !this.props.projectDetail && !this.props.projectsHasErrored &&
-            <h3 className='alert alert-secondary'>Click on a project to see its details!</h3>}
-          {this.props.projectDetail && (
+          {this.props.projectsData.projects
+            && !this.props.projectsData.project.projectInfo
+            && !this.props.projectsData.projectsHasErrored
+            && <h3 className='alert alert-secondary'>Click on a project to see its details!</h3>
+          }
+          {this.props.projectsData.project.projectInfo && (
             <div>
               <ProjectView
-                projects={this.props.projectDetail}
+                projects={this.props.projectsData.project.projectInfo}
               />
-              {this.props.contributorsIsLoading && <p>Loading contributors...</p>}
-              {this.props.contributorsHasErrored && !this.props.contributorsIsLoading &&
-                <p>Error while loading contributors...</p>}
-              {this.props.projectContributors && !this.props.contributorsIsLoading && (
-                <ContributorsList
-                  contributors={this.props.projectContributors}
-                />
-              )}
+              {this.props.projectsData.project.contributors.contributorsIsLoading && <p>Loading contributors...</p>}
+              {this.props.projectsData.project.contributors.contributorsHasErrored
+                && !this.props.projectsData.project.contributors.contributorsIsLoading
+                && <p>Error while loading contributors...</p>
+              }
+              {this.props.projectsData.project.contributors.projectContributors
+                && !this.props.projectsData.project.contributors.contributorsIsLoading
+                && (
+                  <ContributorsList
+                    contributors={this.props.projectsData.project.contributors.projectContributors}
+                  />
+                )
+              }
             </div>
           )}
         </div>
@@ -100,29 +108,15 @@ class Projects extends Component {
 Projects.propTypes = {
   fetchData: PropTypes.func.isRequired,
   cleanProjects: PropTypes.func.isRequired,
-  projectsIsLoading: PropTypes.bool.isRequired,
-  projectsHasErrored: PropTypes.bool.isRequired,
-  projects: PropTypes.array.isRequired,
-  projectDetail: PropTypes.array.isRequired,
-  projectsNumber: PropTypes.number.isRequired,
-  orgName: PropTypes.string.isRequired,
+  projectsData: PropTypes.array.isRequired,
+  orgData: PropTypes.array.isRequired,
   getProjectDetails: PropTypes.func.isRequired,
   getContributors: PropTypes.func.isRequired,
-  projectContributors: PropTypes.array.isRequired,
-  contributorsIsLoading: PropTypes.bool.isRequired,
-  contributorsHasErrored: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
-  projects: state.projects,
-  projectDetail: state.projectInfo,
-  projectsHasErrored: state.projectsHasErrored,
-  projectsIsLoading: state.projectsIsLoading,
-  projectsNumber: state.projectsNumber,
-  orgName: state.orgName,
-  projectContributors: state.projectContributors,
-  contributorsHasErrored: state.contributorsHasErrored,
-  contributorsIsLoading: state.contributorsIsLoading,
+  projectsData: state.projectsData,
+  orgData: state.orgData,
 });
 
 const mapDispatchToProps = dispatch => ({

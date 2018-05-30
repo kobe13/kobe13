@@ -11,14 +11,30 @@ import {
 } from './projects';
 import orgName from './org';
 
-export default combineReducers({
+const contributors = combineReducers({
+  projectContributors,
+  contributorsHasErrored,
+  contributorsIsLoading,
+});
+
+const project = combineReducers({
+  projectInfo,
+  contributors,
+});
+
+const projectsData = combineReducers({
   projects,
   projectsHasErrored,
   projectsIsLoading,
   projectsNumber,
-  contributorsHasErrored,
-  contributorsIsLoading,
-  projectInfo,
+  project,
+});
+
+const orgData = combineReducers({
   orgName,
-  projectContributors,
+});
+
+export default combineReducers({
+  projectsData,
+  orgData,
 });
