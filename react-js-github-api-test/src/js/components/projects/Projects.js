@@ -52,48 +52,51 @@ class Projects extends Component {
   }
 
   render() {
+    const { projectsData, orgData } = this.props;
+    const { contributors } = this.props.projectsData.project;
+
     return (
       <div className='row projects'>
         <div className='col-md-4 col-5'>
           <OrgSearch
             submitAction={e => this.handleSubmit(e)}
-            orgName={this.props.orgData.orgName}
+            orgName={orgData.orgName}
             onChangeAction={this.handleChange}
           />
-          {this.props.projectsData.projectsIsLoading &&
-            !this.props.projectsData.projectsHasErrored && <p>Loading projects...</p>}
-          {this.props.projectsData.projectsHasErrored && !this.props.projectsData.projectsIsLoading &&
+          {projectsData.projectsIsLoading &&
+            !projectsData.projectsHasErrored && <p>Loading projects...</p>}
+          {projectsData.projectsHasErrored && !projectsData.projectsIsLoading &&
             <p>Error... Please check the organisation name!</p>}
-          {this.props.projectsData.projects && (
+          {projectsData.projects && (
             <ProjectsList
-              projects={this.props.projectsData.projects}
-              org={this.props.orgData.orgName}
-              number={this.props.projectsData.projectsNumber}
+              projects={projectsData.projects}
+              org={orgData.orgName}
+              number={projectsData.projectsNumber}
               action={this.getProjectDetails}
             />
           )}
         </div>
         <div className='col-md-8 col-7'>
-          {this.props.projectsData.projects
-            && !this.props.projectsData.project.projectInfo
-            && !this.props.projectsData.projectsHasErrored
+          {projectsData.projects
+            && !projectsData.project.projectInfo
+            && !projectsData.projectsHasErrored
             && <h3 className='alert alert-secondary'>Click on a project to see its details!</h3>
           }
-          {this.props.projectsData.project.projectInfo && (
+          {projectsData.project.projectInfo && (
             <div>
               <ProjectView
-                projects={this.props.projectsData.project.projectInfo}
+                projects={projectsData.project.projectInfo}
               />
-              {this.props.projectsData.project.contributors.contributorsIsLoading && <p>Loading contributors...</p>}
-              {this.props.projectsData.project.contributors.contributorsHasErrored
-                && !this.props.projectsData.project.contributors.contributorsIsLoading
+              {contributors.contributorsIsLoading && <p>Loading contributors...</p>}
+              {contributors.contributorsHasErrored
+                && !contributors.contributorsIsLoading
                 && <p>Error while loading contributors...</p>
               }
-              {this.props.projectsData.project.contributors.projectContributors
-                && !this.props.projectsData.project.contributors.contributorsIsLoading
+              {contributors.projectContributors
+                && !contributors.contributorsIsLoading
                 && (
                   <ContributorsList
-                    contributors={this.props.projectsData.project.contributors.projectContributors}
+                    contributors={contributors.projectContributors}
                   />
                 )
               }
