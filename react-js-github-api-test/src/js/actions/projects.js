@@ -90,6 +90,7 @@ export const fetchProjectContributors = url => (dispatch) => {
 };
 
 export const projectsCleanUp = () => (dispatch) => {
+  dispatch(projectsHasErrored(false));
   dispatch(projectsData(null));
   dispatch(projectContributors(null));
   dispatch(projectDetail(null));

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   fetchProjects,
-  projectsHasErrored,
   projectDetail,
   fetchProjectContributors,
   projectsCleanUp,
@@ -53,7 +52,14 @@ class Projects extends Component {
 
   render() {
     const { projectsData, orgData } = this.props;
-    const { contributors } = this.props.projectsData.project;
+    const {
+      projects,
+      projectsHasErrored,
+      projectsIsLoading,
+      project,
+      projectsNumber,
+    } = projectsData;
+    const { contributors, projectInfo } = project;
 
     return (
       <div className='row projects'>
@@ -63,29 +69,29 @@ class Projects extends Component {
             orgName={orgData.orgName}
             onChangeAction={this.handleChange}
           />
-          {projectsData.projectsIsLoading &&
-            !projectsData.projectsHasErrored && <p>Loading projects...</p>}
-          {projectsData.projectsHasErrored && !projectsData.projectsIsLoading &&
+          {projectsIsLoading &&
+            !projectsHasErrored && <p>Loading projects...</p>}
+          {projectsHasErrored && !projectsIsLoading &&
             <p>Error... Please check the organisation name!</p>}
-          {projectsData.projects && (
+          {projects && (
             <ProjectsList
-              projects={projectsData.projects}
+              projects={projects}
               org={orgData.orgName}
-              number={projectsData.projectsNumber}
+              number={projectsNumber}
               action={this.getProjectDetails}
             />
           )}
         </div>
         <div className='col-md-8 col-7'>
-          {projectsData.projects
-            && !projectsData.project.projectInfo
-            && !projectsData.projectsHasErrored
+          {projects
+            && !projectInfo
+            && !projectsHasErrored
             && <h3 className='alert alert-secondary'>Click on a project to see its details!</h3>
           }
-          {projectsData.project.projectInfo && (
+          {projectInfo && (
             <div>
               <ProjectView
-                projects={projectsData.project.projectInfo}
+                projects={projectInfo}
               />
               {contributors.contributorsIsLoading && <p>Loading contributors...</p>}
               {contributors.contributorsHasErrored
@@ -126,7 +132,6 @@ const mapDispatchToProps = dispatch => ({
   fetchData: org => dispatch(fetchProjects(org)),
   cleanProjects: (org) => {
     dispatch(projectsCleanUp());
-    dispatch(projectsHasErrored(false));
     dispatch(orgName(org));
   },
   getProjectDetails: (details) => {
