@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
@@ -13,7 +13,7 @@ import ProjectView from './ProjectDetail';
 import ContributorsList from './ContributorsList';
 import OrgSearch from './OrgSearch';
 
-class Projects extends Component {
+class Projects extends PureComponent {
   constructor() {
     super();
 

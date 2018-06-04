@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-class PageTemplate extends React.Component {
+class PageTemplate extends PureComponent {
   render() {
     const { children } = this.props;
     return (

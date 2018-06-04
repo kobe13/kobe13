@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { PureComponent } from 'react';
 import PageTemplate from '../common/pageTemplate';
 
-class Error404 extends React.Component {
+class Error404 extends PureComponent {
   render() {
     const window = this.props;
     return (
