@@ -5,11 +5,11 @@ class Error404 extends PureComponent {
   render() {
     const window = this.props;
     return (
-        <PageTemplate>
-          <section>
-            <h1>WOOOPS! Resource not found at: {window.location.pathname}</h1>
-          </section>
-        </PageTemplate>
+      <PageTemplate>
+        <section>
+          <h1>WOOOPS! Resource not found at: {window.location.pathname}</h1>
+        </section>
+      </PageTemplate>
     );
   }
 }

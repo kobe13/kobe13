@@ -4,7 +4,8 @@
     "dev": "webpack-dev-server --watch",
     "build": "concurrently \"npm test\" \"webpack --env production\" ",
     "start": "concurrently \"npm run dev\"",
-    "test": "jest"
+    "test": "concurrently \"npm run format\" \"jest\" ",
+    "format": "prettier --config prettier.config.json --write \"./src/**/*.{js,scss}\""
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -33,6 +34,7 @@
     "isomorphic-fetch": "^2.2.1",
     "jest": "^22.4.4",
     "node-sass": "^4.6.1",
+    "prettier": "^1.13.4",
     "prop-types": "^15.6.0",
     "react": "16.3.2",
     "react-dom": "16.3.2",
@@ -47,5 +49,8 @@
     "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.1"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^2.9.0"
   }
 }

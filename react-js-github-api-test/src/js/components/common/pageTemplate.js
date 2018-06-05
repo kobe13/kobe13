@@ -4,11 +4,7 @@ import PropTypes from 'prop-types';
 class PageTemplate extends PureComponent {
   render() {
     const { children } = this.props;
-    return (
-        <div>
-          {children}
-        </div>
-    );
+    return <div>{children}</div>;
   }
 }
 

@@ -39,7 +39,7 @@ export const contributorsIsLoading = boolean => ({
 });
 
 // get all projects of an organisation
-export const fetchProjects = org => (dispatch) => {
+export const fetchProjects = org => dispatch => {
   dispatch(projectsHasErrored(false));
   dispatch(projectsIsLoading(true));
 
@@ -49,7 +49,7 @@ export const fetchProjects = org => (dispatch) => {
       'Content-Type': 'application/json',
     },
   })
-    .then((response) => {
+    .then(response => {
       if (!response.ok) {
         throw Error(response.statusText);
       }
@@ -57,7 +57,7 @@ export const fetchProjects = org => (dispatch) => {
       return response;
     })
     .then(response => response.json())
-    .then((projects) => {
+    .then(projects => {
       dispatch(projectsData(projects.sort((a, b) => b.watchers - a.watchers)));
       dispatch(projectsNumber(projects.length));
       dispatch(projectsIsLoading(false));
@@ -69,7 +69,7 @@ export const fetchProjects = org => (dispatch) => {
 };
 
 // get all contributors of a project
-export const fetchProjectContributors = url => (dispatch) => {
+export const fetchProjectContributors = url => dispatch => {
   dispatch(contributorsHasErrored(false));
   dispatch(contributorsIsLoading(true));
 
@@ -78,8 +78,9 @@ export const fetchProjectContributors = url => (dispatch) => {
     headers: {
       'Content-Type': 'application/json',
     },
-  }).then(res => res.json())
-    .then((contributors) => {
+  })
+    .then(res => res.json())
+    .then(contributors => {
       dispatch(projectContributors(contributors));
       dispatch(contributorsIsLoading(false));
     })
@@ -89,7 +90,7 @@ export const fetchProjectContributors = url => (dispatch) => {
     });
 };
 
-export const projectsCleanUp = () => (dispatch) => {
+export const projectsCleanUp = () => dispatch => {
   dispatch(projectsHasErrored(false));
   dispatch(projectsData(null));
   dispatch(projectContributors(null));

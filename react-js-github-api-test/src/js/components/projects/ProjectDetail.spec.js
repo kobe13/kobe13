@@ -12,9 +12,7 @@ test('Project detail with a homepage renders correctly', () => {
       key: 1,
     },
   ];
-  const component = renderer.create(<ProjectView
-    projects={projectDetail}
-  />);
+  const component = renderer.create(<ProjectView projects={projectDetail} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
@@ -28,9 +26,7 @@ test('Project detail without a homepage renders correctly', () => {
       key: 1,
     },
   ];
-  const component = renderer.create(<ProjectView
-    projects={projectDetail}
-  />);
+  const component = renderer.create(<ProjectView projects={projectDetail} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });

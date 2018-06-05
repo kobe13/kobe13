@@ -40,7 +40,9 @@ class Projects extends PureComponent {
 
   // get a project information
   getProjectDetails(e, id, urlContributors) {
-    const projectDetails = this.props.projectsData.projects.filter(project => project.id === id);
+    const projectDetails = this.props.projectsData.projects.filter(
+      project => project.id === id
+    );
 
     e.preventDefault();
     this.props.getProjectDetails(projectDetails);
@@ -62,8 +64,8 @@ class Projects extends PureComponent {
     const { contributors, projectInfo } = project;
 
     return (
-      <div className='row projects'>
-        <div className='col-md-4 col-5'>
+      <div className="row projects">
+        <div className="col-md-4 col-5">
           <OrgSearch
             submitAction={e => this.handleSubmit(e)}
             orgName={orgData.orgName}
@@ -71,8 +73,10 @@ class Projects extends PureComponent {
           />
           {projectsIsLoading &&
             !projectsHasErrored && <p>Loading projects...</p>}
-          {projectsHasErrored && !projectsIsLoading &&
-            <p>Error... Please check the organisation name!</p>}
+          {projectsHasErrored &&
+            !projectsIsLoading && (
+              <p>Error... Please check the organisation name!</p>
+            )}
           {projects && (
             <ProjectsList
               projects={projects}
@@ -82,30 +86,30 @@ class Projects extends PureComponent {
             />
           )}
         </div>
-        <div className='col-md-8 col-7'>
-          {projects
-            && !projectInfo
-            && !projectsHasErrored
-            && <h3 className='alert alert-secondary'>Click on a project to see its details!</h3>
-          }
+        <div className="col-md-8 col-7">
+          {projects &&
+            !projectInfo &&
+            !projectsHasErrored && (
+              <h3 className="alert alert-secondary">
+                Click on a project to see its details!
+              </h3>
+            )}
           {projectInfo && (
             <div>
-              <ProjectView
-                projects={projectInfo}
-              />
-              {contributors.contributorsIsLoading && <p>Loading contributors...</p>}
-              {contributors.contributorsHasErrored
-                && !contributors.contributorsIsLoading
-                && <p>Error while loading contributors...</p>
-              }
-              {contributors.projectContributors
-                && !contributors.contributorsIsLoading
-                && (
+              <ProjectView projects={projectInfo} />
+              {contributors.contributorsIsLoading && (
+                <p>Loading contributors...</p>
+              )}
+              {contributors.contributorsHasErrored &&
+                !contributors.contributorsIsLoading && (
+                  <p>Error while loading contributors...</p>
+                )}
+              {contributors.projectContributors &&
+                !contributors.contributorsIsLoading && (
                   <ContributorsList
                     contributors={contributors.projectContributors}
                   />
-                )
-              }
+                )}
             </div>
           )}
         </div>
@@ -130,16 +134,19 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchData: org => dispatch(fetchProjects(org)),
-  cleanProjects: (org) => {
+  cleanProjects: org => {
     dispatch(projectsCleanUp());
     dispatch(orgName(org));
   },
-  getProjectDetails: (details) => {
+  getProjectDetails: details => {
     dispatch(projectDetail(details));
   },
-  getContributors: (contributors) => {
+  getContributors: contributors => {
     dispatch(fetchProjectContributors(contributors));
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Projects);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Projects);

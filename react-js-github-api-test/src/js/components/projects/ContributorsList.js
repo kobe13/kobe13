@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Contributor = ({
-  login, contributions,
-}) => (
-    <li>
-      <i>{login} ({contributions} contributions)</i>
-    </li>
+const Contributor = ({ login, contributions }) => (
+  <li>
+    <i>
+      {login} ({contributions} contributions)
+    </i>
+  </li>
 );
 
 const ContributorsList = props => (
@@ -14,10 +14,7 @@ const ContributorsList = props => (
     <i>Contributors:</i>
     <ul>
       {props.contributors.map(contributor => (
-        <Contributor
-          key={contributor.id}
-          {...contributor}
-        />
+        <Contributor key={contributor.id} {...contributor} />
       ))}
     </ul>
   </div>

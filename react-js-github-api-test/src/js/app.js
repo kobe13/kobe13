@@ -1,11 +1,7 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import {
-  HashRouter,
-  Route,
-  Switch,
-} from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import configureStore from './store/configureStore';
 
 // PAGES
@@ -16,7 +12,9 @@ import Error404 from './components/pages/error404';
 import '../scss/main.scss';
 
 // STORE
-const store = configureStore(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = configureStore(
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 // Renders the React component into the DOM
 render(
@@ -24,11 +22,11 @@ render(
     <HashRouter>
       <div>
         <Switch>
-          <Route exact path='/' component={Home} />
+          <Route exact path="/" component={Home} />
           <Route component={Error404} />
         </Switch>
       </div>
     </HashRouter>
   </Provider>,
-  document.getElementById('app'),
+  document.getElementById('app')
 );

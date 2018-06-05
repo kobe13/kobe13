@@ -2,9 +2,10 @@ import * as React from 'react';
 import PageTemplate from '../common/pageTemplate';
 import Projects from '../projects/Projects';
 
-const Home = () =>
+const Home = () => (
   <PageTemplate>
     <Projects />
-  </PageTemplate>;
+  </PageTemplate>
+);
 
 export default Home;

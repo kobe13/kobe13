@@ -20,7 +20,8 @@ const OrgSearch = props => (
           <button
             type="submit"
             value="Load projects"
-            className="btn btn-primary">
+            className="btn btn-primary"
+          >
             Go!
           </button>
         </span>
