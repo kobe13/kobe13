@@ -49,9 +49,6 @@ body {
   .btn {
     white-space: normal;
   }
-  a {
-    color: white;
-  }
 }
 
 .media {
@@ -68,4 +65,7 @@ body {
 
 .navbar-collapse {
   background-color: $bg-color;
+  a {
+    color: white;
+  }
 }
