@@ -10,11 +10,35 @@ import {
   projectContributors,
 } from './projects';
 import orgName from './org';
+import {
+  gitHubUsers,
+  usersHasErrored,
+  usersIsLoading,
+  usersNumber,
+} from './users';
+import {
+  gitHubUser,
+  currentUserHasErrored,
+  currentUserIsLoading,
+} from './user';
 
 const contributors = combineReducers({
   projectContributors,
   contributorsHasErrored,
   contributorsIsLoading,
+});
+
+const usersData = combineReducers({
+  gitHubUsers,
+  usersHasErrored,
+  usersIsLoading,
+  usersNumber,
+});
+
+export const currentUserData = combineReducers({
+  gitHubUser,
+  currentUserHasErrored,
+  currentUserIsLoading,
 });
 
 const project = combineReducers({
@@ -37,4 +61,6 @@ const orgData = combineReducers({
 export default combineReducers({
   projectsData,
   orgData,
+  usersData,
+  currentUserData,
 });

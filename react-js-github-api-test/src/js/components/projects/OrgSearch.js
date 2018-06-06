@@ -17,11 +17,7 @@ const OrgSearch = props => (
           required
         />
         <span className="input-group-btn">
-          <button
-            type="submit"
-            value="Load projects"
-            className="btn btn-primary"
-          >
+          <button type="submit" value="Load projects" className="btn btn-info">
             Go!
           </button>
         </span>

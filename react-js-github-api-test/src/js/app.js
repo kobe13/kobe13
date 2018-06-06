@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch, BrowserRouter } from 'react-router-dom';
 import configureStore from './store/configureStore';
 
 // PAGES
 import Home from './components/pages/home';
+import UserDetailPage from './components/pages/user';
+import ProjectsSearch from './components/pages/projects';
 import Error404 from './components/pages/error404';
 
 // STYLE
@@ -19,14 +21,18 @@ const store = configureStore(
 // Renders the React component into the DOM
 render(
   <Provider store={store}>
-    <HashRouter>
-      <div>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route component={Error404} />
-        </Switch>
-      </div>
-    </HashRouter>
+    <BrowserRouter>
+      <HashRouter>
+        <div>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/user/:login" component={UserDetailPage} />
+            <Route path="/projects" component={ProjectsSearch} />
+            <Route component={Error404} />
+          </Switch>
+        </div>
+      </HashRouter>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('app')
 );

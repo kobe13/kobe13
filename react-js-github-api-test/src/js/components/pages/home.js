@@ -1,10 +1,10 @@
 import * as React from 'react';
 import PageTemplate from '../common/pageTemplate';
-import Projects from '../projects/Projects';
+import Users from '../users/Users';
 
 const Home = () => (
   <PageTemplate>
-    <Projects />
+    <Users />
   </PageTemplate>
 );
 

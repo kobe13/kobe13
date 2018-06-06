@@ -72,10 +72,14 @@ class Projects extends PureComponent {
             onChangeAction={this.handleChange}
           />
           {projectsIsLoading &&
-            !projectsHasErrored && <p>Loading projects...</p>}
+            !projectsHasErrored && (
+              <p className="p-3 mb-2 bg-info text-white">Loading projects...</p>
+            )}
           {projectsHasErrored &&
             !projectsIsLoading && (
-              <p>Error... Please check the organisation name!</p>
+              <p className="p-3 mb-2 bg-danger text-white">
+                Error... Please check the organisation name!
+              </p>
             )}
           {projects && (
             <ProjectsList
@@ -90,7 +94,7 @@ class Projects extends PureComponent {
           {projects &&
             !projectInfo &&
             !projectsHasErrored && (
-              <h3 className="alert alert-secondary">
+              <h3 className="alert-secondary">
                 Click on a project to see its details!
               </h3>
             )}
@@ -98,11 +102,15 @@ class Projects extends PureComponent {
             <div>
               <ProjectView projects={projectInfo} />
               {contributors.contributorsIsLoading && (
-                <p>Loading contributors...</p>
+                <p className="p-3 mb-2 bg-info text-white">
+                  Loading contributors...
+                </p>
               )}
               {contributors.contributorsHasErrored &&
                 !contributors.contributorsIsLoading && (
-                  <p>Error while loading contributors...</p>
+                  <p className="p-3 mb-2 bg-danger text-white">
+                    Error while loading contributors...
+                  </p>
                 )}
               {contributors.projectContributors &&
                 !contributors.contributorsIsLoading && (

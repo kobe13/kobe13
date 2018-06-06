@@ -9,13 +9,13 @@ To be able to run the app locally you need to run these commands:
   
  ```
 
-In order to run tests only:
+In order to run tests + formating:
  ```
  - npm test
   
  ```
 
- In order to create the distribution files + run tests:
+ In order to create the distribution files:
   ```
  - npm run build
   
