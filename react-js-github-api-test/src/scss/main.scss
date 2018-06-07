@@ -11,6 +11,7 @@ html {
 body {
   background-color: #f1fffa;
   font-family: $font-family-default;
+  background-color: $bg-color;
 }
 
 h1,
@@ -31,9 +32,13 @@ h3 {
   padding: 10px;
 }
 
-body {
-  background-color: $bg-color;
-  font-family: $font-family-default;
+.projects {
+  h2 {
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+  }
 }
 
 .container {
