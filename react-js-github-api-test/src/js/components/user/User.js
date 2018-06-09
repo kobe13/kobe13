@@ -37,7 +37,7 @@ class User extends PureComponent {
               Error during user loading... Please reload the page
             </p>
           )}
-        {userData &&
+        {!currentUserHasErrored &&
           !currentUserIsLoading && (
             <div className="row">
               <div className="col-12">

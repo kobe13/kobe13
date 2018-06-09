@@ -17,7 +17,7 @@ class BackButton extends Component {
         id="back"
         className="btn btn-info"
       >
-        Back to users
+        Back
       </button>
     );
   }

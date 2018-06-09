@@ -11,8 +11,8 @@ const Contributor = ({ login, contributions }) => (
 
 const ContributorsList = props => (
   <div>
-    <i>Contributors:</i>
-    <ul>
+    <b>Contributors:</b>
+    <ul className="list-unstyled">
       {props.contributors.map(contributor => (
         <Contributor key={contributor.id} {...contributor} />
       ))}

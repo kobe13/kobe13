@@ -34,10 +34,7 @@ exports[`Users list renders correctly with 2 users 1`] = `
             className="btn btn-info"
             href="#/user/login"
           >
-            <b>
-              login
-            </b>
-             details
+            See details
           </a>
         </div>
       </li>
@@ -73,10 +70,7 @@ exports[`Users list renders correctly with 2 users 1`] = `
             className="btn btn-info"
             href="#/user/login2"
           >
-            <b>
-              login2
-            </b>
-             details
+            See details
           </a>
         </div>
       </li>

@@ -15,7 +15,9 @@ const ProjectDetail = ({ name, description, language, homepage }) => (
     <p>{description}</p>
     {language && (
       <p>
-        <i>Language: {language}</i>
+        <i>
+          <b>Language</b>: {language}
+        </i>
       </p>
     )}
   </div>

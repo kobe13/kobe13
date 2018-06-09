@@ -65,7 +65,7 @@ class Projects extends PureComponent {
 
     return (
       <div className="row projects">
-        <div className="col-md-4 col-5">
+        <div className="col-md-4 col-6">
           <OrgSearch
             submitAction={e => this.handleSubmit(e)}
             orgName={orgData.orgName}
@@ -90,7 +90,7 @@ class Projects extends PureComponent {
             />
           )}
         </div>
-        <div className="col-md-8 col-7">
+        <div className="col-md-8 col-6">
           {projects &&
             !projectInfo &&
             !projectsHasErrored && (

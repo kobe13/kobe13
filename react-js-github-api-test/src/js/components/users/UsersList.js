@@ -9,7 +9,7 @@ const User = ({ login, avatar_url }) => (
         <h5 className="mt-0">{login}</h5>
       </div>
       <a href={`#/user/${login}`} className="btn btn-info">
-        <b>{login}</b> details
+        See details
       </a>
     </div>
   </li>

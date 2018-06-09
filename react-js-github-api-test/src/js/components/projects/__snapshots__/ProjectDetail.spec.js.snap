@@ -16,7 +16,10 @@ exports[`Project detail with a homepage renders correctly 1`] = `
     </p>
     <p>
       <i>
-        Language: 
+        <b>
+          Language
+        </b>
+        : 
         React JS
       </i>
     </p>
@@ -35,7 +38,10 @@ exports[`Project detail without a homepage renders correctly 1`] = `
     </p>
     <p>
       <i>
-        Language: 
+        <b>
+          Language
+        </b>
+        : 
         React JS
       </i>
     </p>

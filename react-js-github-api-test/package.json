@@ -5,7 +5,8 @@
     "build": "concurrently \"webpack --env production\" ",
     "start": "concurrently \"npm run dev\"",
     "test": "concurrently \"npm run format\" \"jest\" ",
-    "format": "prettier --config prettier.config.json --write \"./src/**/*.{js,scss}\""
+    "format": "prettier --config prettier.config.json --write \"./src/**/*.{js,scss}\"",
+    "jest": "jest"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
