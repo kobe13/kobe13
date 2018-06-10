@@ -24,12 +24,11 @@ export const loadMoreUsers = moreUsers => ({
 });
 
 // get GitHub Users
-export const fetchUsers = usersSince => (dispatch, getState) => {
+export const fetchUsers = (usersSince = 0) => (dispatch, getState) => {
   dispatch(usersHasErrored(false));
   dispatch(usersIsLoading(true));
-  const since = !usersSince ? 0 : usersSince;
 
-  fetch(`https://api.github.com/users?since=${since}&per_page=8`, {
+  fetch(`https://api.github.com/users?since=${usersSince}&per_page=8`, {
     method: 'get',
     headers: {
       'Content-Type': 'application/json',
@@ -44,11 +43,12 @@ export const fetchUsers = usersSince => (dispatch, getState) => {
     })
     .then(response => response.json())
     .then(users => {
-      if (since) {
+      if (usersSince === 0) {
+        // get initial GitHub Users
+        dispatch(usersData(users));
+      } else {
         // get more GitHub Users
         dispatch(loadMoreUsers(users));
-      } else {
-        dispatch(usersData(users));
       }
       dispatch(usersNumber(getState().usersData.gitHubUsers.length));
     })
