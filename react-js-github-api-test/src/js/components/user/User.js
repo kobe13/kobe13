@@ -21,7 +21,7 @@ class User extends PureComponent {
       currentUserIsLoading,
     } = fetchedUserData;
     const { currentUser } = currentUserStateData;
-    const userData = !currentUser ? gitHubUser : currentUser;
+    const userData = currentUser || gitHubUser;
 
     return (
       <div className="user list-group-item">
