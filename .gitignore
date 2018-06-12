@@ -3,5 +3,4 @@ node_modules/
 .sass-cache/
 npm-debug.log
 .vscode/
-my-next-react-app/
-crud-app/
+react-js-typescript-redux-test/

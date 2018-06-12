@@ -1,3 +1,5 @@
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+
 const currentUserHasErrored = boolean => ({
   type: 'CURRENT_USER_HAS_ERRORED',
   currentUserHasErrored: boolean,
@@ -17,6 +19,7 @@ export const currentUserData = gitHubUser => ({
 export const fetchUserDetail = userLogin => dispatch => {
   dispatch(currentUserHasErrored(false));
   dispatch(currentUserIsLoading(true));
+  dispatch(showLoading());
 
   fetch(`https://api.github.com/users/${userLogin}`, {
     method: 'get',
@@ -29,6 +32,7 @@ export const fetchUserDetail = userLogin => dispatch => {
         throw Error(response.statusText);
       }
       dispatch(currentUserIsLoading(false));
+      dispatch(hideLoading());
       return response;
     })
     .then(response => response.json())

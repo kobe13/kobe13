@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import LoadingBar from 'react-redux-loading-bar';
 import { fetchUsers } from '../../actions/users';
 import UsersList from './UsersList';
 
@@ -58,7 +59,10 @@ class Users extends PureComponent {
         )}
         {usersIsLoading &&
           !usersHasErrored && (
-            <p className="p-3 mb-2 bg-info text-white">Loading users...</p>
+            <div>
+              <LoadingBar className="loading-bar" />
+              <p className="p-3 mb-2 bg-info text-white">Loading users...</p>
+            </div>
           )}
       </div>
     );

@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import LoadingBar from 'react-redux-loading-bar';
 import {
   fetchProjects,
   projectDetail,
@@ -73,7 +74,12 @@ class Projects extends PureComponent {
           />
           {projectsIsLoading &&
             !projectsHasErrored && (
-              <p className="p-3 mb-2 bg-info text-white">Loading projects...</p>
+              <div>
+                <LoadingBar updateTime={0} className="loading-bar" />
+                <p className="p-3 mb-2 bg-info text-white">
+                  Loading projects...
+                </p>
+              </div>
             )}
           {projectsHasErrored &&
             !projectsIsLoading && (
@@ -102,9 +108,12 @@ class Projects extends PureComponent {
             <div>
               <ProjectView projects={projectInfo} />
               {contributors.contributorsIsLoading && (
-                <p className="p-3 mb-2 bg-info text-white">
-                  Loading contributors...
-                </p>
+                <div>
+                  <LoadingBar updateTime={0} className="loading-bar" />
+                  <p className="p-3 mb-2 bg-info text-white">
+                    Loading contributors...
+                  </p>
+                </div>
               )}
               {contributors.contributorsHasErrored &&
                 !contributors.contributorsIsLoading && (

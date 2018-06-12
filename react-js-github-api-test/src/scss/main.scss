@@ -74,3 +74,10 @@ h3 {
     color: white;
   }
 }
+
+.loading-bar {
+  width: 100%;
+  position: relative;
+  background-color: $blue-default;
+  height: 5px;
+}

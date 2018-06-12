@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import LoadingBar from 'react-redux-loading-bar';
 import PropTypes from 'prop-types';
 import { fetchUserDetail } from '../../actions/user';
 import makeGetCurrentUserState from '../../selectors/selectors';
@@ -27,9 +28,12 @@ class User extends PureComponent {
       <div className="user list-group-item">
         {currentUserIsLoading &&
           !currentUserHasErrored && (
-            <p className="p-3 mb-2 bg-info text-white">
-              Loading user details...
-            </p>
+            <div>
+              <LoadingBar updateTime={0} className="loading-bar" />
+              <p className="p-3 mb-2 bg-info text-white">
+                Loading user details...
+              </p>
+            </div>
           )}
         {currentUserHasErrored &&
           !currentUserIsLoading && (

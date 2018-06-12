@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { loadingBarReducer } from 'react-redux-loading-bar';
 import {
   projects,
   projectsHasErrored,
@@ -63,4 +64,5 @@ export default combineReducers({
   orgData,
   usersData,
   currentUserData,
+  loadingBar: loadingBarReducer,
 });

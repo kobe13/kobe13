@@ -1,3 +1,5 @@
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+
 export const projectsHasErrored = boolean => ({
   type: 'PROJECTS_HAS_ERRORED',
   projectsHasErrored: boolean,
@@ -42,6 +44,7 @@ export const contributorsIsLoading = boolean => ({
 export const fetchProjects = org => dispatch => {
   dispatch(projectsHasErrored(false));
   dispatch(projectsIsLoading(true));
+  dispatch(showLoading());
 
   fetch(`https://api.github.com/orgs/${org}/repos`, {
     method: 'get',
@@ -54,6 +57,7 @@ export const fetchProjects = org => dispatch => {
         throw Error(response.statusText);
       }
       dispatch(projectsIsLoading(false));
+      dispatch(hideLoading());
       return response;
     })
     .then(response => response.json())
@@ -72,6 +76,7 @@ export const fetchProjects = org => dispatch => {
 export const fetchProjectContributors = url => dispatch => {
   dispatch(contributorsHasErrored(false));
   dispatch(contributorsIsLoading(true));
+  dispatch(showLoading());
 
   fetch(url, {
     method: 'get',
@@ -83,6 +88,7 @@ export const fetchProjectContributors = url => dispatch => {
     .then(contributors => {
       dispatch(projectContributors(contributors));
       dispatch(contributorsIsLoading(false));
+      dispatch(hideLoading());
     })
     .catch(() => {
       dispatch(contributorsHasErrored(true));

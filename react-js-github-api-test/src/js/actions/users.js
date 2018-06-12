@@ -1,3 +1,5 @@
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+
 const usersHasErrored = boolean => ({
   type: 'USERS_HAS_ERRORED',
   usersHasErrored: boolean,
@@ -27,6 +29,7 @@ export const loadMoreUsers = moreUsers => ({
 export const fetchUsers = (usersSince = 0) => (dispatch, getState) => {
   dispatch(usersHasErrored(false));
   dispatch(usersIsLoading(true));
+  dispatch(showLoading());
 
   fetch(`https://api.github.com/users?since=${usersSince}&per_page=8`, {
     method: 'get',
@@ -39,6 +42,7 @@ export const fetchUsers = (usersSince = 0) => (dispatch, getState) => {
         throw Error(response.statusText);
       }
       dispatch(usersIsLoading(false));
+      dispatch(hideLoading());
       return response;
     })
     .then(response => response.json())
