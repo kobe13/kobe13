@@ -29,7 +29,7 @@ class User extends PureComponent {
         {currentUserIsLoading &&
           !currentUserHasErrored && (
             <div>
-              <LoadingBar updateTime={0} className="loading-bar" />
+              <LoadingBar className="loading-bar" />
               <p className="p-3 mb-2 bg-info text-white">
                 Loading user details...
               </p>

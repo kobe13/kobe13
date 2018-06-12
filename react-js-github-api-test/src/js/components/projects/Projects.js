@@ -75,7 +75,7 @@ class Projects extends PureComponent {
           {projectsIsLoading &&
             !projectsHasErrored && (
               <div>
-                <LoadingBar updateTime={0} className="loading-bar" />
+                <LoadingBar className="loading-bar" />
                 <p className="p-3 mb-2 bg-info text-white">
                   Loading projects...
                 </p>
@@ -109,7 +109,7 @@ class Projects extends PureComponent {
               <ProjectView projects={projectInfo} />
               {contributors.contributorsIsLoading && (
                 <div>
-                  <LoadingBar updateTime={0} className="loading-bar" />
+                  <LoadingBar className="loading-bar" />
                   <p className="p-3 mb-2 bg-info text-white">
                     Loading contributors...
                   </p>
