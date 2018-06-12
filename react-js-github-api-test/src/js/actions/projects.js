@@ -44,7 +44,7 @@ export const contributorsIsLoading = boolean => ({
 export const fetchProjects = org => dispatch => {
   dispatch(projectsHasErrored(false));
   dispatch(projectsIsLoading(true));
-  dispatch(showLoading());
+  dispatch(showLoading('orgSearchBar'));
 
   fetch(`https://api.github.com/orgs/${org}/repos`, {
     method: 'get',
@@ -56,8 +56,7 @@ export const fetchProjects = org => dispatch => {
       if (!response.ok) {
         throw Error(response.statusText);
       }
-      dispatch(projectsIsLoading(false));
-      dispatch(hideLoading());
+      dispatch(hideLoading('orgSearchBar'));
       return response;
     })
     .then(response => response.json())
@@ -69,6 +68,7 @@ export const fetchProjects = org => dispatch => {
     .catch(() => {
       dispatch(projectsHasErrored(true));
       dispatch(projectsIsLoading(false));
+      dispatch(hideLoading('orgSearchBar'));
     });
 };
 
@@ -76,7 +76,7 @@ export const fetchProjects = org => dispatch => {
 export const fetchProjectContributors = url => dispatch => {
   dispatch(contributorsHasErrored(false));
   dispatch(contributorsIsLoading(true));
-  dispatch(showLoading());
+  dispatch(showLoading('contributorsBar'));
 
   fetch(url, {
     method: 'get',
@@ -84,14 +84,21 @@ export const fetchProjectContributors = url => dispatch => {
       'Content-Type': 'application/json',
     },
   })
+    .then(response => {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      dispatch(hideLoading('contributorsBar'));
+      return response;
+    })
     .then(res => res.json())
     .then(contributors => {
       dispatch(projectContributors(contributors));
       dispatch(contributorsIsLoading(false));
-      dispatch(hideLoading());
     })
     .catch(() => {
       dispatch(contributorsHasErrored(true));
+      dispatch(hideLoading('contributorsBar'));
       dispatch(contributorsIsLoading(false));
     });
 };

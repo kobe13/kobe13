@@ -42,11 +42,12 @@ export const fetchUsers = (usersSince = 0) => (dispatch, getState) => {
         throw Error(response.statusText);
       }
       dispatch(usersIsLoading(false));
-      dispatch(hideLoading());
+
       return response;
     })
     .then(response => response.json())
     .then(users => {
+      dispatch(hideLoading());
       if (usersSince === 0) {
         // get initial GitHub Users
         dispatch(usersData(users));
@@ -59,5 +60,6 @@ export const fetchUsers = (usersSince = 0) => (dispatch, getState) => {
     .catch(() => {
       dispatch(usersHasErrored(true));
       dispatch(usersIsLoading(false));
+      dispatch(hideLoading());
     });
 };

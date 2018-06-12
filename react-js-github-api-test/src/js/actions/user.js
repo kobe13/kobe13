@@ -32,15 +32,16 @@ export const fetchUserDetail = userLogin => dispatch => {
         throw Error(response.statusText);
       }
       dispatch(currentUserIsLoading(false));
-      dispatch(hideLoading());
       return response;
     })
     .then(response => response.json())
     .then(user => {
+      dispatch(hideLoading());
       dispatch(currentUserData(user));
     })
     .catch(() => {
       dispatch(currentUserHasErrored(true));
       dispatch(currentUserIsLoading(false));
+      dispatch(hideLoading());
     });
 };

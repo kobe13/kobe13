@@ -36,6 +36,7 @@ class Users extends PureComponent {
 
     return (
       <div className="users">
+        <LoadingBar className="loading-bar" />
         {usersHasErrored &&
           !usersIsLoading && (
             <p className="p-3 mb-2 bg-danger text-white">
@@ -59,10 +60,7 @@ class Users extends PureComponent {
         )}
         {usersIsLoading &&
           !usersHasErrored && (
-            <div>
-              <LoadingBar className="loading-bar" />
-              <p className="p-3 mb-2 bg-info text-white">Loading users...</p>
-            </div>
+            <p className="p-3 mb-2 bg-info text-white">Loading users...</p>
           )}
       </div>
     );

@@ -74,12 +74,7 @@ class Projects extends PureComponent {
           />
           {projectsIsLoading &&
             !projectsHasErrored && (
-              <div>
-                <LoadingBar className="loading-bar" />
-                <p className="p-3 mb-2 bg-info text-white">
-                  Loading projects...
-                </p>
-              </div>
+              <p className="p-3 mb-2 bg-info text-white">Loading projects...</p>
             )}
           {projectsHasErrored &&
             !projectsIsLoading && (
@@ -87,6 +82,7 @@ class Projects extends PureComponent {
                 Error... Please check the organisation name!
               </p>
             )}
+          <LoadingBar className="loading-bar" scope="orgSearchBar" />
           {projects && (
             <ProjectsList
               projects={projects}
@@ -107,13 +103,11 @@ class Projects extends PureComponent {
           {projectInfo && (
             <div>
               <ProjectView projects={projectInfo} />
+              <LoadingBar className="loading-bar" scope="contributorsBar" />
               {contributors.contributorsIsLoading && (
-                <div>
-                  <LoadingBar className="loading-bar" />
-                  <p className="p-3 mb-2 bg-info text-white">
-                    Loading contributors...
-                  </p>
-                </div>
+                <p className="p-3 mb-2 bg-info text-white">
+                  Loading contributors...
+                </p>
               )}
               {contributors.contributorsHasErrored &&
                 !contributors.contributorsIsLoading && (

@@ -25,45 +25,45 @@ class User extends PureComponent {
     const userData = currentUser || gitHubUser;
 
     return (
-      <div className="user list-group-item">
-        {currentUserIsLoading &&
-          !currentUserHasErrored && (
-            <div>
-              <LoadingBar className="loading-bar" />
+      <div>
+        <LoadingBar className="loading-bar" />
+        <div className="user list-group-item">
+          {currentUserIsLoading &&
+            !currentUserHasErrored && (
               <p className="p-3 mb-2 bg-info text-white">
                 Loading user details...
               </p>
-            </div>
-          )}
-        {currentUserHasErrored &&
-          !currentUserIsLoading && (
-            <p className="p-3 mb-2 bg-danger text-white">
-              Error during user loading... Please reload the page
-            </p>
-          )}
-        {userData &&
-          !currentUserIsLoading &&
-          !currentUserHasErrored && (
-            <div className="row">
-              <div className="col-12">
-                <div className="media">
-                  <img
-                    alt={`${userData.login} avatar`}
-                    className="mr-3"
-                    src={userData.avatar_url}
-                    width="64"
-                  />
-                  <div className="media-body mb-2 mt-2">
-                    <h5 className="mt-0">
-                      <b>{userData.login}</b> <i>(id: {userData.id})</i>
-                    </h5>
-                    <a href={userData.html_url}>{userData.html_url}</a>
+            )}
+          {currentUserHasErrored &&
+            !currentUserIsLoading && (
+              <p className="p-3 mb-2 bg-danger text-white">
+                Error during user loading... Please reload the page
+              </p>
+            )}
+          {userData &&
+            !currentUserIsLoading &&
+            !currentUserHasErrored && (
+              <div className="row">
+                <div className="col-12">
+                  <div className="media">
+                    <img
+                      alt={`${userData.login} avatar`}
+                      className="mr-3"
+                      src={userData.avatar_url}
+                      width="64"
+                    />
+                    <div className="media-body mb-2 mt-2">
+                      <h5 className="mt-0">
+                        <b>{userData.login}</b> <i>(id: {userData.id})</i>
+                      </h5>
+                      <a href={userData.html_url}>{userData.html_url}</a>
+                    </div>
+                    <BackButton />
                   </div>
-                  <BackButton />
                 </div>
               </div>
-            </div>
-          )}
+            )}
+        </div>
       </div>
     );
   }
