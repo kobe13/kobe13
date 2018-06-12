@@ -17,6 +17,7 @@ exports[`Users list renders correctly with 2 users 1`] = `
           className="media"
         >
           <img
+            alt="login avatar"
             className="mr-3"
             height="64"
             src="avatar_url"
@@ -54,6 +55,7 @@ exports[`Users list renders correctly with 2 users 1`] = `
           className="media"
         >
           <img
+            alt="login2 avatar"
             className="mr-3"
             height="64"
             src="avatar_url2"

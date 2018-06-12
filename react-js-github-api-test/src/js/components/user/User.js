@@ -47,7 +47,12 @@ class User extends PureComponent {
             <div className="row">
               <div className="col-12">
                 <div className="media">
-                  <img className="mr-3" src={userData.avatar_url} width="64" />
+                  <img
+                    alt={`${userData.login} avatar`}
+                    className="mr-3"
+                    src={userData.avatar_url}
+                    width="64"
+                  />
                   <div className="media-body mb-2 mt-2">
                     <h5 className="mt-0">
                       <b>{userData.login}</b> <i>(id: {userData.id})</i>

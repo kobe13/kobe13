@@ -7,12 +7,17 @@ const MainMenu = () => (
     <div className="navbar-collapse">
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-          <NavLink to="/" className="nav-link">
+          <NavLink title="HomePage" to="/" className="nav-link">
             <HomeIcon />
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/projects" className="nav-link" activeClassName="active">
+          <NavLink
+            title="Projects Page"
+            to="/projects"
+            className="nav-link"
+            activeClassName="active"
+          >
             PROJECTS
           </NavLink>
         </li>
