@@ -1,3 +1,4 @@
+// @flow
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -18,6 +19,8 @@ const store = configureStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+const App: any = document.getElementById('app');
+
 // Renders the React component into the DOM
 render(
   <Provider store={store}>
@@ -34,5 +37,5 @@ render(
       </HashRouter>
     </BrowserRouter>
   </Provider>,
-  document.getElementById('app')
+  App
 );
