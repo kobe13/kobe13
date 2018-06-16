@@ -1,47 +1,99 @@
+// @flow
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import type { ThunkAction } from './index';
 
-export const projectsHasErrored = boolean => ({
+type projectsHasErroredAction = {
+  type: 'PROJECTS_HAS_ERRORED',
+  projectsHasErrored: boolean,
+};
+export const projectsHasErrored = (
+  boolean: boolean
+): projectsHasErroredAction => ({
   type: 'PROJECTS_HAS_ERRORED',
   projectsHasErrored: boolean,
 });
 
-export const projectsIsLoading = boolean => ({
+type projectsIsLoadingAction = {
+  type: 'PROJECTS_IS_LOADING',
+  projectsIsLoading: boolean,
+};
+export const projectsIsLoading = (
+  boolean: boolean
+): projectsIsLoadingAction => ({
   type: 'PROJECTS_IS_LOADING',
   projectsIsLoading: boolean,
 });
 
-export const projectsNumber = number => ({
+type projectsNumberAction = {
+  type: 'PROJECTS_NUMBER',
+  projectsNumber: number | null,
+};
+export const projectsNumber = (
+  number: number | null
+): projectsNumberAction => ({
   type: 'PROJECTS_NUMBER',
   projectsNumber: number,
 });
 
-export const projectsData = projects => ({
+type projectsDataAction = {
+  type: 'PROJECTS_FETCH_DATA_SUCCESS',
+  projects: [] | null,
+};
+export const projectsData = (projects: [] | null): projectsDataAction => ({
   type: 'PROJECTS_FETCH_DATA_SUCCESS',
   projects,
 });
 
-export const projectDetail = projectInfo => ({
+type projectDetailAction = {
+  type: 'PROJECT_INFO_FETCH_DATA_SUCCESS',
+  projectInfo: [] | null,
+};
+export const projectDetail = (projectInfo: [] | null): projectDetailAction => ({
   type: 'PROJECT_INFO_FETCH_DATA_SUCCESS',
   projectInfo,
 });
 
-export const projectContributors = contributors => ({
+type projectContributorsAction = {
+  type: 'CONTRIBUTORS_FETCH_DATA_SUCCESS',
+  contributors: [] | null,
+};
+export const projectContributors = (
+  contributors: [] | null
+): projectContributorsAction => ({
   type: 'CONTRIBUTORS_FETCH_DATA_SUCCESS',
   contributors,
 });
 
-export const contributorsHasErrored = boolean => ({
+type contributorsHasErroredAction = {
+  type: 'CONTRIBUTORS_HAS_ERRORED',
+  contributorsHasErrored: boolean,
+};
+export const contributorsHasErrored = (boolean: boolean) => ({
   type: 'CONTRIBUTORS_HAS_ERRORED',
   contributorsHasErrored: boolean,
 });
 
-export const contributorsIsLoading = boolean => ({
+type contributorsIsLoadingAction = {
+  type: 'CONTRIBUTORS_IS_LOADING',
+  contributorsIsLoading: boolean,
+};
+export const contributorsIsLoading = (boolean: boolean) => ({
   type: 'CONTRIBUTORS_IS_LOADING',
   contributorsIsLoading: boolean,
 });
 
+export type Action =
+  | projectsHasErroredAction
+  | projectsIsLoadingAction
+  | projectsDataAction
+  | projectsNumberAction
+  | contributorsHasErroredAction
+  | contributorsIsLoadingAction
+  | projectContributorsAction
+  | projectDetailAction;
+
 // get all projects of an organisation
-export const fetchProjects = org => dispatch => {
+export const fetchProjects = (org: string): ThunkAction => (dispatch: any) => {
   dispatch(projectsHasErrored(false));
   dispatch(projectsIsLoading(true));
   dispatch(showLoading('orgSearchBar'));
@@ -73,7 +125,9 @@ export const fetchProjects = org => dispatch => {
 };
 
 // get all contributors of a project
-export const fetchProjectContributors = url => dispatch => {
+export const fetchProjectContributors = (
+  url: string
+): ThunkAction => dispatch => {
   dispatch(contributorsHasErrored(false));
   dispatch(contributorsIsLoading(true));
   dispatch(showLoading('contributorsBar'));
@@ -93,8 +147,8 @@ export const fetchProjectContributors = url => dispatch => {
     })
     .then(res => res.json())
     .then(contributors => {
-      dispatch(projectContributors(contributors));
       dispatch(contributorsIsLoading(false));
+      dispatch(projectContributors(contributors));
     })
     .catch(() => {
       dispatch(contributorsHasErrored(true));
@@ -103,7 +157,7 @@ export const fetchProjectContributors = url => dispatch => {
     });
 };
 
-export const projectsCleanUp = () => dispatch => {
+export const projectsCleanUp = (): ThunkAction => dispatch => {
   dispatch(projectsHasErrored(false));
   dispatch(projectsData(null));
   dispatch(projectContributors(null));

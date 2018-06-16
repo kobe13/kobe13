@@ -1,11 +1,22 @@
+// @flow
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import LoadingBar from 'react-redux-loading-bar';
 import { fetchUsers } from '../../actions/users';
 import UsersList from './UsersList';
 
-class Users extends PureComponent {
+type Props = {
+  fetchData: () => void,
+  fetchMoreData: (lastUserID: string) => void,
+  usersData: {
+    usersNumber: number,
+    gitHubUsers: any,
+    usersHasErrored: boolean,
+    usersIsLoading: boolean,
+  },
+};
+
+class Users extends PureComponent<Props> {
   componentDidMount() {
     const usersAlreadyLoaded = this.props.usersData.usersNumber;
 
@@ -19,8 +30,8 @@ class Users extends PureComponent {
     e.preventDefault();
 
     // get the last fetched user id in order to avoid duplicated users
-    const usersArray = this.props.usersData.gitHubUsers;
-    const lastUserID = usersArray[usersArray.length - 1].id;
+    const usersArray: [] = this.props.usersData.gitHubUsers;
+    const lastUserID: string = usersArray[usersArray.length - 1].id;
 
     this.props.fetchMoreData(lastUserID);
   }
@@ -66,13 +77,6 @@ class Users extends PureComponent {
     );
   }
 }
-
-Users.propTypes = {
-  fetchData: PropTypes.func.isRequired,
-  fetchMoreData: PropTypes.func.isRequired,
-  usersData: PropTypes.array.isRequired,
-  usersNumber: PropTypes.bool.isRequired,
-};
 
 const mapStateToProps = state => ({
   usersData: state.usersData,

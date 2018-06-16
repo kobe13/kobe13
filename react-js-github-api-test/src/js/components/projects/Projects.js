@@ -1,6 +1,6 @@
+// @flow
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import LoadingBar from 'react-redux-loading-bar';
 import {
   fetchProjects,
@@ -14,33 +14,46 @@ import ProjectView from './ProjectDetail';
 import ContributorsList from './ContributorsList';
 import OrgSearch from './OrgSearch';
 
-class Projects extends PureComponent {
-  constructor() {
-    super();
+type Props = {
+  fetchData: (org: string) => void,
+  cleanProjects: (org: string) => void,
+  projectsData: {
+    projectsNumber: number,
+    projects: any,
+    project: {
+      contributors: any,
+      projectInfo: any,
+    },
+    contributors: [],
+    projectsHasErrored: boolean,
+    projectsIsLoading: boolean,
+  },
+  orgData: {
+    orgName: string,
+  },
+  getProjectDetails: (details: {}) => void,
+  getContributors: (urlContributors: string) => void,
+};
 
-    // Binding methods
-    this.getProjectDetails = this.getProjectDetails.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
+class Projects extends PureComponent<Props> {
   // Search form
-  handleSubmit(e) {
+  handleSubmit(e: any) {
     e.preventDefault();
 
     this.props.fetchData(this.props.orgData.orgName);
   }
 
-  handleChange(e) {
+  handleChange = (e: any) => {
     const { target } = e;
     const { name } = target;
 
     if (name === 'orgName') {
       this.props.cleanProjects(target.value);
     }
-  }
+  };
 
   // get a project information
-  getProjectDetails(e, id, urlContributors) {
+  getProjectDetails = (e: any, id: string, urlContributors: string) => {
     const projectDetails = this.props.projectsData.projects.filter(
       project => project.id === id
     );
@@ -51,7 +64,7 @@ class Projects extends PureComponent {
 
     // scroll up after loading project info
     window.scrollTo(0, 0);
-  }
+  };
 
   render() {
     const { projectsData, orgData } = this.props;
@@ -128,15 +141,6 @@ class Projects extends PureComponent {
     );
   }
 }
-
-Projects.propTypes = {
-  fetchData: PropTypes.func.isRequired,
-  cleanProjects: PropTypes.func.isRequired,
-  projectsData: PropTypes.array.isRequired,
-  orgData: PropTypes.array.isRequired,
-  getProjectDetails: PropTypes.func.isRequired,
-  getContributors: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = state => ({
   projectsData: state.projectsData,

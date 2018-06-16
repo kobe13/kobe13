@@ -1,7 +1,24 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const ProjectDetail = ({ name, description, language, homepage }) => (
+type ProjectDetailProps = {
+  name: string,
+  description: string,
+  language: string,
+  homepage: string,
+  id: string,
+};
+
+type ProjectViewProps = {
+  projects: ProjectDetailProps[],
+};
+
+const ProjectDetail = ({
+  name,
+  description,
+  language,
+  homepage,
+}: ProjectDetailProps) => (
   <div>
     <h2>
       {homepage ? (
@@ -23,23 +40,12 @@ const ProjectDetail = ({ name, description, language, homepage }) => (
   </div>
 );
 
-const ProjectView = props => (
+const ProjectView = (props: ProjectViewProps) => (
   <div>
     {props.projects.map(project => (
       <ProjectDetail key={project.id} {...project} />
     ))}
   </div>
 );
-
-ProjectDetail.propTypes = {
-  name: PropTypes.string,
-  description: PropTypes.string,
-  language: PropTypes.string,
-  homepage: PropTypes.string,
-};
-
-ProjectView.propTypes = {
-  projects: PropTypes.array,
-};
 
 export default ProjectView;

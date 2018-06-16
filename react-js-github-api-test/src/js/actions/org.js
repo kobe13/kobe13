@@ -1,4 +1,10 @@
-const orgName = name => ({
+// @flow
+export type OrgNameAction = {
+  type: 'ORG_NAME',
+  orgName: string,
+};
+
+const orgName = (name: string): OrgNameAction => ({
   type: 'ORG_NAME',
   orgName: name,
 });

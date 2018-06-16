@@ -1,7 +1,17 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Contributor = ({ login, contributions }) => (
+type ContributorProps = {
+  login: string,
+  contributions: string,
+  id: string,
+};
+
+type ContributorsListProps = {
+  contributors: ContributorProps[],
+};
+
+const Contributor = ({ login, contributions }: ContributorProps) => (
   <li>
     <i>
       {login} ({contributions} contributions)
@@ -9,7 +19,7 @@ const Contributor = ({ login, contributions }) => (
   </li>
 );
 
-const ContributorsList = props => (
+const ContributorsList = (props: ContributorsListProps) => (
   <div>
     <b>Contributors:</b>
     <ul className="list-unstyled">
@@ -19,14 +29,5 @@ const ContributorsList = props => (
     </ul>
   </div>
 );
-
-Contributor.propTypes = {
-  login: PropTypes.string,
-  contributions: PropTypes.string,
-};
-
-ContributorsList.propTypes = {
-  contributors: PropTypes.array,
-};
 
 export default ContributorsList;

@@ -6,9 +6,11 @@
   },
   "parser": "babel-eslint",
   "plugins": [
-    "react"
+    "react",
+    "flowtype"
   ],
   "rules": {
+    "no-use-before-define": 0,
     "max-len": [
       1,
       120,
@@ -25,10 +27,16 @@
     "no-underscore-dangle": 0,
     "function-paren-newline": 0
   },
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
+  },
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
     "airbnb-base",
-    "prettier"
+    "prettier",
+    "plugin:flowtype/recommended"
   ]
 }

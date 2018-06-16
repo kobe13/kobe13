@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 
-class BackButton extends Component {
+type Props = {
+  history: () => void,
+};
+
+class BackButton extends PureComponent<Props> {
   handleSubmit(e) {
     const { history } = this.props;
 
@@ -22,9 +26,5 @@ class BackButton extends Component {
     );
   }
 }
-
-BackButton.propTypes = {
-  history: PropTypes.func.isRequired,
-};
 
 export default withRouter(BackButton);

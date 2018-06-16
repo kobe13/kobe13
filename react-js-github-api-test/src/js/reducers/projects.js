@@ -1,4 +1,8 @@
-export const projectsHasErrored = (state = null, action) => {
+// @flow
+import type { Action } from '../actions/projects';
+import State from './index';
+
+export const projectsHasErrored = (state: State = null, action: Action) => {
   switch (action.type) {
     case 'PROJECTS_HAS_ERRORED':
       return action.projectsHasErrored;
@@ -7,7 +11,7 @@ export const projectsHasErrored = (state = null, action) => {
   }
 };
 
-export const projectsIsLoading = (state = false, action) => {
+export const projectsIsLoading = (state: State = false, action: Action) => {
   switch (action.type) {
     case 'PROJECTS_IS_LOADING':
       return action.projectsIsLoading;
@@ -16,7 +20,7 @@ export const projectsIsLoading = (state = false, action) => {
   }
 };
 
-export const projectsNumber = (state = null, action) => {
+export const projectsNumber = (state: State = null, action: Action) => {
   switch (action.type) {
     case 'PROJECTS_NUMBER':
       return action.projectsNumber;
@@ -25,7 +29,7 @@ export const projectsNumber = (state = null, action) => {
   }
 };
 
-export const projects = (state = null, action) => {
+export const projects = (state: State = null, action: Action) => {
   switch (action.type) {
     case 'PROJECTS_FETCH_DATA_SUCCESS':
       return action.projects;
@@ -34,7 +38,10 @@ export const projects = (state = null, action) => {
   }
 };
 
-export const contributorsHasErrored = (state = false, action) => {
+export const contributorsHasErrored = (
+  state: State = false,
+  action: Action
+) => {
   switch (action.type) {
     case 'CONTRIBUTORS_HAS_ERRORED':
       return action.contributorsHasErrored;
@@ -43,7 +50,7 @@ export const contributorsHasErrored = (state = false, action) => {
   }
 };
 
-export const contributorsIsLoading = (state = false, action) => {
+export const contributorsIsLoading = (state: State = false, action: Action) => {
   switch (action.type) {
     case 'CONTRIBUTORS_IS_LOADING':
       return action.contributorsIsLoading;
@@ -52,7 +59,7 @@ export const contributorsIsLoading = (state = false, action) => {
   }
 };
 
-export const projectContributors = (state = null, action) => {
+export const projectContributors = (state: State = null, action: Action) => {
   switch (action.type) {
     case 'CONTRIBUTORS_FETCH_DATA_SUCCESS':
       return action.contributors;
@@ -61,7 +68,7 @@ export const projectContributors = (state = null, action) => {
   }
 };
 
-export const projectInfo = (state = null, action) => {
+export const projectInfo = (state: State = null, action: Action) => {
   switch (action.type) {
     case 'PROJECT_INFO_FETCH_DATA_SUCCESS':
       return action.projectInfo;

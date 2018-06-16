@@ -1,7 +1,18 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const User = ({ login, avatar_url }) => (
+type UserProps = {
+  login: string,
+  avatar_url: string,
+  id: string,
+};
+
+type UsersListProps = {
+  users: UserProps[],
+  usersNumber: number,
+};
+
+const User = ({ login, avatar_url }: UserProps) => (
   <li className="list-group-item text-left">
     <div className="media">
       <img
@@ -21,7 +32,7 @@ const User = ({ login, avatar_url }) => (
   </li>
 );
 
-const UsersList = props => (
+const UsersList = (props: UsersListProps) => (
   <div className="row">
     <div className="col-12 col-md-6">
       <ul className="list-group">
@@ -39,15 +50,5 @@ const UsersList = props => (
     </div>
   </div>
 );
-
-User.propTypes = {
-  login: PropTypes.string.isRequired,
-  avatar_url: PropTypes.string.isRequired,
-};
-
-UsersList.propTypes = {
-  users: PropTypes.array.isRequired,
-  usersNumber: PropTypes.number.isRequired,
-};
 
 export default UsersList;

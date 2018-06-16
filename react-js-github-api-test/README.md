@@ -9,7 +9,7 @@ To be able to run the app locally you need to run these commands:
   
  ```
 
-In order to run tests + formating:
+In order to run Jest tests + Prettier formating + Flow type checking:
  ```
  - npm test
   

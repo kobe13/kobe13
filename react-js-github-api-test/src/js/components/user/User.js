@@ -1,12 +1,30 @@
+// @flow
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar';
-import PropTypes from 'prop-types';
 import { fetchUserDetail } from '../../actions/user';
 import makeGetCurrentUserState from '../../selectors/selectors';
 import BackButton from '../common/backButton';
 
-class User extends PureComponent {
+type Props = {
+  fetchData: (userLogin: string) => void,
+  userLogin: string,
+  fetchedUserData: {
+    gitHubUser: string,
+    currentUserHasErrored: boolean,
+    currentUserIsLoading: boolean,
+  },
+  currentUserStateData: {
+    currentUser: {
+      id: string,
+      login: string,
+      html_url: string,
+      avatar_url: string,
+    },
+  },
+};
+
+class User extends PureComponent<Props> {
   componentDidMount() {
     // check if the current user is already in the app state, if no then fetch data from GitHub
     if (!this.props.currentUserStateData.currentUser) {
@@ -68,13 +86,6 @@ class User extends PureComponent {
     );
   }
 }
-
-User.propTypes = {
-  fetchData: PropTypes.func.isRequired,
-  fetchedUserData: PropTypes.array.isRequired,
-  userLogin: PropTypes.string.isRequired,
-  currentUserStateData: PropTypes.array.isRequired,
-};
 
 const makeMapStateToProps = () => {
   const getCurrentUserState = makeGetCurrentUserState();

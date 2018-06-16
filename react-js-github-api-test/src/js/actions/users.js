@@ -1,32 +1,70 @@
+// @flow
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import type { ThunkAction } from './index';
 
-const usersHasErrored = boolean => ({
+type usersHasErroredAction = {
+  type: 'USERS_HAS_ERRORED',
+  usersHasErrored: boolean,
+};
+const usersHasErrored = (boolean: boolean): usersHasErroredAction => ({
   type: 'USERS_HAS_ERRORED',
   usersHasErrored: boolean,
 });
 
-const usersIsLoading = boolean => ({
+type usersIsLoadingAction = {
+  type: 'USERS_IS_LOADING',
+  usersIsLoading: boolean,
+};
+const usersIsLoading = (boolean: boolean): usersIsLoadingAction => ({
   type: 'USERS_IS_LOADING',
   usersIsLoading: boolean,
 });
 
-const usersData = gitHubUsers => ({
+type usersDataAction = {
+  type: 'USERS_FETCH_DATA_SUCCESS',
+  gitHubUsers: [] | null,
+};
+const usersData = (gitHubUsers: [] | null): usersDataAction => ({
   type: 'USERS_FETCH_DATA_SUCCESS',
   gitHubUsers,
 });
 
-const usersNumber = number => ({
+type usersNumberAction = {
+  type: 'USERS_NUMBER',
+  usersNumber: number | null,
+};
+const usersNumber = (number: number | null): usersNumberAction => ({
   type: 'USERS_NUMBER',
   usersNumber: number,
 });
 
-export const loadMoreUsers = moreUsers => ({
+type loadMoreUsersAction = {
+  type: 'MORE_USERS_FETCH_DATA_SUCCESS',
+  moreUsers: [],
+};
+export const loadMoreUsers = (moreUsers: []): loadMoreUsersAction => ({
   type: 'MORE_USERS_FETCH_DATA_SUCCESS',
   moreUsers,
 });
 
+export type UsersAction =
+  | usersHasErroredAction
+  | usersIsLoadingAction
+  | usersDataAction
+  | usersNumberAction
+  | loadMoreUsersAction;
+
+export type UsersState = {
+  usersData: {
+    gitHubUsers: [],
+  },
+};
+
 // get GitHub Users
-export const fetchUsers = (usersSince = 0) => (dispatch, getState) => {
+export const fetchUsers = (usersSince: number = 0): ThunkAction => (
+  dispatch,
+  getState
+) => {
   dispatch(usersHasErrored(false));
   dispatch(usersIsLoading(true));
   dispatch(showLoading());

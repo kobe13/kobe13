@@ -4,9 +4,10 @@
     "dev": "webpack-dev-server --watch",
     "build": "concurrently \"webpack --env production\" ",
     "start": "concurrently \"npm run dev\"",
-    "test": "concurrently \"npm run format\" \"jest\" ",
+    "test": "concurrently \"npm run format\" \"jest\" \"flow\"",
     "format": "prettier --config prettier.config.json --write \"./src/**/*.{js,scss}\"",
-    "jest": "jest"
+    "jest": "jest",
+    "flow": "flow"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -19,6 +20,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2015-webpack": "^6.4.3",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
     "bootstrap": "^4.0.0-alpha.6",
     "concurrently": "^3.5.1",
     "css-loader": "^0.28.7",
@@ -36,7 +38,6 @@
     "jest": "^22.4.4",
     "node-sass": "^4.6.1",
     "prettier": "^1.13.4",
-    "prop-types": "^15.6.0",
     "react": "16.3.2",
     "react-dom": "16.3.2",
     "react-icons": "^2.2.7",
@@ -54,6 +55,10 @@
     "webpack-dev-server": "^2.9.1"
   },
   "devDependencies": {
-    "eslint-config-prettier": "^2.9.0"
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-flowtype": "^2.49.3",
+    "flow-bin": "^0.74.0"
   }
 }

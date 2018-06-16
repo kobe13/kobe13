@@ -1,7 +1,13 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const OrgSearch = props => (
+type Props = {
+  submitAction: () => void,
+  orgName: string,
+  onChangeAction: () => void,
+};
+
+const OrgSearch = (props: Props) => (
   <form onSubmit={props.submitAction}>
     <div className="form-group">
       <label htmlFor="orgName">Load projects:</label>
@@ -25,11 +31,5 @@ const OrgSearch = props => (
     </div>
   </form>
 );
-
-OrgSearch.propTypes = {
-  submitAction: PropTypes.func,
-  orgName: PropTypes.string,
-  onChangeAction: PropTypes.func,
-};
 
 export default OrgSearch;

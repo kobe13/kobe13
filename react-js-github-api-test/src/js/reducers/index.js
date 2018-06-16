@@ -1,3 +1,4 @@
+// @flow
 import { combineReducers } from 'redux';
 import { loadingBarReducer } from 'react-redux-loading-bar';
 import {
@@ -59,10 +60,12 @@ const orgData = combineReducers({
   orgName,
 });
 
-export default combineReducers({
+const State = combineReducers({
   projectsData,
   orgData,
   usersData,
   currentUserData,
   loadingBar: loadingBarReducer,
 });
+
+export default State;

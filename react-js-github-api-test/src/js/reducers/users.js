@@ -1,4 +1,8 @@
-export const usersHasErrored = (state = false, action) => {
+// @flow
+import type { UsersAction } from '../actions/users';
+import State from './index';
+
+export const usersHasErrored = (state: State = false, action: UsersAction) => {
   switch (action.type) {
     case 'USERS_HAS_ERRORED':
       return action.usersHasErrored;
@@ -7,7 +11,7 @@ export const usersHasErrored = (state = false, action) => {
   }
 };
 
-export const usersIsLoading = (state = false, action) => {
+export const usersIsLoading = (state: State = false, action: UsersAction) => {
   switch (action.type) {
     case 'USERS_IS_LOADING':
       return action.usersIsLoading;
@@ -16,7 +20,7 @@ export const usersIsLoading = (state = false, action) => {
   }
 };
 
-export const gitHubUsers = (state = [], action) => {
+export const gitHubUsers = (state: State = [], action: UsersAction) => {
   switch (action.type) {
     case 'USERS_FETCH_DATA_SUCCESS':
       return action.gitHubUsers;
@@ -27,7 +31,7 @@ export const gitHubUsers = (state = [], action) => {
   }
 };
 
-export const usersNumber = (state = null, action) => {
+export const usersNumber = (state: State = null, action: UsersAction) => {
   switch (action.type) {
     case 'USERS_NUMBER':
       return action.usersNumber;

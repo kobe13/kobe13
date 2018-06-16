@@ -1,7 +1,8 @@
+// @flow
 import React, { PureComponent } from 'react';
 import PageTemplate from '../common/pageTemplate';
 
-class Error404 extends PureComponent {
+class Error404 extends PureComponent<any> {
   render() {
     const window = this.props;
     return (

@@ -1,7 +1,28 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Project = ({ name, watchers, id, contributors_url, action }) => (
+type ProjectProps = {
+  name: string,
+  watchers: number,
+  id: string,
+  action: (e: any, id: string, contributors_url: string) => void,
+  contributors_url: string,
+};
+
+type ProjectsListProps = {
+  projects: ProjectProps[],
+  number: number,
+  action: (e: any, id: string, contributors_url: string) => void,
+  org: string,
+};
+
+const Project = ({
+  name,
+  watchers,
+  id,
+  contributors_url,
+  action,
+}: ProjectProps) => (
   <button
     title="See project details"
     onClick={e => action(e, id, contributors_url)}
@@ -13,7 +34,7 @@ const Project = ({ name, watchers, id, contributors_url, action }) => (
   </button>
 );
 
-const ProjectsList = props => (
+const ProjectsList = (props: ProjectsListProps) => (
   <div>
     {props.projects && (
       <h4>
@@ -28,20 +49,5 @@ const ProjectsList = props => (
     </ul>
   </div>
 );
-
-Project.propTypes = {
-  name: PropTypes.string,
-  watchers: PropTypes.number,
-  id: PropTypes.string,
-  action: PropTypes.func,
-  contributors_url: PropTypes.string,
-};
-
-ProjectsList.propTypes = {
-  projects: PropTypes.array,
-  number: PropTypes.number,
-  action: PropTypes.func,
-  org: PropTypes.string,
-};
 
 export default ProjectsList;

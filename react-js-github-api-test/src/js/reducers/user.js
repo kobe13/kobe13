@@ -1,4 +1,8 @@
-export const currentUserHasErrored = (state = false, action) => {
+// @flow
+import type { Action } from '../actions/user';
+import State from './index';
+
+export const currentUserHasErrored = (state: State = false, action: Action) => {
   switch (action.type) {
     case 'CURRENT_USER_HAS_ERRORED':
       return action.currentUserHasErrored;
@@ -7,7 +11,7 @@ export const currentUserHasErrored = (state = false, action) => {
   }
 };
 
-export const currentUserIsLoading = (state = false, action) => {
+export const currentUserIsLoading = (state: State = false, action: Action) => {
   switch (action.type) {
     case 'CURRENT_USER_IS_LOADING':
       return action.currentUserIsLoading;
@@ -16,7 +20,7 @@ export const currentUserIsLoading = (state = false, action) => {
   }
 };
 
-export const gitHubUser = (state = [], action) => {
+export const gitHubUser = (state: State = [], action: Action) => {
   switch (action.type) {
     case 'CURRENT_USER_FETCH_DATA_SUCCESS':
       return action.gitHubUser;

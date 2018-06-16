@@ -1,9 +1,13 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import MainMenu from './mainMenu';
 
-class PageTemplate extends PureComponent {
+type Props = {
+  children: React.Node,
+};
+
+class PageTemplate extends React.PureComponent<Props> {
   render() {
     const { children } = this.props;
     return (
@@ -18,9 +22,5 @@ class PageTemplate extends PureComponent {
     );
   }
 }
-
-PageTemplate.propTypes = {
-  children: PropTypes.object,
-};
 
 export default PageTemplate;
