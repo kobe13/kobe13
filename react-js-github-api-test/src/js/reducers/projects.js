@@ -1,8 +1,32 @@
 // @flow
 import type { Action } from '../actions/projects';
-import State from './index';
 
-export const projectsHasErrored = (state: State = null, action: Action) => {
+export type State = {
+  projectsHasErrored: boolean,
+  projectsIsLoading: boolean,
+  projectsNumber: string | null,
+  projects: [] | null,
+  contributorsHasErrored: boolean,
+  contributorsIsLoading: boolean,
+  projectInfo: [] | null,
+  projectContributors: [] | null,
+};
+
+export const initialState: State = {
+  projectsHasErrored: false,
+  projectsIsLoading: false,
+  projectsNumber: null,
+  projects: null,
+  contributorsHasErrored: false,
+  contributorsIsLoading: false,
+  projectInfo: null,
+  projectContributors: null,
+};
+
+export const projectsHasErroredReducer = (
+  state: State.projectsHasErrored = initialState.projectsHasErrored,
+  action: Action
+) => {
   switch (action.type) {
     case 'PROJECTS_HAS_ERRORED':
       return action.projectsHasErrored;
@@ -11,7 +35,10 @@ export const projectsHasErrored = (state: State = null, action: Action) => {
   }
 };
 
-export const projectsIsLoading = (state: State = false, action: Action) => {
+export const projectsIsLoadingReducer = (
+  state: State.projectsIsLoading = initialState.projectsIsLoading,
+  action: Action
+) => {
   switch (action.type) {
     case 'PROJECTS_IS_LOADING':
       return action.projectsIsLoading;
@@ -20,7 +47,10 @@ export const projectsIsLoading = (state: State = false, action: Action) => {
   }
 };
 
-export const projectsNumber = (state: State = null, action: Action) => {
+export const projectsNumberReducer = (
+  state: State.projectsNumber = initialState.projectsNumber,
+  action: Action
+) => {
   switch (action.type) {
     case 'PROJECTS_NUMBER':
       return action.projectsNumber;
@@ -29,7 +59,10 @@ export const projectsNumber = (state: State = null, action: Action) => {
   }
 };
 
-export const projects = (state: State = null, action: Action) => {
+export const projectsReducer = (
+  state: State.projects = initialState.projects,
+  action: Action
+) => {
   switch (action.type) {
     case 'PROJECTS_FETCH_DATA_SUCCESS':
       return action.projects;
@@ -38,8 +71,8 @@ export const projects = (state: State = null, action: Action) => {
   }
 };
 
-export const contributorsHasErrored = (
-  state: State = false,
+export const contributorsHasErroredReducer = (
+  state: State.contributorsHasErrored = initialState.contributorsHasErrored,
   action: Action
 ) => {
   switch (action.type) {
@@ -50,7 +83,10 @@ export const contributorsHasErrored = (
   }
 };
 
-export const contributorsIsLoading = (state: State = false, action: Action) => {
+export const contributorsIsLoadingReducer = (
+  state: State.contributorsIsLoading = initialState.contributorsIsLoading,
+  action: Action
+) => {
   switch (action.type) {
     case 'CONTRIBUTORS_IS_LOADING':
       return action.contributorsIsLoading;
@@ -59,7 +95,10 @@ export const contributorsIsLoading = (state: State = false, action: Action) => {
   }
 };
 
-export const projectContributors = (state: State = null, action: Action) => {
+export const projectContributorsReducer = (
+  state: State.projectContributors = initialState.projectContributors,
+  action: Action
+) => {
   switch (action.type) {
     case 'CONTRIBUTORS_FETCH_DATA_SUCCESS':
       return action.contributors;
@@ -68,7 +107,10 @@ export const projectContributors = (state: State = null, action: Action) => {
   }
 };
 
-export const projectInfo = (state: State = null, action: Action) => {
+export const projectInfoReducer = (
+  state: State.projectInfo = initialState.projectInfo,
+  action: Action
+) => {
   switch (action.type) {
     case 'PROJECT_INFO_FETCH_DATA_SUCCESS':
       return action.projectInfo;

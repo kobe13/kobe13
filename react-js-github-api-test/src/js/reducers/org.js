@@ -1,8 +1,18 @@
 // @flow
 import type { OrgNameAction } from '../actions/org';
-import State from './index';
 
-const orgName = (state: State = null, action: OrgNameAction) => {
+export type State = {
+  orgName: string | null,
+};
+
+export const initialState: State = {
+  orgName: null,
+};
+
+export const orgNameReducer = (
+  state: State.orgName = initialState.orgName,
+  action: OrgNameAction
+) => {
   switch (action.type) {
     case 'ORG_NAME':
       return action.orgName;
@@ -10,5 +20,3 @@ const orgName = (state: State = null, action: OrgNameAction) => {
       return state;
   }
 };
-
-export default orgName;

@@ -1,8 +1,8 @@
 // @flow
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import State from '../reducers';
+import rootReducer, { State, initState } from '../reducers';
 
-export default function configureStore(initialState: State) {
-  return createStore(State, initialState, applyMiddleware(thunk));
+export default function configureStore(initialState: State = initState()) {
+  return createStore(rootReducer, initialState, applyMiddleware(thunk));
 }
