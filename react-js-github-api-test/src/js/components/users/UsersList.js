@@ -23,7 +23,7 @@ const User = ({ login, avatar_url }: UserProps) => (
         height="64"
       />
       <div className="media-body mb-2 mt-2">
-        <h5 className="mt-0">{login}</h5>
+        <h5 className="mt-0 mr-2">{login}</h5>
       </div>
       <a href={`#/user/${login}`} className="btn btn-info">
         See details

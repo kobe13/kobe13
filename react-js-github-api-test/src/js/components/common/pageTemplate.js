@@ -12,10 +12,12 @@ class PageTemplate extends React.PureComponent<Props> {
     const { children } = this.props;
     return (
       <div>
-        <NavLink title="HomePage" to="/" activeClassName="">
-          {' '}
-          <h1>GitHub API Test</h1>
-        </NavLink>
+        <h1>
+          <NavLink title="HomePage" to="/" activeClassName="">
+            {' '}
+            GitHub API App
+          </NavLink>
+        </h1>
         <MainMenu />
         {children}
       </div>

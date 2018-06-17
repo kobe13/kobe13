@@ -113,9 +113,9 @@ export const fetchProjects = (org: string): ThunkAction => (dispatch: any) => {
     })
     .then(response => response.json())
     .then(projects => {
+      dispatch(projectsIsLoading(false));
       dispatch(projectsData(projects.sort((a, b) => b.watchers - a.watchers)));
       dispatch(projectsNumber(projects.length));
-      dispatch(projectsIsLoading(false));
     })
     .catch(() => {
       dispatch(projectsHasErrored(true));
