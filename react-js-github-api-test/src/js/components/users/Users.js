@@ -48,12 +48,6 @@ class Users extends PureComponent<Props> {
     return (
       <div className="users">
         <LoadingBar className="loading-bar" />
-        {usersHasErrored &&
-          !usersIsLoading && (
-            <p className="p-3 mb-2 bg-danger text-white">
-              Error during GitHub Users loading... Please reload the page
-            </p>
-          )}
         {gitHubUsers && (
           <div>
             <UsersList users={gitHubUsers} usersNumber={usersNumber} />
@@ -72,6 +66,12 @@ class Users extends PureComponent<Props> {
         {usersIsLoading &&
           !usersHasErrored && (
             <p className="p-3 mb-2 bg-info text-white">Loading users...</p>
+          )}
+        {usersHasErrored &&
+          !usersIsLoading && (
+            <p className="p-3 mb-2 bg-danger text-white">
+              Error during GitHub Users loading... Please reload the page
+            </p>
           )}
       </div>
     );

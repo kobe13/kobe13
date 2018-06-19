@@ -13,7 +13,7 @@ type UsersListProps = {
 };
 
 const User = ({ login, avatar_url }: UserProps) => (
-  <li className="list-group-item text-left">
+  <div className="list-group-item text-left col-12 col-md-6">
     <div className="media">
       <img
         alt={`${login} avatar`}
@@ -29,24 +29,13 @@ const User = ({ login, avatar_url }: UserProps) => (
         See details
       </a>
     </div>
-  </li>
+  </div>
 );
 
 const UsersList = (props: UsersListProps) => (
-  <div className="row">
-    <div className="col-12 col-md-6">
-      <ul className="list-group">
-        {props.users
-          .slice(0, props.usersNumber / 2)
-          .map(user => <User key={user.id} {...user} />)}
-      </ul>
-    </div>
-    <div className="col-12 col-md-6">
-      <ul className="list-group">
-        {props.users
-          .slice(props.usersNumber / 2, props.usersNumber)
-          .map(user => <User key={user.id} {...user} />)}
-      </ul>
+  <div className="container">
+    <div className="row">
+      {props.users.map(user => <User key={user.id} {...user} />)}
     </div>
   </div>
 );

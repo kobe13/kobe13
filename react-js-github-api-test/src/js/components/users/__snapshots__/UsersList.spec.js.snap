@@ -2,83 +2,71 @@
 
 exports[`Users list renders correctly with 2 users 1`] = `
 <div
-  className="row"
+  className="container"
 >
   <div
-    className="col-12 col-md-6"
+    className="row"
   >
-    <ul
-      className="list-group"
+    <div
+      className="list-group-item text-left col-12 col-md-6"
     >
-      <li
-        className="list-group-item text-left"
+      <div
+        className="media"
       >
+        <img
+          alt="login avatar"
+          className="mr-3"
+          height="64"
+          src="avatar_url"
+          width="64"
+        />
         <div
-          className="media"
+          className="media-body mb-2 mt-2"
         >
-          <img
-            alt="login avatar"
-            className="mr-3"
-            height="64"
-            src="avatar_url"
-            width="64"
-          />
-          <div
-            className="media-body mb-2 mt-2"
+          <h5
+            className="mt-0 mr-2"
           >
-            <h5
-              className="mt-0 mr-2"
-            >
-              login
-            </h5>
-          </div>
-          <a
-            className="btn btn-info"
-            href="#/user/login"
-          >
-            See details
-          </a>
+            login
+          </h5>
         </div>
-      </li>
-    </ul>
-  </div>
-  <div
-    className="col-12 col-md-6"
-  >
-    <ul
-      className="list-group"
+        <a
+          className="btn btn-info"
+          href="#/user/login"
+        >
+          See details
+        </a>
+      </div>
+    </div>
+    <div
+      className="list-group-item text-left col-12 col-md-6"
     >
-      <li
-        className="list-group-item text-left"
+      <div
+        className="media"
       >
+        <img
+          alt="login2 avatar"
+          className="mr-3"
+          height="64"
+          src="avatar_url2"
+          width="64"
+        />
         <div
-          className="media"
+          className="media-body mb-2 mt-2"
         >
-          <img
-            alt="login2 avatar"
-            className="mr-3"
-            height="64"
-            src="avatar_url2"
-            width="64"
-          />
-          <div
-            className="media-body mb-2 mt-2"
+          <h5
+            className="mt-0 mr-2"
           >
-            <h5
-              className="mt-0 mr-2"
-            >
-              login2
-            </h5>
-          </div>
-          <a
-            className="btn btn-info"
-            href="#/user/login2"
-          >
-            See details
-          </a>
+            login2
+          </h5>
         </div>
-      </li>
-    </ul>
+        <a
+          className="btn btn-info"
+          href="#/user/login2"
+        >
+          See details
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 `;
