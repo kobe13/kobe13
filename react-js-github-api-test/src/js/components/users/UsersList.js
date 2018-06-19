@@ -9,7 +9,6 @@ type UserProps = {
 
 type UsersListProps = {
   users: UserProps[],
-  usersNumber: number,
 };
 
 const User = ({ login, avatar_url }: UserProps) => (

@@ -47,10 +47,11 @@ class Users extends PureComponent<Props> {
 
     return (
       <div className="users">
+        <div className="alert alert-secondary">Users loaded: {usersNumber}</div>
         <LoadingBar className="loading-bar" />
         {gitHubUsers && (
           <div>
-            <UsersList users={gitHubUsers} usersNumber={usersNumber} />
+            <UsersList users={gitHubUsers} />
             {!usersIsLoading &&
               !usersHasErrored && (
                 <button

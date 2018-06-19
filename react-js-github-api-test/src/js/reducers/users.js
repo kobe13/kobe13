@@ -12,7 +12,7 @@ export const initialState: State = {
   usersHasErrored: false,
   usersIsLoading: false,
   gitHubUsers: [],
-  usersNumber: null,
+  usersNumber: 0,
 };
 
 export const usersHasErroredReducer = (
