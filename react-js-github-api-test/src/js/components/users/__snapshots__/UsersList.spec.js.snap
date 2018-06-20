@@ -24,7 +24,7 @@ exports[`Users list renders correctly with 2 users 1`] = `
           className="media-body mb-2 mt-2"
         >
           <h5
-            className="mt-0 mr-2"
+            className="mt-0 mr-2 font-weight-bold"
           >
             login
           </h5>
@@ -54,7 +54,7 @@ exports[`Users list renders correctly with 2 users 1`] = `
           className="media-body mb-2 mt-2"
         >
           <h5
-            className="mt-0 mr-2"
+            className="mt-0 mr-2 font-weight-bold"
           >
             login2
           </h5>

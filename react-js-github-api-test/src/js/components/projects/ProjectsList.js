@@ -27,15 +27,13 @@ const Project = ({
   contributors_url,
   action,
 }: ProjectProps) => (
-  <button
+  <li
     title="See project details"
     onClick={e => action(e, id, contributors_url)}
-    className="btn btn-link"
+    className="btn list-group-item text-left"
   >
-    <li className="list-group-item text-left">
-      <h4>{name}</h4> <i>({watchers} watchers)</i>
-    </li>
-  </button>
+    <h4 className="font-weight-bold">{name}</h4> <i>({watchers} watchers)</i>
+  </li>
 );
 
 const ProjectsList = (props: ProjectsListProps) => (

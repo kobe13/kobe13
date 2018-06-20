@@ -47,7 +47,9 @@ class Users extends PureComponent<Props> {
 
     return (
       <div className="users">
-        <div className="alert alert-secondary">Users loaded: {usersNumber}</div>
+        <div className="mb-2 mt-2 btn-lg">
+          Users loaded: <b>{usersNumber}</b>
+        </div>
         <LoadingBar className="loading-bar" />
         {gitHubUsers && (
           <div>
@@ -57,7 +59,7 @@ class Users extends PureComponent<Props> {
                 <button
                   title="Load more Users"
                   onClick={this.handleSubmit}
-                  className="btn btn-link"
+                  className="btn btn-outline-info btn-lg btn-block mt-2"
                 >
                   Load more Users
                 </button>
@@ -66,7 +68,7 @@ class Users extends PureComponent<Props> {
         )}
         {usersIsLoading &&
           !usersHasErrored && (
-            <p className="p-3 mb-2 bg-info text-white">Loading users...</p>
+            <p className="p-3 mb-2 mt-2 bg-info text-white">Loading users...</p>
           )}
         {usersHasErrored &&
           !usersIsLoading && (

@@ -66,6 +66,12 @@ h3 {
   }
 }
 
+.users {
+  .list-group-item {
+    margin-bottom: 0;
+  }
+}
+
 .media {
   align-items: center;
   @include media-breakpoint-only(xs) {
