@@ -19,10 +19,10 @@ type Props = {
   cleanProjects: (org: string) => void,
   projectsData: {
     projectsNumber: number,
-    projects: any,
+    projects: [],
     project: {
-      contributors: any,
-      projectInfo: any,
+      contributors: [],
+      projectInfo: [],
     },
     contributors: [],
     projectsHasErrored: boolean,

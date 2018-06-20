@@ -10,7 +10,7 @@ type Props = {
   fetchMoreData: (lastUserID: string) => void,
   usersData: {
     usersNumber: number,
-    gitHubUsers: any,
+    gitHubUsers: [],
     usersHasErrored: boolean,
     usersIsLoading: boolean,
   },

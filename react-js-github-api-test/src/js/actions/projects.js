@@ -93,7 +93,7 @@ export type Action =
   | projectDetailAction;
 
 // get all projects of an organisation
-export const fetchProjects = (org: string): ThunkAction => (dispatch: any) => {
+export const fetchProjects = (org: string): ThunkAction => dispatch => {
   dispatch(projectsHasErrored(false));
   dispatch(projectsIsLoading(true));
   dispatch(showLoading('orgSearchBar'));
