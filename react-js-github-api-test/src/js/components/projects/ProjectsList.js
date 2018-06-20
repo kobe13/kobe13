@@ -5,14 +5,18 @@ type ProjectProps = {
   name: string,
   watchers: number,
   id: string,
-  action: (e: any, id: string, contributors_url: string) => void,
+  action: (
+    e: SyntheticEvent<HTMLButtonElement>,
+    id: string,
+    contributors_url: string
+  ) => void,
   contributors_url: string,
 };
 
 type ProjectsListProps = {
   projects: ProjectProps[],
   number: number,
-  action: (e: any, id: string, contributors_url: string) => void,
+  action: () => void,
   org: string,
 };
 

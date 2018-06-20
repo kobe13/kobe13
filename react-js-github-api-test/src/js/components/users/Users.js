@@ -26,7 +26,7 @@ class Users extends PureComponent<Props> {
   }
 
   // Load more users
-  handleSubmit(e) {
+  handleSubmit = (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     // get the last fetched user id in order to avoid duplicated users
@@ -34,7 +34,7 @@ class Users extends PureComponent<Props> {
     const lastUserID: string = usersArray[usersArray.length - 1].id;
 
     this.props.fetchMoreData(lastUserID);
-  }
+  };
 
   render() {
     const { usersData } = this.props;
@@ -56,7 +56,7 @@ class Users extends PureComponent<Props> {
               !usersHasErrored && (
                 <button
                   title="Load more Users"
-                  onClick={e => this.handleSubmit(e)}
+                  onClick={this.handleSubmit}
                   className="btn btn-link"
                 >
                   Load more Users

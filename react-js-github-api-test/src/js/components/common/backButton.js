@@ -7,20 +7,16 @@ type Props = {
 };
 
 class BackButton extends PureComponent<Props> {
-  handleSubmit(e) {
+  handleSubmit = (e: SyntheticEvent<HTMLButtonElement>) => {
     const { history } = this.props;
 
     e.preventDefault();
     history.goBack();
-  }
+  };
 
   render() {
     return (
-      <button
-        onClick={e => this.handleSubmit(e)}
-        id="back"
-        className="btn btn-info"
-      >
+      <button onClick={this.handleSubmit} id="back" className="btn btn-info">
         Back
       </button>
     );

@@ -37,23 +37,22 @@ type Props = {
 
 class Projects extends PureComponent<Props> {
   // Search form
-  handleSubmit(e: any) {
+  handleSubmit = (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     this.props.fetchData(this.props.orgData.orgName);
-  }
+  };
 
-  handleChange = (e: any) => {
-    const { target } = e;
-    const { name } = target;
-
-    if (name === 'orgName') {
-      this.props.cleanProjects(target.value);
-    }
+  handleChange = (e: SyntheticEvent<HTMLButtonElement>) => {
+    this.props.cleanProjects(e.currentTarget.value);
   };
 
   // get a project information
-  getProjectDetails = (e: any, id: string, urlContributors: string) => {
+  getProjectDetails = (
+    e: SyntheticEvent<HTMLButtonElement>,
+    id: string,
+    urlContributors: string
+  ) => {
     const projectDetails = this.props.projectsData.projects.filter(
       project => project.id === id
     );
@@ -81,7 +80,7 @@ class Projects extends PureComponent<Props> {
       <div className="row projects">
         <div className="col-md-4 col-6">
           <OrgSearch
-            submitAction={e => this.handleSubmit(e)}
+            submitAction={this.handleSubmit}
             orgName={orgData.orgName}
             onChangeAction={this.handleChange}
           />
