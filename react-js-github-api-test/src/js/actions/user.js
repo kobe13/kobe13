@@ -35,7 +35,7 @@ export const currentUserData = (
   gitHubUser,
 });
 
-export type Action =
+export type UserAction =
   | currentUserHasErroredAction
   | currentUserIsLoadingAction
   | currentUserDataAction;

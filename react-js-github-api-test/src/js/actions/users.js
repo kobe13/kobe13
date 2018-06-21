@@ -54,12 +54,6 @@ export type UsersAction =
   | usersNumberAction
   | loadMoreUsersAction;
 
-export type UsersState = {
-  usersData: {
-    gitHubUsers: [],
-  },
-};
-
 // get GitHub Users
 export const fetchUsers = (usersSince: number = 0): ThunkAction => (
   dispatch,

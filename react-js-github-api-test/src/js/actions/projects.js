@@ -82,7 +82,7 @@ export const contributorsIsLoading = (boolean: boolean) => ({
   contributorsIsLoading: boolean,
 });
 
-export type Action =
+export type ProjectsAction =
   | projectsHasErroredAction
   | projectsIsLoadingAction
   | projectsDataAction
