@@ -2,7 +2,7 @@
 
 ## React UI component library sdk with TypeScript, styled components and Styleguidist:
 
-- https://kobe13.github.io/react-ui-component-library/styleguide/index.html
+- https://kobe13.github.io/react-ui-component-library/styleguide/
 
 
 ## React JS + Redux && Thunk GitHub API Test:
