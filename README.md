@@ -1,11 +1,16 @@
 # kobe13.github.io
 
+## React UI component library sdk with TypeScript, styled components and Styleguidist:
+
+- https://kobe13.github.io/react-ui-component-library/styleguide/index.html
+
+
 ## React JS + Redux && Thunk GitHub API Test:
 
 - https://kobe13.github.io/react-js-github-api-test/dist/
 
 
-## React JS, Webpack App (Work in Progress)
+## React JS, Webpack App 
 
 - https://github.com/kobe13/kobe13.github.io/tree/master/react-js-webpack-app
 
