@@ -1,6 +1,1 @@
 .idea/
-node_modules/
-.sass-cache/
-npm-debug.log
-.vscode/
-react-js-typescript-redux-test/
